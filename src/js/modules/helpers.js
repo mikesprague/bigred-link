@@ -17,3 +17,14 @@ export function handleError(error) {
   console.error(error);
   throw new Error(error);
 }
+
+export function getResultMarkup(urlPrefix, shortId) {
+  const resultTemplate = `
+  <div class="result">
+    <a target="_blank" class="result-link" rel="noopener" href="/${shortId}">
+      ${urlPrefix}/${shortId}
+    </a>
+  </div>
+  `;
+  return resultTemplate;
+}

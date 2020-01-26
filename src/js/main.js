@@ -26,16 +26,8 @@ form.addEventListener('submit', async (event) => {
   await axios.post('/new', {
     link: input.value,
   }).then((response) => {
-    while (result.hasChildNodes()) {
-      result.removeChild(result.lastChild);
-    }
-    result.insertAdjacentHTML('afterbegin', `
-      <div class="result">
-        <a target="_blank" class="result-link" rel="noopener" href="/${response.data.short_id}">
-          ${location.origin}/${response.data.short_id}
-        </a>
-      </div>
-    `);
+    const resultTemplate = helpers.getResultMarkup(location.origin, response.data.short_id);
+    result.innerHTML = resultTemplate;
     return response.data;
   }).catch((error) => {
     helpers.handleError(error);
