@@ -9,9 +9,14 @@ const { MongoClient } = require('mongodb');
 const nanoid = require('nanoid');
 const path = require('path');
 
-const databaseUrl = process.env.MONGO_DB_URL;
+const {
+  BUGSNAG_KEY,
+  MONGO_DB_COLLECTION,
+  MONGO_DB_NAME,
+  MONGO_DB_URL,
+} = process.env;
 
-const bugsnagClient = bugsnag(process.env.BUGSNAG_KEY);
+const bugsnagClient = bugsnag(BUGSNAG_KEY);
 bugsnagClient.use(bugsnagExpress);
 
 const app = express();
@@ -21,23 +26,10 @@ app.use(bugsnagMiddleware.requestHandler);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((request, response) => {
-  if (process.env.NODE_ENV === 'production' && request.protocol === 'http') {
-    response.redirect(`https://${request.headers.host}${request.url}`);
-  }
-});
 
-MongoClient.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((client) => {
-    app.locals.db = client.db('big-red-link');
-  })
-  .catch((error) => {
-    console.error('Failed to connect to the database');
-    bugsnagClient.notify(error);
-  });
-
-const shortenURL = (db, url) => {
-  const shortenedLinks = db.collection('shortenedLinks');
+// helper functions
+const shortenURL = (dbClient, url) => {
+  const shortenedLinks = dbClient.collection(MONGO_DB_COLLECTION);
   return shortenedLinks.findOneAndUpdate({ original_url: url },
     {
       $setOnInsert: {
@@ -51,12 +43,25 @@ const shortenURL = (db, url) => {
     });
 };
 
-const checkIfShortIdExists = async (db, code) => {
-  const result = await db.collection('shortenedLinks')
-    .findOne({ short_id: code });
+const checkIfShortIdExists = async (dbClient, shortId) => {
+  const result = await dbClient.collection(MONGO_DB_COLLECTION)
+    .findOne({ short_id: shortId });
 
   return result;
 };
+// end helper functions
+
+MongoClient.connect(MONGO_DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then((client) => {
+    app.locals.dbClient = client.db(MONGO_DB_NAME);
+  })
+  .catch((error) => {
+    console.error('Failed to connect to the database');
+    bugsnagClient.notify(error);
+  });
 
 app.get('/', (req, res) => {
   const htmlPath = path.join(__dirname, 'public', 'index.html');
@@ -68,7 +73,7 @@ app.get('/', (req, res) => {
 app.post('/new', (req, res) => {
   let originalUrl;
   try {
-    originalUrl = new URL(req.body.url);
+    originalUrl = new URL(req.body.link);
   } catch (error) {
     bugsnagClient.notify(error);
     return res.status(400).send({ error: 'invalid URL' });
@@ -79,8 +84,8 @@ app.post('/new', (req, res) => {
     if (err) {
       return res.status(404).send({ error: 'Address not found' });
     }
-    const { db } = req.app.locals;
-    shortenURL(db, originalUrl.href)
+    const { dbClient } = req.app.locals;
+    shortenURL(dbClient, originalUrl.href)
       .then((result) => {
         const doc = result.value;
         return res.json({
@@ -97,9 +102,9 @@ app.post('/new', (req, res) => {
 
 app.get('/:short_id', (req, res) => {
   const shortId = req.params.short_id;
-  const { db } = req.app.locals;
+  const { dbClient } = req.app.locals;
 
-  checkIfShortIdExists(db, shortId)
+  checkIfShortIdExists(dbClient, shortId)
     .then((doc) => {
       if (doc === null) {
         return res.send('Uh oh. We could not find a link at that URL');
