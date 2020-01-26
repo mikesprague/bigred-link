@@ -1,3 +1,8 @@
+import '../scss/styles.scss';
+import LogRocket from 'logrocket';
+
+LogRocket.init('skxlwh/bigredlink');
+
 const form = document.querySelector('.url-form');
 const result = document.querySelector('.result-section');
 
