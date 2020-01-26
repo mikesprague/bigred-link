@@ -3,7 +3,7 @@ export function isProduction() {
 }
 
 export function forceHttps() {
-  if (isProduction()) {
+  if (isProduction() && window.location.protocol === 'http:') {
     const secureUrl = window.location.href.replace('http:', 'https:');
     return window.location.replace(secureUrl);
   }
