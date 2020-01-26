@@ -1,15 +1,19 @@
+export function isProduction() {
+  return window.location.hostname === 'bigred.link';
+}
+
 export function forceHttps() {
-  const { protocol } = window.location;
-  if (protocol === 'http:') {
+  if (isProduction()) {
     const secureUrl = window.location.href.replace('http:', 'https:');
     return window.location.replace(secureUrl);
   }
-  return true;
 }
 
-export function handleError (error, bugsnagClient = null) {
-  console.error(error);
-  if (bugsnagClient) {
+export function handleError(error) {
+  if (isProduction()) {
+    // eslint-disable-next-line no-undef
     bugsnagClient.notify(error);
   }
+  console.error(error);
+  throw new Error(error);
 }

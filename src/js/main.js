@@ -1,46 +1,43 @@
 import '../scss/styles.scss';
+import axios from 'axios';
+import bugsnag from '@bugsnag/js';
 import LogRocket from 'logrocket';
 import * as helpers from './modules/helpers';
 
-helpers.forceHttps();
+const isProduction = helpers.isProduction();
 
-LogRocket.init('skxlwh/bigredlink');
+if (isProduction) {
+  helpers.forceHttps();
+  LogRocket.init('skxlwh/bigredlink');
+  window.bugsnagClient = bugsnag('723fa77654c41aae8632bace87a7939f');
+  bugsnag.beforeNotify = (data) => {
+    // eslint-disable-next-line no-param-reassign
+    data.metaData.sessionURL = LogRocket.sessionURL;
+    return data;
+  };
+}
 
 const form = document.querySelector('.url-form');
 const result = document.querySelector('.result-section');
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
-
   const input = document.querySelector('.url-input');
-  fetch('/new', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      url: input.value,
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      while (result.hasChildNodes()) {
-        result.removeChild(result.lastChild);
-      }
-
-      result.insertAdjacentHTML('afterbegin', `
-        <div class="result">
-          <a target="_blank" class="short-url" rel="noopener" href="/${data.short_id}">
-            ${location.origin}/${data.short_id}
-          </a>
-        </div>
-      `);
-    })
-    .catch(console.error);
+  await axios.post('/new', {
+    link: input.value,
+  }).then((response) => {
+    while (result.hasChildNodes()) {
+      result.removeChild(result.lastChild);
+    }
+    result.insertAdjacentHTML('afterbegin', `
+      <div class="result">
+        <a target="_blank" class="result-link" rel="noopener" href="/${response.data.short_id}">
+          ${location.origin}/${response.data.short_id}
+        </a>
+      </div>
+    `);
+    return response.data;
+  }).catch((error) => {
+    helpers.handleError(error);
+  });
 });
