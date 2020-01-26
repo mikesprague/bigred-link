@@ -21,6 +21,11 @@ app.use(bugsnagMiddleware.requestHandler);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((request, response) => {
+  if (process.env.NODE_ENV === 'production' && request.protocol === 'http') {
+    response.redirect(`https://${request.headers.host}${request.url}`);
+  }
+});
 
 MongoClient.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((client) => {

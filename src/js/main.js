@@ -1,5 +1,8 @@
 import '../scss/styles.scss';
 import LogRocket from 'logrocket';
+import * as helpers from './modules/helpers';
+
+helpers.forceHttps();
 
 LogRocket.init('skxlwh/bigredlink');
 
