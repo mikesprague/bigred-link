@@ -25,6 +25,10 @@ export function getResultMarkup(urlPrefix, shortId) {
     <a target="_blank" class="result-link" rel="noopener" href="/${shortId}">
       ${urlPrefix}/${shortId}
     </a>
+    <small class="clipboard-text d-none">
+      <br><br>
+      <em>Short URL copied to clipboard</em>
+    </small>
   </div>
   `;
   return resultTemplate;

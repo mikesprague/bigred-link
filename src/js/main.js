@@ -1,6 +1,7 @@
 import '../scss/styles.scss';
 import axios from 'axios';
 import bugsnag from '@bugsnag/js';
+import * as clipboard from 'clipboard-polyfill';
 import LogRocket from 'logrocket';
 import * as helpers from './modules/helpers';
 
@@ -28,6 +29,12 @@ form.addEventListener('submit', async (event) => {
   }).then((response) => {
     const resultTemplate = helpers.getResultMarkup(location.origin, response.data.short_id);
     result.innerHTML = resultTemplate;
+    try {
+      clipboard.writeText(`${location.origin}/${response.data.short_id}`);
+      document.querySelector('.clipboard-text').classList.remove('d-none');
+    } catch (error) {
+      document.querySelector('.clipboard-text').classList.add('.d-none');
+    }
     return response.data;
   }).catch((error) => {
     helpers.handleError(error);
