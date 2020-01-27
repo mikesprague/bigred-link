@@ -56,6 +56,10 @@ body {
   margin-bottom: 3em;
 }
 
+.url-input::placeholder, .url-input::-webkit-input-placeholder {
+  font-size: large;
+}
+
 .btn-shorten {
   border: 1px solid var(--dark-grey);
   background-color: var(--dark-grey);
@@ -66,19 +70,24 @@ body {
   background-color: var(--dark-grey);
   border: 1px solid var(--dark-grey);
   border-radius: 5px;
-  font-weight: normal;
   margin: 0 auto;
+  font-size: larger;
+  font-weight: normal;
   padding: 20px;
   text-align: center;
+
+  a {
+    font-size: larger;
+  }
+
+  a.result-link:hover {
+    color: var(--red-graphics) !important;
+    text-decoration: underline;
+  }
 
   a.result-link {
     color: var(--light-grey);
     text-decoration: none;
-  }
-
-  a.result-link:hover {
-    color: var(--red-graphics);
-    text-decoration: underline;
   }
 }
 
