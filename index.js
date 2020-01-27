@@ -8,7 +8,6 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const nanoid = require('nanoid');
 const path = require('path');
-const forceSsl = require('ssl-express-www');
 
 const {
   BUGSNAG_KEY,
@@ -22,6 +21,13 @@ bugsnagClient.use(bugsnagExpress);
 
 const app = express();
 const bugsnagMiddleware = bugsnagClient.getPlugin('express');
+
+const forceSsl = ((req, res, next) => {
+  if (process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
+  }
+  next();
+});
 
 app.use(forceSsl);
 app.use(bugsnagMiddleware.requestHandler);
