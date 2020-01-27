@@ -5,6 +5,8 @@ const bugsnagExpress = require('@bugsnag/plugin-express');
 const bodyParser = require('body-parser');
 const dns = require('dns');
 const express = require('express');
+const helmet = require('helmet');
+const hpp = require('hpp');
 const { MongoClient } = require('mongodb');
 const nanoid = require('nanoid');
 const path = require('path');
@@ -30,6 +32,8 @@ const forceSsl = ((req, res, next) => {
 });
 
 app.use(forceSsl);
+app.use(helmet());
+app.use(hpp());
 app.use(bugsnagMiddleware.requestHandler);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
