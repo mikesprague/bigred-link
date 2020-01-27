@@ -1,11 +1,12 @@
 export function isProduction() {
-  return window.location.hostname === 'bigred.link';
+  return window.location.hostname.toLowerCase() === 'bigred.link';
 }
 
 export function forceHttps() {
-  if (isProduction() && window.location.protocol === 'http:') {
+  if (isProduction() && window.location.origin !== 'https:') {
     const secureUrl = window.location.href.replace('http:', 'https:');
-    return window.location.replace(secureUrl);
+    console.log(secureUrl);
+    window.location.replace(secureUrl);
   }
 }
 
