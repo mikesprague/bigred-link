@@ -77,6 +77,11 @@ body {
   }
 
   a.result-link:hover {
+    color: var(--red-graphics);
     text-decoration: underline;
   }
+}
+
+.btn:hover {
+  color: var(--red-graphics);
 }
