@@ -102,19 +102,21 @@ app.post('/new', (req, res) => {
 
 app.get('/:short_id', (req, res) => {
   const shortId = req.params.short_id;
-  const { dbClient } = req.app.locals;
+  if (shortId && shortId.length === 7) {
+    const { dbClient } = req.app.locals;
 
-  checkIfShortIdExists(dbClient, shortId)
-    .then((doc) => {
-      if (doc === null) {
-        return res.send('Uh oh. We could not find a link at that URL');
-      }
-      return res.redirect(doc.original_url);
-    })
-    .catch((error) => {
-      console.error(error);
-      bugsnagClient.notify(error);
-    });
+    checkIfShortIdExists(dbClient, shortId)
+      .then((doc) => {
+        if (doc === null) {
+          return res.send('Uh oh. We could not find a link at that URL');
+        }
+        return res.redirect(doc.original_url);
+      })
+      .catch((error) => {
+        console.error(error);
+        bugsnagClient.notify(error);
+      });
+  }
 });
 
 app.set('port', process.env.PORT || 3000);
