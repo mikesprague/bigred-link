@@ -2,6 +2,7 @@ import '../scss/styles.scss';
 import axios from 'axios';
 import bugsnag from '@bugsnag/js';
 import * as clipboard from 'clipboard-polyfill';
+import * as DOMPurify from 'dompurify';
 import LogRocket from 'logrocket';
 import * as helpers from './modules/helpers';
 
@@ -24,8 +25,9 @@ const result = document.querySelector('.result-section');
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const input = document.querySelector('.url-input');
+  const linkToShorten = DOMPurify.sanitize(input.value);
   await axios.post('/new', {
-    link: input.value,
+    link: linkToShorten,
   }).then((response) => {
     const resultTemplate = helpers.getResultMarkup(location.origin, response.data.short_id);
     result.innerHTML = resultTemplate;
