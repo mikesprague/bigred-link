@@ -17,7 +17,7 @@ export function initFontAwesomeIcons() {
 
 export function initCopyToClipboard() {
   const cbLink = document.querySelector('.clipboardLink');
-  const linkHref = document.querySelector('.result-link').textContent;
+  const linkHref = document.querySelector('.result-link').textContent.trim();
   const resultEl = document.querySelector('.copyResult');
   cbLink.addEventListener('click', (event) => {
     event.preventDefault();
