@@ -23,14 +23,13 @@ bugsnagClient.use(bugsnagExpress);
 const app = express();
 const bugsnagMiddleware = bugsnagClient.getPlugin('express');
 
-const forceSsl = ((req, res, next) => {
+// eslint-disable-next-line consistent-return
+app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
     return res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
   }
   next();
 });
-
-app.use(forceSsl);
 app.use(helmet());
 app.use(bugsnagMiddleware.requestHandler);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -59,19 +58,21 @@ const checkIfShortIdExists = async (dbClient, shortId) => {
 
   return result;
 };
-// end helper functions
 
-MongoClient.connect(MONGO_DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then((client) => {
-    app.locals.dbClient = client.db(MONGO_DB_NAME);
-  })
-  .catch((error) => {
-    console.error('Failed to connect to the database');
+const initMongoDb = (mongoDbUrl) => {
+  MongoClient.connect(mongoDbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }).then((mongoClient) => {
+    app.locals.dbClient = mongoClient.db(MONGO_DB_NAME);
+  }).catch((error) => {
+    console.error(error);
     bugsnagClient.notify(error);
   });
+};
+// end helper functions
+
+initMongoDb(MONGO_DB_URL);
 
 app.get('/', (req, res) => {
   const htmlPath = path.join(__dirname, 'public', 'index.html');
