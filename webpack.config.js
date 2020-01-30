@@ -1,13 +1,14 @@
-const path = require('path');
-const WebPackBar = require('webpackbar');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const purgecss = require('@fullhuman/postcss-purgecss');
-const cssnano = require('cssnano');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path');
+const purgecss = require('@fullhuman/postcss-purgecss');
+const TerserPlugin = require('terser-webpack-plugin');
+const WebPackBar = require('webpackbar');
 
 const devMode = process.env.NODE_ENV || 'production';
 
@@ -89,6 +90,16 @@ const config = {
       template: './src/index.html',
       compress: true,
     }),
+    new CopyWebpackPlugin([{
+      from: './src/robots.txt',
+      to: './',
+      force: true,
+    }]),
+    new CopyWebpackPlugin([{
+      from: './src/favicon.ico',
+      to: './',
+      force: true,
+    }]),
     new CompressionPlugin({
       filename: '[path].gz[query]',
       algorithm: 'gzip',
