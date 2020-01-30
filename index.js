@@ -23,6 +23,8 @@ bugsnagClient.use(bugsnagExpress);
 const app = express();
 const bugsnagMiddleware = bugsnagClient.getPlugin('express');
 
+app.set('port', process.env.PORT || 3000);
+
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
@@ -73,6 +75,11 @@ const initMongoDb = (mongoDbUrl) => {
 // end helper functions
 
 initMongoDb(MONGO_DB_URL);
+
+
+app.get('/wp-login.php', (req, res) => {
+  res.status(404).send('Not found');
+});
 
 app.get('/', (req, res) => {
   const htmlPath = path.join(__dirname, 'public', 'index.html');
@@ -130,7 +137,10 @@ app.get('/:short_id', (req, res) => {
   }
 });
 
-app.set('port', process.env.PORT || 3000);
+app.get('*', (req, res) => {
+  res.status(404).send('Not found');
+});
+
 app.use(bugsnagMiddleware.errorHandler);
 
 const server = app.listen(app.get('port'), () => {
