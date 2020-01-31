@@ -8,7 +8,6 @@ import * as helpers from './modules/helpers';
 const isProduction = helpers.isProduction();
 
 if (isProduction) {
-  // helpers.forceHttps();
   LogRocket.init('skxlwh/bigredlink');
   window.bugsnagClient = bugsnag('efd0bccb34ee27c231eb01c233af7be6');
   bugsnag.beforeNotify = (data) => {
