@@ -81,7 +81,7 @@ body {
   }
 
   a.result-link:hover {
-    color: var(--red-graphics) !important;
+    color: var(--red-graphics);
     text-decoration: underline;
   }
 
@@ -89,6 +89,11 @@ body {
     color: var(--light-grey);
     text-decoration: none;
   }
+}
+
+.clipboard-link {
+  color: var(--red-graphics);
+  cursor: pointer;
 }
 
 .btn:hover {
