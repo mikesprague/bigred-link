@@ -63,8 +63,8 @@ const config = {
                   purgecss({
                     content: ['./src/**/*.html'],
                     fontFace: true,
-                    whitelistPatterns: [/result-section/, /result/, /short-url/],
-                    whitelistPatternsChildren: [/result-section/, /result/, /short-url/],
+                    whitelistPatterns: [/result-section/, /result/, /result-link/, /clipboard-link/, /short-url/],
+                    whitelistPatternsChildren: [/result-section/, /result/, /result-link/, /clipboard-link/, /short-url/],
                   }),
                 ];
               },
