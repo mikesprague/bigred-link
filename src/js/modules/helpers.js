@@ -16,16 +16,16 @@ export function initFontAwesomeIcons() {
 }
 
 export function initCopyToClipboard() {
-  const cbLink = document.querySelector('.clipboardLink');
+  const cbLink = document.querySelector('.clipboard-link');
   const linkHref = document.querySelector('.result-link').textContent.trim();
-  const resultEl = document.querySelector('.copyResult');
   cbLink.addEventListener('click', (event) => {
     event.preventDefault();
     clipboard.writeText(linkHref);
     clipboard.writeText(linkHref).then(() => {
-      resultEl.textContent = 'copied!';
+      cbLink.textContent = 'Copied!';
+      cbLink.setAttribute('style', 'cursor: default');
     }, (err) => {
-      resultEl.textContent = err;
+      cbLink.textContent = err;
     });
   });
 }
@@ -47,9 +47,9 @@ export function getResultMarkup(urlPrefix, shortId) {
       </a>
       <small class="clipboard-text">
         <br><br>
-        <a href="#" class="clipboardLink">
-          <em><i class="fad fa-copy fa-fw"></i> Click here to copy to clipboard</em>
-        </a>&nbsp;<small class="copyResult font-italic"></small>
+        <div class="clipboard-link">
+          <i class="far fa-copy fa-fw"></i> Click here to copy to clipboard
+        </div>
       </small>
     </div>
   `;
