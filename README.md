@@ -1,5 +1,7 @@
 # bigred.link
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmikesprague%2Fbigred-link.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmikesprague%2Fbigred-link?ref=badge_shield)
+
 A big red link shortener
 
 ## Requirements
@@ -19,3 +21,8 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
 1. Install dependencies by running: `yarn`
 1. Start the project: `yarn dev`
 1. Visit [http://localhost:3000](http://localhost:3000) in your browser
+
+
+
+### License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmikesprague%2Fbigred-link.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmikesprague%2Fbigred-link?ref=badge_large)
