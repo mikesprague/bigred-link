@@ -2,7 +2,7 @@ import * as clipboard from 'clipboard-polyfill';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import {
   faCopy,
-} from '@fortawesome/pro-duotone-svg-icons';
+} from '@fortawesome/fontawesome-free-regular';
 
 export function isProduction() {
   return window.location.hostname.toLowerCase() === 'bigred.link';
