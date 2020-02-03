@@ -81,6 +81,14 @@ app.get('/wp-login.php', (req, res) => {
   res.status(404).send('Not found');
 });
 
+app.get('/null', (req, res) => {
+  res.redirect('/');
+});
+
+app.get('/undefined', (req, res) => {
+  res.redirect('/');
+});
+
 app.get('/', (req, res) => {
   const htmlPath = path.join(__dirname, 'public', 'index.html');
 
