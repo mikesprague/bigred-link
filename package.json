@@ -45,8 +45,8 @@
   "dependencies": {
     "@bugsnag/js": "^6.5.0",
     "@bugsnag/plugin-express": "^6.5.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/fontawesome-free-regular": "^5.1.0-3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/pro-duotone-svg-icons": "^5.12.1",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
