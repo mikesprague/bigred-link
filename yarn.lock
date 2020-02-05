@@ -869,13 +869,13 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.26"
 
-"@fullhuman/postcss-purgecss@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.0.5.tgz#01ea0ac16ecc7ae8b24a4bcb6ef9f200765c7216"
-  integrity sha512-lWSnRiLfI3dGowZkPBfFOVkWlBP+Wk12u91mtjCTmA3hJ+d5+MyizVsTAOB1e52QJww6BRSD4g6XpknF+dEPnA==
+"@fullhuman/postcss-purgecss@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.0.6.tgz#55612eda275e6a86a8d4a03e9deb58b2e95dd6f1"
+  integrity sha512-RgD05Yd1VFudo1H1b2inb+10AS1mexp1edHfdoJvoeKaoMVoi/9DWrbWOpIrDmKq1CO82oQrb5wf4V64oaNkKQ==
   dependencies:
     postcss "7.0.26"
-    purgecss "^2.0.5"
+    purgecss "^2.0.6"
 
 "@snyk/cli-interface@1.5.0":
   version "1.5.0"
@@ -7508,10 +7508,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-purgecss@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/purgecss/-/purgecss-2.0.5.tgz#b7aa3e3634704aa041d03f007504c303e8c6586e"
-  integrity sha512-VwQoDXImH0pabZ6ivLPCsWuRGd979NEzACaT/P3pWzDVCwHXSgXUM4QDbnMklMawU0r4MrCvdaORM84KJvsCIA==
+purgecss@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/purgecss/-/purgecss-2.0.6.tgz#fc0a03f9533448635309af5979b094aab57ff361"
+  integrity sha512-Xab72ykpWtg+j/dTphz9HCrychRNbMebNBrI+pOU0mC7mG5OlwRksEEpNAdOLb1jg9oRHDDu6Exe+nlM9ZLp5Q==
   dependencies:
     commander "^4.0.0"
     glob "^7.0.0"
@@ -9771,10 +9771,10 @@ webpack-dev-middleware@^3.7.2:
     range-parser "^1.2.1"
     webpack-log "^2.0.0"
 
-webpack-dev-server@^3.10.2:
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.10.2.tgz#3403287d674c7407aab6d9b3f72259ecd0aa0874"
-  integrity sha512-pxZKPYb+n77UN8u9YxXT4IaIrGcNtijh/mi8TXbErHmczw0DtPnMTTjHj+eNjkqLOaAZM/qD7V59j/qJsEiaZA==
+webpack-dev-server@^3.10.3:
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.10.3.tgz#f35945036813e57ef582c2420ef7b470e14d3af0"
+  integrity sha512-e4nWev8YzEVNdOMcNzNeCN947sWJNd43E5XvsJzbAL08kGc2frm1tQ32hTJslRS+H65LCb/AaUCYU7fjHCpDeQ==
   dependencies:
     ansi-html "0.0.7"
     bonjour "^3.5.0"
