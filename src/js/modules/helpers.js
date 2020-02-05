@@ -1,6 +1,6 @@
 import * as clipboard from 'clipboard-polyfill';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faCopy } from '@fortawesome/fontawesome-free-regular';
+import { faCopy } from '@fortawesome/pro-duotone-svg';
 
 export function isProduction() {
   return window.location.hostname.toLowerCase() === 'bigred.link';
@@ -46,7 +46,7 @@ export function getResultMarkup(urlPrefix, shortId) {
       <small class="clipboard-text">
         <br><br>
         <div class="clipboard-link">
-          <i class="far fa-copy fa-fw"></i> Click here to copy to clipboard
+          <i class="fad fa-copy fa-fw"></i> Click here to copy to clipboard
         </div>
       </small>
     </div>
