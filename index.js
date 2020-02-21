@@ -76,8 +76,27 @@ const initMongoDb = (mongoDbUrl) => {
 
 initMongoDb(MONGO_DB_URL);
 
-
 app.get('/wp-login.php', (req, res) => {
+  res.status(404).send('Not found');
+});
+
+app.get('/wp-admin', (req, res) => {
+  res.status(404).send('Not found');
+});
+
+app.get('/admin.php', (req, res) => {
+  res.status(404).send('Not found');
+});
+
+app.get('/administrator', (req, res) => {
+  res.status(404).send('Not found');
+});
+
+app.get('/administrator/index.php', (req, res) => {
+  res.status(404).send('Not found');
+});
+
+app.get('/admin', (req, res) => {
   res.status(404).send('Not found');
 });
 
