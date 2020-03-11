@@ -113,6 +113,7 @@ app.post('/new', (req, res) => {
   });
 });
 
+// eslint-disable-next-line consistent-return
 app.get('/:short_id', (req, res) => {
   const shortId = req.params.short_id;
   if (shortId && shortId.length === 7) {
