@@ -129,8 +129,9 @@ app.get('/:short_id', (req, res) => {
         console.error(error);
         bugsnagClient.notify(error);
       });
+  } else {
+    return res.status(404).send('Not found');
   }
-  return res.status(404).send('Not found');
 });
 
 app.get('*', (req, res) => {
