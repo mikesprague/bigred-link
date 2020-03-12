@@ -12,10 +12,11 @@
   "scripts": {
     "assets": "webpack --color --display-max-modules 0",
     "assets:watch": "yarn assets -d -w --color true --display minimal",
-    "build": "yarn clean && cross-env NODE_ENV=production yarn assets -p",
+    "build": "cross-env NODE_ENV=production yarn assets -p",
     "build:dev": "yarn clean && cross-env NODE_ENV=development yarn assets -d",
     "clean": "rm -rf public",
     "dev": "concurrently 'yarn serve' 'yarn assets:watch' --names '🖥 ,📦 ' --prefix '[{name}] '",
+    "prebuild": "yarn clean",
     "prepublish": "yarn snyk-protect",
     "snyk-protect": "snyk protect",
     "serve": "cross-env NODE_ENV=development nodemon ./index.js --ignore public/",
