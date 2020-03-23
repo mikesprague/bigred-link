@@ -46,8 +46,8 @@
   "dependencies": {
     "@bugsnag/js": "^6.5.2",
     "@bugsnag/plugin-express": "^6.5.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
-    "@fortawesome/pro-duotone-svg-icons": "^5.12.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
@@ -60,7 +60,7 @@
     "logrocket": "^1.0.6",
     "mongodb": "^3.5.5",
     "nanoid": "^2.1.11",
-    "snyk": "^1.303.0"
+    "snyk": "^1.303.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
