@@ -121,12 +121,17 @@
       "@babel/plugin-transform-object-assign"
     ],
     "presets": [
-      "@babel/preset-env"
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
     ]
   },
   "eslintConfig": {
     "parserOptions": {
-      "ecmaVersion": 8,
+      "ecmaVersion": 10,
       "sourceType": "module",
       "ecmaFeatures": {
         "impliedStrict": true,
