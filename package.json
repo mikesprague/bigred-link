@@ -61,7 +61,7 @@
     "logrocket": "^1.0.7",
     "mongodb": "^3.5.5",
     "nanoid": "^3.0.2",
-    "snyk": "^1.305.0"
+    "snyk": "^1.305.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
