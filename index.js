@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-const bugsnag = require('@bugsnag/js');
-const bugsnagExpress = require('@bugsnag/plugin-express');
+const Bugsnag = require('@bugsnag/js');
+const BugsnagPluginExpress = require('@bugsnag/plugin-express');
 const bodyParser = require('body-parser');
 const dns = require('dns');
 const express = require('express');
@@ -17,13 +17,18 @@ const {
   MONGO_DB_URL,
 } = process.env;
 
-const bugsnagClient = bugsnag(BUGSNAG_KEY);
-bugsnagClient.use(bugsnagExpress);
+Bugsnag.start({
+  apiKey: BUGSNAG_KEY,
+  plugins: [BugsnagPluginExpress],
+});
+
 
 const app = express();
-const bugsnagMiddleware = bugsnagClient.getPlugin('express');
+const bugsnagMiddleware = Bugsnag.getPlugin('express');
 
 app.set('port', process.env.PORT || 3000);
+
+app.use(bugsnagMiddleware.requestHandler);
 
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
@@ -33,7 +38,6 @@ app.use((req, res, next) => {
   next();
 });
 app.use(helmet());
-app.use(bugsnagMiddleware.requestHandler);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -69,7 +73,7 @@ const initMongoDb = (mongoDbUrl) => {
     app.locals.dbClient = mongoClient.db(MONGO_DB_NAME);
   }).catch((error) => {
     console.error(error);
-    bugsnagClient.notify(error);
+    Bugsnag.notify(error);
   });
 };
 // end helper functions
@@ -88,7 +92,7 @@ app.post('/new', (req, res) => {
   try {
     originalUrl = new URL(req.body.link);
   } catch (error) {
-    bugsnagClient.notify(error);
+    Bugsnag.notify(error);
     return res.status(400).send({ error: 'invalid URL' });
   }
 
@@ -108,7 +112,7 @@ app.post('/new', (req, res) => {
       })
       .catch((error) => {
         console.error(error);
-        bugsnagClient.notify(error);
+        Bugsnag.notify(error);
       });
   });
 });
@@ -128,7 +132,7 @@ app.get('/:short_id', (req, res) => {
       })
       .catch((error) => {
         console.error(error);
-        bugsnagClient.notify(error);
+        Bugsnag.notify(error);
       });
   } else {
     return res.status(404).send('Not found');
