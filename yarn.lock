@@ -854,23 +854,23 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bugsnag/browser@^6.5.2":
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/@bugsnag/browser/-/browser-6.5.2.tgz#3f8f911dd739d2ace056fd5a38d5d25283ca4bfc"
-  integrity sha512-XFKKorJc92ivLnlHHhLiPvkP03tZ5y7n0Z2xO6lOU7t+jWF5YapgwqQAda/TWvyYO38B/baWdnOpWMB3QmjhkA==
+"@bugsnag/browser@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@bugsnag/browser/-/browser-7.0.0.tgz#c0897815fcd440d3556c0586ac5d1a60db341cef"
+  integrity sha512-EElLeBuWNRCRsLibyvYZaVJUdseNiRLP8UBp6vBr6tsug3MEtKfQgG4kkA+NIfZnStC10tzPfThJz2o76Qbj+Q==
 
-"@bugsnag/js@^6.5.2":
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/@bugsnag/js/-/js-6.5.2.tgz#810383aa7a2246639041bb9031ab316432959527"
-  integrity sha512-4ibw624fM5+Y/WSuo3T/MsJVtslsPV8X0MxFuRxdvpKVUXX216d8hN8E/bG4hr7aipqQOGhBYDqSzeL2wgmh0Q==
+"@bugsnag/js@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@bugsnag/js/-/js-7.0.0.tgz#fe9ce205b9f571df1a31ccc7a713ccfe87947e86"
+  integrity sha512-gwDCsYL8ROh3ZdQxsoHgFG6LiGzZ3SbXrC1P7pQIl3SDxBH4SQSBFIPMgrHxPG+8xZJPaC+08eFCA4dKkywMwQ==
   dependencies:
-    "@bugsnag/browser" "^6.5.2"
-    "@bugsnag/node" "^6.5.2"
+    "@bugsnag/browser" "^7.0.0"
+    "@bugsnag/node" "^7.0.0"
 
-"@bugsnag/node@^6.5.2":
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/@bugsnag/node/-/node-6.5.2.tgz#7bc2d0d1c7a682784be388404ab728a80b7ae2b9"
-  integrity sha512-KQ1twKoOttMCYsHv7OXUVsommVcrk6RGQ5YoZGlTbREhccbzsvjbiXPKiY31Qc7OXKvaJwSXhnOKrQTpRleFUg==
+"@bugsnag/node@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@bugsnag/node/-/node-7.0.0.tgz#99102cf4092c27aae5ed0b771293f5089540ebc6"
+  integrity sha512-YmedKskqv9yfxf3FH8P8UPQncyg0YCWbhcvPVAIw/g/Bbl/5EJjMjcFt5TNZWg94p1IRnXyll5vBL+KErCvOVA==
   dependencies:
     byline "^5.0.0"
     error-stack-parser "^2.0.2"
@@ -878,10 +878,10 @@
     pump "^3.0.0"
     stack-generator "^2.0.3"
 
-"@bugsnag/plugin-express@^6.5.1":
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/@bugsnag/plugin-express/-/plugin-express-6.5.1.tgz#4a9810641e7172f412d75052521febf3d545baeb"
-  integrity sha512-jMrNPUvTAu85nCKilbxzrr/WVR1FRIb/S0VOGIOmG6MIOceM1AURughFohhxBZ4hs1jtMt9RU3ao67Xpb0XhEw==
+"@bugsnag/plugin-express@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@bugsnag/plugin-express/-/plugin-express-7.0.0.tgz#977501f5f3c233a064efb84f0a1faf20ea2cb584"
+  integrity sha512-lDJBORPe0yNSn3s7oJ/6yBavPBg/JzRNkkGZ1p8iesX+Cc/2D9U52twTSCnqA/Uf5TVznX4o2ltEKhYNhqn54Q==
   dependencies:
     iserror "^0.0.2"
 
@@ -2403,7 +2403,7 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
-bson@^1.1.1:
+bson@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.1.4.tgz#f76870d799f15b854dffb7ee32f0a874797f7e89"
   integrity sha512-S/yKGU1syOMzO86+dGpg2qGoDL0zvzcb262G+gqEy6TgP6rt6z6qxSFX/8X6vLC91P7G7C3nLs0+bvDzmvBA3Q==
@@ -7354,13 +7354,13 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "^1.2.5"
 
-mongodb@^3.5.5:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.5.5.tgz#1334c3e5a384469ac7ef0dea69d59acc829a496a"
-  integrity sha512-GCjDxR3UOltDq00Zcpzql6dQo1sVry60OXJY3TDmFc2SWFY6c8Gn1Ardidc5jDirvJrx2GC3knGOImKphbSL3A==
+mongodb@^3.5.6:
+  version "3.5.6"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.5.6.tgz#a1be2d9796c8a8a5b0e6bcbc6baaaa406bd5c0d5"
+  integrity sha512-sh3q3GLDLT4QmoDLamxtAECwC3RGjq+oNuK1ENV8+tnipIavss6sMYt77hpygqlMOCt0Sla5cl7H4SKCVBCGEg==
   dependencies:
     bl "^2.2.0"
-    bson "^1.1.1"
+    bson "^1.1.4"
     denque "^1.4.1"
     require_optional "^1.0.1"
     safe-buffer "^5.1.2"
