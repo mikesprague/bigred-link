@@ -54,7 +54,7 @@
     "bootstrap": "^4.4.1",
     "clipboard-polyfill": "^2.8.6",
     "cross-env": "^7.0.2",
-    "dompurify": "^2.0.9",
+    "dompurify": "^2.0.10",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
