@@ -17,7 +17,7 @@
     "clean": "rm -rf public",
     "dev": "concurrently 'yarn serve' 'yarn assets:watch' --names '🖥 ,📦 ' --prefix '[{name}] '",
     "prebuild": "yarn clean",
-    "prepublish": "yarn snyk-protect",
+    "prepublish": "yarn run snyk-protect && yarn snyk-protect",
     "snyk-protect": "snyk protect",
     "serve": "cross-env NODE_ENV=development nodemon ./index.js --ignore public/",
     "serve:debug": "cross-env NODE_ENV=development nodemon ./index.js --inspect --ignore public/",
