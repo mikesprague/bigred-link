@@ -90,16 +90,24 @@ const config = {
       template: './src/index.html',
       compress: true,
     }),
-    new CopyWebpackPlugin([{
-      from: './src/robots.txt',
-      to: './',
-      force: true,
-    }]),
-    new CopyWebpackPlugin([{
-      from: './src/favicon.ico',
-      to: './',
-      force: true,
-    }]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './src/robots.txt',
+          to: './',
+          force: true,
+        },
+      ],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './src/favicon.ico',
+          to: './',
+          force: true,
+        },
+      ],
+    }),
     new CompressionPlugin({
       filename: '[path].gz[query]',
       algorithm: 'gzip',
