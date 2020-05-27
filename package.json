@@ -45,8 +45,8 @@
     "url": "https://github.com/mikesprague/bigred-link/issues"
   },
   "dependencies": {
-    "@bugsnag/js": "^7.1.0",
-    "@bugsnag/plugin-express": "^7.1.0",
+    "@bugsnag/js": "^7.1.1",
+    "@bugsnag/plugin-express": "^7.1.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
     "axios": "^0.19.2",
@@ -61,7 +61,7 @@
     "logrocket": "^1.0.7",
     "mongodb": "^3.5.7",
     "nanoid": "^3.1.9",
-    "snyk": "^1.323.2"
+    "snyk": "^1.330.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
