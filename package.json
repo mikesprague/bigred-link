@@ -59,9 +59,9 @@
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "logrocket": "^1.0.7",
-    "mongodb": "^3.5.7",
+    "mongodb": "^3.5.8",
     "nanoid": "^3.1.9",
-    "snyk": "^1.330.2"
+    "snyk": "^1.334.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
