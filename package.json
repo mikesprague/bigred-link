@@ -64,13 +64,13 @@
     "snyk": "^1.330.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.1",
+    "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-transform-object-assign": "^7.10.1",
     "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "@babel/runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/runtime": "^7.10.2",
     "@fullhuman/postcss-purgecss": "^2.2.0",
     "autoprefixer": "^9.8.0",
     "babel-eslint": "^10.1.0",
