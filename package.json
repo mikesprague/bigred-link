@@ -57,11 +57,11 @@
     "dompurify": "^2.0.11",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "helmet": "^3.22.0",
+    "helmet": "^3.23.0",
     "logrocket": "^1.0.7",
-    "mongodb": "^3.5.8",
-    "nanoid": "^3.1.9",
-    "snyk": "^1.336.0"
+    "mongodb": "^3.5.9",
+    "nanoid": "^3.1.10",
+    "snyk": "^1.341.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
