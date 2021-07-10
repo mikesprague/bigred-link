@@ -1,5 +1,6 @@
 # bigred.link
 
+[![Vercel Deployment Status](https://img.shields.io/github/deployments/mikesprague/bigred-link/production?label=Vercel%20%28build%20%26%20deploy%29&logo=Vercel&logoColor=white)](https://vercel.com/m5ls5e/bigred-link/deployments)
 [![Known Vulnerabilities](https://snyk.io/test/github/mikesprague/bigred-link/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mikesprague/bigred-link?targetFile=package.json)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmikesprague%2Fbigred-link.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmikesprague%2Fbigred-link?ref=badge_shield)
 
