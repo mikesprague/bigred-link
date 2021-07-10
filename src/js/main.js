@@ -18,11 +18,14 @@ if (isProduction) {
 }
 
 const form = document.querySelector('.url-form');
+const input = document.querySelector('.url-input');
+const button = document.querySelector('.btn-shorten');
 const result = document.querySelector('.result-section');
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const input = document.querySelector('.url-input');
+  button.disabled = true;
+  input.disabled = true;
   const linkToShorten = DOMPurify.sanitize(input.value);
   await axios({
     url: '/api/new-shortlink',
