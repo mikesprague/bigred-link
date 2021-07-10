@@ -9,7 +9,7 @@ const isProduction = helpers.isProduction();
 
 if (isProduction) {
   LogRocket.init('skxlwh/bigredlink');
-  window.bugsnagClient = Bugsnag.start('efd0bccb34ee27c231eb01c233af7be6');
+  window.bugsnagClient = Bugsnag.start(`${process.env.BUGSNAG_KEY}`);
   Bugsnag.beforeNotify = (data) => {
     // eslint-disable-next-line no-param-reassign
     data.metaData.sessionURL = LogRocket.sessionURL;

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -41,6 +42,9 @@ const webpackRules = [
 ];
 
 const webpackPlugins = [
+  new webpack.DefinePlugin({
+    'process.env.BUGSNAG_KEY': JSON.stringify(process.env.BUGSNAG_KEY),
+  }),
   new MiniCssExtractPlugin({
     filename: './css/styles.css',
     chunkFilename: './css/[id].[chunkhash].css',
