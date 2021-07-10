@@ -41,7 +41,7 @@
   "rewrites": [
     {
       "source": "/:short_id([^.]*)",
-      "destination": "/api/lookup-shortlink"
+      "destination": "/api/get-shortlink"
     }
   ]
 }
