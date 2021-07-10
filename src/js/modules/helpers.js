@@ -34,13 +34,19 @@ export function handleError(error) {
 export function getResultMarkup(urlPrefix, shortId) {
   const resultTemplate = `
     <div class="result">
-      <a target="_blank" class="result-link" rel="noopener" href="/${shortId}">
+      <a target="_blank" class="result-link" rel="noopener noreferrer" href="${urlPrefix}/${shortId}">
         ${urlPrefix}/${shortId}
       </a>
       <small class="clipboard-text">
         <br><br>
         <div class="clipboard-link">
-          <i class="fad fa-copy fa-fw"></i> Click here to copy to clipboard
+          Click here to copy to clipboard
+        </div>
+        <div>
+          <br><br>
+          <small>
+            <a class="start-over-link" href="/">Start Over</a>
+          </small>
         </div>
       </small>
     </div>

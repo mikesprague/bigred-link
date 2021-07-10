@@ -6,6 +6,7 @@ const cssSafelistClassArray = [
   /result-link/,
   /clipboard-link/,
   /short-url/,
+  /start-over-link/,
 ];
 
 const purgecss = require('@fullhuman/postcss-purgecss')({

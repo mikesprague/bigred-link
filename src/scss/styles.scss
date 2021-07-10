@@ -93,7 +93,7 @@ body {
   padding: 20px;
   text-align: center;
 
-  a {
+  a.result-link {
     font-size: larger;
   }
 
@@ -111,6 +111,13 @@ body {
 .clipboard-link {
   color: var(--red-graphics);
   cursor: pointer;
+}
+
+.start-over-link {
+  color: var(--blue-links);
+  cursor: pointer;
+  font-size: medium;
+  text-decoration: none;
 }
 
 .btn:hover {
