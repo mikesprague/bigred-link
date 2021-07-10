@@ -1,0 +1,12 @@
+.now
+node_modules
+
+# Environment Variables
+.env
+.env.build
+.vercel
+
+old-site/
+.DS_Store
+.history
+public/
