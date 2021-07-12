@@ -24,6 +24,10 @@
           "value": "strict-origin-when-cross-origin"
         },
         {
+          "key": "Permissions-Policy",
+          "value": "sync-xhr=(self), fullscreen=(self)"
+        },
+        {
           "key": "Access-Control-Allow-Headers",
           "value": "Origin, X-Requested-With, Content-Type, Accept"
         },
