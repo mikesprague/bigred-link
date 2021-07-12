@@ -20,6 +20,7 @@
   @apply text-center;
   @apply max-w-3xl;
   @apply focus:outline-none;
+  @apply text-dark-warm-grey;
 
   &::placeholder,
   &::input-placeholder {
