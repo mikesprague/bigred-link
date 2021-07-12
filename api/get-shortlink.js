@@ -3,7 +3,7 @@ const Bugsnag = require('@bugsnag/js');
 const {
   initMongoDb,
   checkIfShortIdExists,
-} = require('../src/js/modules/api-helpers');
+} = require('../src/modules/api-helpers');
 
 const { MONGO_DB_URL, BUGSNAG_KEY } = process.env;
 
@@ -17,7 +17,8 @@ module.exports = async (req, res) => {
     const shortIdExists = await checkIfShortIdExists(dbClient, shortId);
     if (shortIdExists === null) {
       return res.status(400).json({
-        error: `Invalid Request: No matching short link found for ${shortId}`,
+        errorCode: 400,
+        errorMessage: `Invalid Request: No matching short link found for /${shortId}`,
       });
     }
     return res.redirect(302, shortIdExists.original_url);

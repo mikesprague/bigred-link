@@ -1,12 +1,12 @@
-const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
-
-const mode = process.env.NODE_ENV;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const webpackRules = [
   {
@@ -16,6 +16,7 @@ const webpackRules = [
       {
         loader: 'css-loader',
         options: {
+          importLoaders: true,
           sourceMap: true,
         },
       },
@@ -31,8 +32,8 @@ const webpackRules = [
     ],
   },
   {
-    test: /\.(js)$/,
-    exclude: [/node_modules/],
+    test: /\.(js|jsx)$/,
+    exclude: [/node_modules/, /api/, /service-worker.js/],
     use: [
       {
         loader: 'babel-loader',
@@ -52,7 +53,7 @@ const webpackPlugins = [
   new CopyWebpackPlugin({
     patterns: [
       {
-        from: './src/*.html',
+        from: './static/robots.txt',
         to: './[name][ext]',
         force: true,
       },
@@ -61,7 +62,7 @@ const webpackPlugins = [
   new CopyWebpackPlugin({
     patterns: [
       {
-        from: './src/robots.txt',
+        from: './static/favicon.ico',
         to: './[name][ext]',
         force: true,
       },
@@ -70,36 +71,39 @@ const webpackPlugins = [
   new CopyWebpackPlugin({
     patterns: [
       {
-        from: './src/favicon.ico',
+        from: `./static/bigredlink.webmanifest`,
         to: './[name][ext]',
         force: true,
       },
     ],
   }),
+  new HtmlWebpackPlugin({
+    template: './static/index.html',
+    filename: './index.html',
+    inject: false,
+  }),
+  new WorkboxPlugin.GenerateSW({
+    cleanupOutdatedCaches: true,
+    clientsClaim: true,
+    skipWaiting: true,
+  }),
+  new CompressionPlugin(),
 ];
 
-if (mode === 'production') {
-  webpackPlugins.push(new CompressionPlugin());
-}
-
 module.exports = {
-  entry: ['./src/js/main.js'],
+  entry: ['./src/index.js'],
   devtool: 'source-map',
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
   output: {
     filename: './js/[name].js',
     chunkFilename: './js/[id].[chunkhash].js',
     path: path.resolve(__dirname, 'public'),
   },
-  mode,
+  mode: process.env.NODE_ENV || 'production',
   module: {
     rules: webpackRules,
-  },
-  devServer: {
-    contentBase: path.join(__dirname, './'),
-    open: false,
-    port: 4000,
-    publicPath: 'http://localhost:4000/',
-    stats: 'minimal',
   },
   optimization: {
     minimizer: [

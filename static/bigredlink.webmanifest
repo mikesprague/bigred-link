@@ -1,0 +1,44 @@
+{
+  "name": "",
+  "short_name": "",
+  "description": "",
+  "author": "Michael Sprague",
+  "icons": [
+    {
+      "src": "/images/your-icon-name.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/images/your-icon-name.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "/images/your-icon-name.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/images/your-icon-name.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/images/your-icon-name.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "/images/your-icon-name.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "homepage_url": "https://your-url/",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212"
+}

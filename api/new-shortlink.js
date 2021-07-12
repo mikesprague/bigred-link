@@ -1,7 +1,7 @@
 const Bugsnag = require('@bugsnag/js');
 const dns = require('dns');
 
-const { shortenURL } = require('../src/js/modules/api-helpers');
+const { shortenURL, handleError } = require('../src/modules/api-helpers');
 
 const { BUGSNAG_KEY } = process.env;
 
@@ -31,8 +31,7 @@ module.exports = async (req, res) => {
         });
       })
       .catch((error) => {
-        console.error(error);
-        Bugsnag.notify(error);
+        handleError(error);
       });
   });
 };
