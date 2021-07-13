@@ -13,7 +13,6 @@ export default function App() {
   const [link, setLink] = useState('');
   const [results, setResults] = useState('');
 
-  const formRef = useRef();
   const inputRef = useRef();
   const buttonRef = useRef();
 
@@ -35,7 +34,6 @@ export default function App() {
           response.data.short_id,
         );
         setResults(resultTemplate);
-        // resultRef.current.innerHTML = resultTemplate;
         initCopyToClipboard();
         return response.data;
       })
@@ -55,7 +53,7 @@ export default function App() {
         <h1 className="mb-8 text-4xl font-bold text-center page-title">
           BigRed.link
         </h1>
-        <form className="url-form" onSubmit={handleSubmit} ref={formRef}>
+        <form className="url-form" onSubmit={handleSubmit}>
           <input
             type="url"
             className="url-input form-input"
@@ -68,9 +66,7 @@ export default function App() {
             ref={inputRef}
             onChange={handleChange}
           />
-          <button className="btn-shorten" type="submit" ref={buttonRef}>
-            Shorten!
-          </button>
+          <button className="btn-shorten" type="submit" ref={buttonRef}>Shorten!</button>
         </form>
         <div className="result-section">{results}</div>
       </div>
