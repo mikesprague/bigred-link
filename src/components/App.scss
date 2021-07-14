@@ -1,56 +1,98 @@
 .page-wrapper {
-  @apply mx-auto;
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply justify-center;
+  @apply h-screen;
+}
+
+header,
+main,
+footer {
+  @apply w-screen;
 }
 
 .page-title {
   @apply text-5xl;
   @apply mb-12;
   font-family: 'Graduate', cursive;
-}
-
-.url-input {
-  @apply border-opacity-0;
-  @apply mb-3;
-  @apply text-lg;
-  @apply rounded;
-  @apply rounded-r-none;
-  @apply px-4;
-  @apply py-3;
-  @apply w-full;
+  @apply my-6;
+  @apply text-4xl;
+  @apply font-bold;
   @apply text-center;
-  @apply max-w-3xl;
-  @apply focus:outline-none;
-  @apply text-dark-warm-grey;
-
-  &::placeholder,
-  &::input-placeholder {
-    @apply text-lg;
-  }
-
-  &:disabled {
-    @apply cursor-not-allowed;
-  }
 }
 
-.btn-shorten {
-  @apply bg-dark-grey;
-  @apply border-solid;
-  @apply border-dark-grey;
-  @apply text-white;
-  @apply text-lg;
-  @apply px-4;
-  @apply py-3;
-  @apply rounded;
-  @apply rounded-l-none;
+main {
+  @apply items-center;
+  @apply content-center;
+  @apply flex-grow;
+  @apply text-center;
+  @apply p-4;
+}
 
-  &:hover {
-    @apply text-red-graphics;
+.input-group {
+  @apply whitespace-nowrap;
+  @apply flex-nowrap;
+  @apply w-full;
+  @apply sm:max-w-screen-sm;
+  @apply md:max-w-screen-md;
+  @apply lg:max-w-screen-lg;
+  @apply xl:max-w-screen-xl;
+  @apply mx-auto;
+
+  .url-input {
+    @apply border-opacity-0;
+    @apply mb-3;
+    @apply mr-0;
+    @apply text-lg;
+    @apply rounded;
+    @apply rounded-r-none;
+    @apply px-4;
+    @apply py-3;
+    @apply w-4/5;
+    
+    @apply text-center;
+    @apply focus:outline-none;
+    @apply focus:shadow-none;
+    @apply focus:ring-0;
+    @apply text-dark-warm-grey;
+
+    &::placeholder,
+    &::input-placeholder {
+      @apply text-lg;
+    }
 
     &:disabled {
-      @apply text-white;
       @apply cursor-not-allowed;
     }
   }
+
+  .btn-shorten {
+    @apply bg-dark-grey;
+    @apply border-solid;
+    @apply border-dark-grey;
+    @apply text-white;
+    @apply text-lg;
+    @apply ml-0;
+    @apply mr-4;
+    @apply px-4;
+    @apply py-3;
+    @apply rounded;
+    @apply rounded-l-none;
+
+    &:hover {
+      @apply text-red-graphics;
+
+      &:disabled {
+        @apply text-white;
+        @apply cursor-not-allowed;
+      }
+    }
+  }
+}
+
+.result-section {
+  @apply mx-1;
 }
 
 .result {
@@ -90,4 +132,19 @@
   @apply cursor-pointer;
   @apply text-base;
   @apply no-underline;
+}
+
+footer {
+  .copyright-text {
+    @apply mb-1;
+    @apply text-xs;
+    @apply text-center;
+  }
+
+  .no-affiliation-text {
+    @apply mb-1;
+    @apply text-xs;
+    @apply italic;
+    @apply text-center;
+  }
 }

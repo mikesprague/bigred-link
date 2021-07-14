@@ -49,35 +49,41 @@ export default function App() {
 
   return (
     <>
-      <div className="container max-w-screen-xl min-h-screen p-8 text-center page-wrapper">
-        <h1 className="mb-8 text-4xl font-bold text-center page-title">
-          BigRed.link
-        </h1>
-        <form className="url-form" onSubmit={handleSubmit}>
-          <input
-            type="url"
-            className="url-input form-input"
-            placeholder="Paste in a link to shorten it"
-            name="link"
-            id="link"
-            required
-            autoFocus
-            value={link}
-            ref={inputRef}
-            onChange={handleChange}
-          />
-          <button className="btn-shorten" type="submit" ref={buttonRef}>Shorten!</button>
-        </form>
-        <div className="result-section">{results}</div>
-      </div>
-      <div className="fixed min-w-full text-base text-center bottom-2">
-        <p className="mb-1 text-sm text-center">
-          Copyright &copy; 2021 BigRed.link. All Rights Reserved
-        </p>
-        <p className="mb-1 text-sm italic text-center">
-          BigRed.link is <strong>NOT</strong> affiliated with or endorsed by
-          Cornell University.
-        </p>
+      <div className="page-wrapper">
+        <header>
+          <h1 className="page-title">BigRed.link</h1>
+        </header>
+        <main>
+          <form className="url-form" onSubmit={handleSubmit}>
+            <div className="input-group">
+              <input
+                type="url"
+                className="url-input form-input"
+                placeholder="Paste in a link to shorten it"
+                name="link"
+                id="link"
+                required
+                autoFocus
+                value={link}
+                ref={inputRef}
+                onChange={handleChange}
+              />
+              <button className="btn-shorten" type="submit" ref={buttonRef}>
+                Shorten!
+              </button>
+            </div>
+          </form>
+          <div className="result-section">{results}</div>
+        </main>
+        <footer>
+          <p className="copyright-text">
+            Copyright &copy; 2021 BigRed.link. All Rights Reserved
+          </p>
+          <p className="no-affiliation-text">
+            BigRed.link is <strong>NOT</strong> affiliated with or endorsed by
+            Cornell University.
+          </p>
+        </footer>
       </div>
     </>
   );

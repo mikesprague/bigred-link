@@ -38,7 +38,7 @@
   <link rel="mask-icon" class="favicon" href="/favicon.ico">
 </head>
 
-<body>
+<body class="h-screen">
   <div id="root"></div>
   <script src="/js/main.js"></script>
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
@@ -48,6 +48,8 @@
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
+      /* eslint-disable prefer-rest-params */
+      /* eslint-disable no-undef */
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
