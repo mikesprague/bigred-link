@@ -15,7 +15,6 @@ module.exports = async (req, res) => {
   if (shortId && shortId.length === 7) {
     const dbClient = await initMongoDb(MONGO_DB_URL);
     const shortIdExists = await checkIfShortIdExists(dbClient, shortId);
-    console.log(shortIdExists);
     if (shortIdExists === null) {
       return res.status(400).json({
         errorCode: 400,
