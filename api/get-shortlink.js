@@ -23,5 +23,8 @@ module.exports = async (req, res) => {
     }
     return res.redirect(302, shortIdExists.original_url);
   }
-  return res.status(404).send('404 Not Found');
+  return res.status(404).json({
+    errorCode: 404,
+    errorMessage: '404 Not Found'
+  });
 };
