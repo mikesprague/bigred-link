@@ -3,6 +3,7 @@ import BugsnagPluginReact from '@bugsnag/plugin-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import LogRocket from 'logrocket';
+import setupLogRocketReact from 'logrocket-react';
 import './index.scss';
 import App from './components/App';
 import { initIcons, initServiceWorker, isProduction } from './modules/helpers';
@@ -14,6 +15,7 @@ window.bugsnagClient = Bugsnag.start({
 
 if (isProduction()) {
   LogRocket.init('skxlwh/bigredlink');
+  setupLogRocketReact(LogRocket);
   Bugsnag.beforeNotify = (data) => {
     // eslint-disable-next-line no-param-reassign
     data.metaData.sessionURL = LogRocket.sessionURL;
