@@ -5,3 +5,5 @@ LICENSE
 react-tailwindcss-vercel-starter.code-workspace
 .env
 sample.env
+.devcontainer/
+
