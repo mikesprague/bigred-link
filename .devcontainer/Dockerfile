@@ -5,9 +5,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends vim jq zsh curl wget zip unzip
 
-RUN rm -rf /usr/bin/yarn
-
-RUN su node -c "npm install -g npm n gitmoji-cli npm-check-updates yarn"
+RUN rm -rf /usr/bin/yarn \
+  && npm install -g npm n gitmoji-cli npm-check-updates yarn
 
 RUN rm -rf /root/.oh-my-zsh \
   && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended \
