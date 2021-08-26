@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
 # install some common utils
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get -y install --no-install-recommends software-properties-common gnupg2 apt-transport-https curl wget zip unzip git jq nano vim zsh
+  && apt-get -y install --no-install-recommends curl wget zip unzip git jq nano vim zsh
 
 # install github cli
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -13,14 +13,15 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && sudo apt-get update \
   && sudo apt-get -y install gh
 
-# remove existing yarn executable or latest version won't install
-RUN rm -rf /usr/bin/yarn
+# install n (node version manager) and update npm
+RUN npm install -g npm n
 
-# install some global npm dependencies
-RUN npm install -g npm n gitmoji-cli npm-check-updates yarn
-
-# set n (node version manager) up with v14 & v16 and latest npm
-RUN n 14 && npm i -g npm && n 16 && npm i -g npm
+# use n to make sure we're on latest v16 of nodejs
+# remove existing yarn executable (workaround or latest version won't install)
+# and install some global dependencies
+RUN n 16 \
+  && rm -rf /usr/bin/yarn \
+  && npm i -g npm gitmoji-cli npm-check-updates yarn
 
 # install and customize oh-my-zsh
 RUN rm -rf /root/.oh-my-zsh \
@@ -30,18 +31,8 @@ RUN rm -rf /root/.oh-my-zsh \
   && git clone --quiet https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions \
   && sed -i 's/ZSH_THEME="robbyrussell"/# ZSH_THEME="robbyrussell"/g' ~/.zshrc \
   && sed -i 's/# HYPHEN_INSENSITIVE=/HYPHEN_INSENSITIVE=/g' ~/.zshrc \
-  && sed -i 's/plugins=(git)/plugins=(git zsh-completions zsh-autosuggestions)/g' ~/.zshrc \
-  && sed -i '/plugins=(git zsh-completions zsh-autosuggestions)/a autoload -U compinit && compinit' ~/.zshrc
-
-# set some shell aliases 
-RUN echo '\nalias la="ls -lah"\nalias cl="clear"\nalias npmgls="npm -g ls --depth=0"\n' >> ~/.zshrc
-
-# set some git aliases and options
-RUN git config  --global --add alias.st status \
-  && git config --global --add alias.lsd 'log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate' \
-  && git config --global --add commit.gpgsign true \
-  && git config --global --add tag.gpgsign true \
-  && git config --global --add tag.tag.forcesignannotated true
+  && sed -i 's/plugins=(git)/plugins=(git zsh-completions zsh-autosuggestions npm yarn)/g' ~/.zshrc \
+  && sed -i '/plugins=(git zsh-completions zsh-autosuggestions npm yarn`)/a autoload -U compinit && compinit' ~/.zshrc
 
 # install starship shell promopt
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes \
@@ -49,3 +40,16 @@ RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes \
 
 # add config file for starship prompt
 COPY starship.toml  /root/.config/starship.toml
+
+# set some shell aliases/options and set some git aliases/options
+RUN echo '\nalias la="ls -lah"\nalias cl="clear"\nalias npmgls="npm -g ls --depth=0"' >> ~/.zshrc \
+  && echo '\nalias aptupdate="apt update && apt upgrade"' >> ~/.zshrc \
+  && echo '\nalias alias ncud="ncu --dep dev -u && yarn"\nalias ncup="ncu --dep prod -u && yarn"' >> ~/.zshrc \
+  && echo '\n\nexport LS_COLORS="su=00:sg=00:ca=00:ow=01;36;40"' >> ~/.zshrc \
+  && echo '\nzstyle ":completion:*" list-colors "${(@s.:.)LS_COLORS}"' >> ~/.zshrc \
+  && echo '\n\neval "$(gh completion --shell zsh)"\n' >> ~/.zshrc \
+  && git config  --global --add alias.st status \
+  && git config --global --add alias.lsd 'log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate' \
+  && git config --global --add commit.gpgsign true \
+  && git config --global --add tag.gpgsign true \
+  && git config --global --add tag.tag.forcesignannotated true
