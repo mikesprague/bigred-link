@@ -49,6 +49,8 @@ RUN echo '\nalias la="ls -lah"\nalias cl="clear"\nalias npmgls="npm -g ls --dept
   && echo '\nzstyle ":completion:*" list-colors "${(@s.:.)LS_COLORS}"' >> ~/.zshrc \
   && echo '\n\neval "$(gh completion --shell zsh)"\n' >> ~/.zshrc \
   && git config  --global --add alias.st status \
+  && git config  --global --add alias.co checkout \
+  && git config  --global --add alias.br branch \
   && git config --global --add alias.lsd 'log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate' \
   && git config --global --add commit.gpgsign true \
   && git config --global --add tag.gpgsign true \
