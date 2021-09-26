@@ -46,13 +46,13 @@
     "logrocket": "^2.0.0",
     "logrocket-react": "^4.0.1",
     "mongodb": "^4.1.2",
-    "nanoid": "^3.1.25",
+    "nanoid": "^3.1.28",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "register-service-worker": "^1.7.2",
-    "snyk": "^1.717.0",
-    "tailwindcss": "^2.2.15"
+    "snyk": "^1.721.0",
+    "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
