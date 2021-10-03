@@ -35,9 +35,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/pro-duotone-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
-    "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/typography": "^0.4.1",
-    "axios": "^0.21.4",
+    "axios": "^0.22.0",
     "clipboard-polyfill": "^3.0.3",
     "dayjs": "^1.10.7",
     "dompurify": "^2.3.3",
@@ -51,7 +51,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "register-service-worker": "^1.7.2",
-    "snyk": "^1.722.0",
+    "snyk": "^1.729.0",
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
