@@ -1,21 +1,20 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: {
-    content: ['./static/index.html', './src/components/**/*.js'],
-  },
-  darkMode: false,
+  content: ['./static/index.html', './src/components/**/*.js'],
+  darkMode: 'media',
   theme: {
     colors: {
       amber: colors.amber,
       black: '#000',
       blue: colors.blue,
-      bluegray: colors.blueGray,
-      coolgray: colors.coolGray,
+      bluegray: colors.slate,
+      coolgray: colors.gray,
       cyan: colors.cyan,
       emerald: colors.emerald,
-      gray: colors.gray,
+      gray: colors.zinc,
       green: colors.green,
       indigo: colors.indigo,
       sky: colors.sky,
@@ -26,10 +25,10 @@ module.exports = {
       red: '#b31b1b',
       rose: colors.rose,
       teal: colors.teal,
-      truegray: colors.trueGray,
+      truegray: colors.neutral,
       violet: colors.violet,
-      warmgray: colors.warmGray,
-      white: '#fff',
+      warmgray: colors.stone,
+      white: colors.white,
       yellow: colors.yellow,
     },
     extend: {
