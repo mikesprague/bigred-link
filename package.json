@@ -43,13 +43,13 @@
     "he": "^1.2.0",
     "logrocket": "^2.0.0",
     "logrocket-react": "^4.0.1",
-    "mongodb": "^4.1.2",
-    "nanoid": "^3.1.28",
+    "mongodb": "^4.1.3",
+    "nanoid": "^3.1.29",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "register-service-worker": "^1.7.2",
-    "snyk": "^1.730.0"
+    "snyk": "^1.733.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
