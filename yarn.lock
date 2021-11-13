@@ -1755,10 +1755,10 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@bugsnag/browser@^7.13.2":
-  version "7.13.2"
-  resolved "https://registry.yarnpkg.com/@bugsnag/browser/-/browser-7.13.2.tgz#d42956070f53894a449fb17aa84d82be7cc6969c"
-  integrity sha512-TNt6QhJxIqxvZ6wviLfwHu31V48EW+VnySxki0J2s4F++AF/lxCQ2o4ygFSQjOAHRMRChPI5jFM8OKDkx2q7mA==
+"@bugsnag/browser@^7.13.3":
+  version "7.13.3"
+  resolved "https://registry.yarnpkg.com/@bugsnag/browser/-/browser-7.13.3.tgz#bb0fe756a884d50f3e73cea0e684121236ac2eba"
+  integrity sha512-nxYb0AtyER3zSk7xoZnFVRQwhRJ0To/quhqrRqwESMrFEIKEkwkU6FMR4esr2rKY0uE3ugZ2eXdQOf3/ttso5w==
   dependencies:
     "@bugsnag/core" "^7.13.2"
 
@@ -1778,12 +1778,12 @@
   resolved "https://registry.yarnpkg.com/@bugsnag/cuid/-/cuid-3.0.0.tgz#2ee7642a30aee6dc86f5e7f824653741e42e5c35"
   integrity sha512-LOt8aaBI+KvOQGneBtpuCz3YqzyEAehd1f3nC5yr9TIYW1+IzYKa2xWS4EiMz5pPOnRPHkyyS5t/wmSmN51Gjg==
 
-"@bugsnag/js@^7.13.2":
-  version "7.13.2"
-  resolved "https://registry.yarnpkg.com/@bugsnag/js/-/js-7.13.2.tgz#5d1dad39bdab665a7dce155751f99fca19426177"
-  integrity sha512-yXEhiVAiHgpzlP/luA3lDTo+pLgxa3TDl6cSXJtUTOvVqcgzA30k+SHG8h0KwSjXQ0MJWiQFwzPPVENdLAB5nA==
+"@bugsnag/js@^7.13.3":
+  version "7.13.3"
+  resolved "https://registry.yarnpkg.com/@bugsnag/js/-/js-7.13.3.tgz#e108a45c4be9811756f6214f47aca84b57981e2b"
+  integrity sha512-V4r1Vt0SUslaz7dafU3bmKjUW6fak7CIrkWUz/aUKevQZM4kLARCnBXw9BfQrCejgyWyN9u1iysSIHVGkqsulA==
   dependencies:
-    "@bugsnag/browser" "^7.13.2"
+    "@bugsnag/browser" "^7.13.3"
     "@bugsnag/node" "^7.13.2"
 
 "@bugsnag/node@^7.13.2":
@@ -3057,10 +3057,10 @@ browserslist@^4.17.6:
     node-releases "^2.0.1"
     picocolors "^1.0.0"
 
-bson@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/bson/-/bson-4.5.2.tgz#567b4ee94372d5284a4d6c47fb6e1cc711ae76ba"
-  integrity sha512-8CEMJpwc7qlQtrn2rney38jQSEeMar847lz0LyitwRmVknAW8iHXrzW4fTjHfyWm0E3sukyD/zppdH+QU1QefA==
+bson@^4.5.4:
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-4.5.4.tgz#5f74f1e11f743ea8aec30b5e24bfddae82846873"
+  integrity sha512-wIt0bPACnx8Ju9r6IsS2wVtGDHBr9Dxb+U29A1YED2pu8XOhS8aKjOnLZ8sxyXkPwanoK7iWWVhS1+coxde6xA==
   dependencies:
     buffer "^5.6.0"
 
@@ -6960,7 +6960,7 @@ mkdirp@^1.0.3:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mongodb-connection-string-url@^2.0.0:
+mongodb-connection-string-url@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/mongodb-connection-string-url/-/mongodb-connection-string-url-2.1.0.tgz#9c522c11c37f571fecddcb267ac4a76ef432aeb7"
   integrity sha512-Qf9Zw7KGiRljWvMrrUFDdVqo46KIEiDuCzvEN97rh/PcKzk2bd6n9KuzEwBwW9xo5glwx69y1mI6s+jFUD/aIQ==
@@ -6968,14 +6968,14 @@ mongodb-connection-string-url@^2.0.0:
     "@types/whatwg-url" "^8.2.1"
     whatwg-url "^9.1.0"
 
-mongodb@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-4.1.3.tgz#8bf24d782ba3f3833201f4e60b0307d87980ba71"
-  integrity sha512-lHvTqODBiSpuqjpCj48DOyYWS6Iq6ElJNUiH9HWdQtONyOfjgsKzJULipWduMGsSzaNO4nFi/kmlMFCLvjox/Q==
+mongodb@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-4.1.4.tgz#ba8062c7c67e7a22db5a059dbac1e3044b48453b"
+  integrity sha512-Cv/sk8on/tpvvqbEvR1h03mdyNdyvvO+WhtFlL4jrZ+DSsN/oSQHVqmJQI/sBCqqbOArFcYCAYDfyzqFwV4GSQ==
   dependencies:
-    bson "^4.5.2"
+    bson "^4.5.4"
     denque "^2.0.1"
-    mongodb-connection-string-url "^2.0.0"
+    mongodb-connection-string-url "^2.1.0"
   optionalDependencies:
     saslprep "^1.0.3"
 
@@ -9083,10 +9083,10 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-snyk@^1.748.0:
-  version "1.748.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.748.0.tgz#89db50d4b2585ef2e6160a4c282e5b8df56a1431"
-  integrity sha512-LlnJG9LtOUR1rGQnGSYxr0F4j6GueI9OJozToY84deDSQoXoCDSP+Ie9f1c+AKjXBz/ojQpY0Gxhhc3BlBDsuA==
+snyk@^1.760.0:
+  version "1.760.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.760.0.tgz#0ed46908467029c3fda92300663896a1fab0f5ed"
+  integrity sha512-pVH3AbY30zNerW+F+okULIRYVj0r8Ksvd8WW+beMddghOH31ZePpAWjK5F+D6d3Dy3WJ3n/JyAywxiTS+2d6kQ==
 
 source-list-map@^2.0.0:
   version "2.0.1"
