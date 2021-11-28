@@ -6820,10 +6820,10 @@ logrocket-react@^4.0.1:
   resolved "https://registry.yarnpkg.com/logrocket-react/-/logrocket-react-4.0.1.tgz#e8e5405ee5f47f2c25b511931e360713a623f927"
   integrity sha512-TbQELEaDQspKHH0XylAeVZpsHoAcz+sIEG/enUQiH+LoYLW7cMK000XIS6W3Zz14zS0V2Db+KyKi8ivBpGYkzg==
 
-logrocket@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/logrocket/-/logrocket-2.1.1.tgz#1ac44eb7811b4ebb5a4edbcd8af35b9782bfa093"
-  integrity sha512-wFxpQKf+ON/ZywTBVqqORmnJmW4293706bhyBAmzLnwJJrdcpI/ZicT81itbSpfw9ELEmdVT6e8D9Kx19u4uLQ==
+logrocket@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/logrocket/-/logrocket-2.1.2.tgz#5f6360c81c01797d67905de4851d54534deb9d0a"
+  integrity sha512-voHZcZYtXIh0oIT6I/9szdDSauKR98uGlVxovD6oIggm7nqdic5d1/dqRUhokXiXXtLkF7pr6QUrtwIwTETjIw==
 
 longest-streak@^2.0.1:
   version "2.0.4"
@@ -9365,10 +9365,10 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-snyk@^1.764.0:
-  version "1.764.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.764.0.tgz#3389e94435d7ad419e2bb2ccc19dda00314c317a"
-  integrity sha512-rzh5RqdakL3xMYgdA3/git1gnKlWFUH3ClOZNJwjok5VaL9tGbCE9aail378ofFmTV0asm5ZVPwE4MYNYtgVGg==
+snyk@^1.775.0:
+  version "1.775.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.775.0.tgz#d420e6877700aa0952574bb76c4354e610010ebc"
+  integrity sha512-+LVwS0RePl+mKTnF6J+HWZNY0SkvwbytDs76n0be1TxiY3vhe/H+N+pbhvmv0smAK3ZnsRTOKiVrqkzLqhAWsg==
 
 source-list-map@^2.0.0:
   version "2.0.1"

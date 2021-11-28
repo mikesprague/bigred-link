@@ -41,7 +41,7 @@
     "dompurify": "^2.3.3",
     "dotenv": "^10.0.0",
     "he": "^1.2.0",
-    "logrocket": "^2.1.1",
+    "logrocket": "^2.1.2",
     "logrocket-react": "^4.0.1",
     "mongodb": "^4.2.0",
     "nanoid": "^3.1.30",
@@ -49,7 +49,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "register-service-worker": "^1.7.2",
-    "snyk": "^1.764.0"
+    "snyk": "^1.775.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
