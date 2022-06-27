@@ -1,15 +1,15 @@
-const Bugsnag = require('@bugsnag/js');
+import Bugsnag from '@bugsnag/js';
 
-const {
+import {
   initMongoDb,
   checkIfShortIdExists,
-} = require('../src/modules/api-helpers');
+} from '../src/modules/api-helpers.js';
 
 const { MONGO_DB_URL, BUGSNAG_KEY } = process.env;
 
 Bugsnag.start(BUGSNAG_KEY);
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   const { short_id: shortId } = req.query;
 
   if (shortId && shortId.length === 7) {

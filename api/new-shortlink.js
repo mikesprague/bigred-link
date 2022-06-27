@@ -1,13 +1,13 @@
-const Bugsnag = require('@bugsnag/js');
-const dns = require('dns');
+import Bugsnag from '@bugsnag/js';
+import dns from 'dns';
 
-const { shortenURL, handleError } = require('../src/modules/api-helpers');
+import { shortenURL, handleError } from '../src/modules/api-helpers.js';
 
 const { BUGSNAG_KEY } = process.env;
 
 Bugsnag.start(BUGSNAG_KEY);
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (req.method === 'OPTIONS') {
     return res.status(200).send('');
   }
