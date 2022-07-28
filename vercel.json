@@ -33,10 +33,6 @@
         },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://localhost:3000"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
           "value": "https://bigred.link"
         }
       ]
