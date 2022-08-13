@@ -1,7 +1,7 @@
 import nanoid from 'nanoid';
 
-const { MongoClient } = require('mongodb');
-const Bugsnag = require('@bugsnag/js');
+import { MongoClient } from 'mongodb';
+import Bugsnag from '@bugsnag/js';
 
 const { MONGO_DB_NAME, MONGO_DB_COLLECTION, MONGO_DB_URL } = process.env;
 
