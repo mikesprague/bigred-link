@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 
 import { MongoClient } from 'mongodb';
 import Bugsnag from '@bugsnag/js';
