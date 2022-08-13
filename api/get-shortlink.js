@@ -16,7 +16,7 @@ export default async (req, res) => {
     const shortIdExists = await checkIfShortIdExists(dbClient, shortId);
     try {
       const { original_url } = shortIdExists;
-      res.redirect(302, original_url);
+      return res.redirect(original_url);
     } catch (error) {
       res.status(400).json({
         errorCode: 400,
