@@ -1,7 +1,7 @@
 import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 import './index.scss';
@@ -35,7 +35,11 @@ const ErrorView = () => {
       <h3 className="text-2xl text-red-500">Sorry, an error has occured.</h3>
       <br />
       <br />
-      <button onClick={clickHandler} className="p-6 text-lg font-bold leading-loose text-gray-100 bg-red-500" type="button">
+      <button
+        onClick={clickHandler}
+        className="p-6 text-lg font-bold leading-loose text-gray-100 bg-red-500"
+        type="button"
+      >
         &nbsp;&nbsp;Click Here to Reload and Try Again&nbsp;&nbsp;
       </button>
     </div>
@@ -44,15 +48,15 @@ const ErrorView = () => {
 
 initIcons();
 
-const appElement = document.getElementById('root');
+const container = document.getElementById('root');
+const root = createRoot(container);
 
-ReactDOM.render(
+root.render(
   <ErrorBoundary FallbackComponent={ErrorView}>
-    <React.StrictMode>
+    <StrictMode>
       <App />
-    </React.StrictMode>
+    </StrictMode>
   </ErrorBoundary>,
-  appElement,
 );
 
 initServiceWorker();
