@@ -34,7 +34,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^0.27.2",
     "clipboard-polyfill": "^3.0.3",
-    "dayjs": "^1.11.4",
+    "dayjs": "^1.11.5",
     "dompurify": "^2.3.10",
     "dotenv": "^16.0.1",
     "he": "^1.2.0",
@@ -152,10 +152,12 @@
     },
     "extends": [
       "airbnb",
+      "eslint:recommended",
       "plugin:react/recommended",
       "plugin:react-hooks/recommended",
       "plugin:jsx-a11y/recommended",
-      "prettier"
+      "prettier",
+      "stylelint"
     ],
     "plugins": [
       "compat",
@@ -165,17 +167,18 @@
       "markdown",
       "prettier",
       "react",
-      "react-hooks",
-      "security"
+      "react-hooks"
     ],
     "parserOptions": {
+      "parser": "babel-parser",
       "ecmaVersion": 11,
       "allowImportExportEverywhere": true,
-      "parser": "@babel/eslint-parser",
+      "sourceType": "module",
       "ecmaFeatures": {
+        "impliedStrict": true,
+        "modules": true,
         "jsx": true
-      },
-      "sourceType": "module"
+      }
     },
     "rules": {
       "react/jsx-filename-extension": [
