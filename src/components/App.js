@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import axios from 'axios';
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as DOMPurify from 'dompurify';
 import './App.scss';
 import {
@@ -34,7 +34,6 @@ export default function App() {
           response.data.short_id,
         );
         setResults(resultTemplate);
-        initCopyToClipboard();
         return response.data;
       })
       .catch((error) => {
@@ -46,6 +45,12 @@ export default function App() {
     const inputVal = DOMPurify.sanitize(event.target.value);
     setLink(inputVal);
   };
+
+  useEffect(() => {
+    if (results) {
+      initCopyToClipboard();
+    }
+  }, [results, setResults]);
 
   return (
     <>
