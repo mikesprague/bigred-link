@@ -35,7 +35,7 @@
     "axios": "0.27.2",
     "clipboard-polyfill": "3.0.3",
     "dayjs": "1.11.5",
-    "dompurify": "2.3.12",
+    "dompurify": "2.4.0",
     "dotenv": "16.0.1",
     "he": "1.2.0",
     "logrocket": "3.0.1",
