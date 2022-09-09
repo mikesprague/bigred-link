@@ -9,7 +9,13 @@ if (NODE_ENV === 'production') {
 }
 
 export default async (req, res) => {
-  const { short_id: shortId } = req.query;
+  const { short_id: shortId, healthcheck } = req.query;
+  
+  if (healthcheck) {
+    return res.status(200).json({
+      status: 'API is up and running',
+    });
+  }
 
   if (shortId && shortId.length === 7) {
     const dbClient = await initMongoDb(MONGO_DB_URL);
