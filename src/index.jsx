@@ -56,5 +56,5 @@ registerSW({
     window.location.reload(true);
   },
   onOfflineReady() {},
-  // immediate: true,
+  immediate: true,
 });
