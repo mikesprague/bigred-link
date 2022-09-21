@@ -61,7 +61,9 @@ export const App = () => {
   return (
     <div className="page-wrapper">
       <header>
-        <h1 className="page-title">BigRed.link {version}</h1>
+        <h1 className="page-title" title={`BigRed.link v${version}`}>
+          BigRed.link
+        </h1>
       </header>
       <main>
         <form className="url-form" onSubmit={handleSubmit}>
