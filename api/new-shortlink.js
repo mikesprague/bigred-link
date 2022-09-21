@@ -1,6 +1,6 @@
 import Bugsnag from '@bugsnag/js';
 
-import { shortenURL, handleError } from '../src/modules/api-helpers';
+import { handleError, shortenURL } from '../src/modules/api-helpers';
 
 const { NODE_ENV, BUGSNAG_KEY } = process.env;
 
@@ -25,6 +25,7 @@ export default async (req, res) => {
   shortenURL(originalUrl.href)
     .then((result) => {
       const doc = result.value;
+
       res.status(200).json({
         original_url: doc.original_url,
         short_id: doc.short_id,

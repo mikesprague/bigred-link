@@ -13,7 +13,7 @@ if (NODE_ENV === 'production') {
 
 export default async (req, res) => {
   const { short_id: shortId, healthcheck } = req.query;
-  
+
   if (healthcheck) {
     return res.status(200).json({
       status: 'API is up and running',
@@ -23,8 +23,11 @@ export default async (req, res) => {
   if (shortId && shortId.length === 7) {
     const dbClient = await initMongoDb(MONGO_DB_URL);
     const shortIdExists = await checkIfShortIdExists(dbClient, shortId);
+
     try {
+      // eslint-disable-next-line camelcase
       const { original_url } = shortIdExists;
+
       return res.redirect(original_url);
     } catch (error) {
       res.status(400).json({
@@ -33,6 +36,7 @@ export default async (req, res) => {
       });
     }
   }
+
   res.status(404).json({
     errorCode: 404,
     errorMessage: '404 Not Found',
