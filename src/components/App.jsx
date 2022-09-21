@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import * as DOMPurify from 'dompurify';
-import './App.scss';
+import DOMPurify from 'dompurify';
+import axios from 'axios';
+
 import {
   getResultMarkup,
   handleError,
   initCopyToClipboard,
-} from '../modules/helpers';
+} from '../modules/helpers.jsx';
 
-export default function App() {
+import './App.scss';
+
+export const App = () => {
   const [link, setLink] = useState('');
   const [results, setResults] = useState('');
 
@@ -33,7 +35,9 @@ export default function App() {
           window.location.origin,
           response.data.short_id,
         );
+
         setResults(resultTemplate);
+
         return response.data;
       })
       .catch((error) => {
@@ -43,6 +47,7 @@ export default function App() {
 
   const handleChange = (event) => {
     const inputVal = DOMPurify.sanitize(event.target.value);
+
     setLink(inputVal);
   };
 
@@ -53,43 +58,41 @@ export default function App() {
   }, [results, setResults]);
 
   return (
-    <>
-      <div className="page-wrapper">
-        <header>
-          <h1 className="page-title">BigRed.link</h1>
-        </header>
-        <main>
-          <form className="url-form" onSubmit={handleSubmit}>
-            <div className="input-group">
-              <input
-                type="url"
-                className="url-input form-input"
-                placeholder="Paste in a link to shorten it"
-                name="link"
-                id="link"
-                required
-                autoFocus
-                value={link}
-                ref={inputRef}
-                onChange={handleChange}
-              />
-              <button className="btn-shorten" type="submit" ref={buttonRef}>
-                Shorten!
-              </button>
-            </div>
-          </form>
-          <div className="result-section">{results}</div>
-        </main>
-        <footer>
-          <p className="copyright-text">
-            Copyright &copy; 2021 BigRed.link. All Rights Reserved
-          </p>
-          <p className="no-affiliation-text">
-            BigRed.link is <strong>NOT</strong> affiliated with or endorsed by
-            Cornell University.
-          </p>
-        </footer>
-      </div>
-    </>
+    <div className="page-wrapper">
+      <header>
+        <h1 className="page-title">BigRed.link</h1>
+      </header>
+      <main>
+        <form className="url-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="url"
+              className="url-input form-input"
+              placeholder="Paste in a link to shorten it"
+              name="link"
+              id="link"
+              required
+              autoFocus
+              value={link}
+              ref={inputRef}
+              onChange={handleChange}
+            />
+            <button className="btn-shorten" type="submit" ref={buttonRef}>
+              Shorten!
+            </button>
+          </div>
+        </form>
+        <div className="result-section">{results}</div>
+      </main>
+      <footer>
+        <p className="copyright-text">
+          Copyright &copy; 2021 BigRed.link. All Rights Reserved
+        </p>
+        <p className="no-affiliation-text">
+          BigRed.link is <strong>NOT</strong> affiliated with or endorsed by
+          Cornell University.
+        </p>
+      </footer>
+    </div>
   );
-}
+};
