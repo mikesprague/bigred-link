@@ -24,7 +24,7 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
 ## Running locally
 
 1. Clone this repo and go into the directory
-1. Rename `sample.dev.vars` to .`.dev.vars` and edit the file to set the required values for:
+1. Rename `sample.dev.vars` to `.dev.vars` and edit the file to set the required values for:
     - `MONGO_DB_COLLECTION`
     - `MONGO_DB_NAME`
     - `MONGO_DB_URL`
