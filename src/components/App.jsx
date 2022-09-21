@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import DOMPurify from 'dompurify';
 import axios from 'axios';
+import { version } from '../../package.json';
 
 import {
   getResultMarkup,
@@ -60,7 +61,7 @@ export const App = () => {
   return (
     <div className="page-wrapper">
       <header>
-        <h1 className="page-title">BigRed.link</h1>
+        <h1 className="page-title">BigRed.link {version}</h1>
       </header>
       <main>
         <form className="url-form" onSubmit={handleSubmit}>
@@ -86,7 +87,8 @@ export const App = () => {
       </main>
       <footer>
         <p className="copyright-text">
-          Copyright &copy; 2021 BigRed.link. All Rights Reserved
+          Copyright &copy; {new Date().getFullYear()} BigRed.link. All Rights
+          Reserved
         </p>
         <p className="no-affiliation-text">
           BigRed.link is <strong>NOT</strong> affiliated with or endorsed by

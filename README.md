@@ -30,7 +30,6 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
     - `MONGO_DB_URL`
     - `BUGSNAG_KEY`
     - `VITE_BUGSNAG_KEY` (same as `BUGSNAG_KEY`)
-    - `FONT_AWESOME_TOKEN`
 1. Install dependencies by running: `npm install`
 1. Start the project: `npm start`
 1. Visit [http://localhost:3000](http://localhost:3000) in your browser

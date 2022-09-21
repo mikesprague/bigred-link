@@ -1,11 +1,12 @@
-import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faClipboard, faRedo } from '@fortawesome/pro-duotone-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as clipboard from 'clipboard-polyfill';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { faClipboard } from '@fortawesome/free-regular-svg-icons';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 export const initIcons = () => {
-  library.add(faClipboard, faRedo);
+  library.add(faClipboard, faRotateRight);
 };
 
 export const isProduction = () =>
@@ -15,6 +16,7 @@ export const isProduction = () =>
 export const initCopyToClipboard = () => {
   const cbLink = document.querySelector('.clipboard-link');
   const linkHref = document.querySelector('.result-link').textContent.trim();
+
   cbLink.addEventListener('click', (event) => {
     event.preventDefault();
     clipboard.writeText(linkHref);
@@ -36,15 +38,19 @@ export const isValidUrl = (url) => {
     const validUrl = new URL(url);
   } catch (error) {
     console.error(error);
+
     return false;
   }
+
   return true;
 };
 
 export const handleError = (error) => {
-  // if (isProduction()) {
-  //   bugsnagClient.notify(error);
-  // }
+  if (isProduction()) {
+    // eslint-disable-next-line no-undef
+    bugsnagClient.notify(error);
+  }
+
   console.error(error);
   // throw new Error(error);
 };
@@ -63,7 +69,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
       <br />
       <br />
       <div className="clipboard-link">
-        <FontAwesomeIcon icon={['fad', 'clipboard']} fixedWidth />
+        <FontAwesomeIcon icon={['far', 'clipboard']} fixedWidth />
         {` Click here to copy to clipboard`}
       </div>
       <div>
@@ -71,7 +77,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
         <br />
         <small>
           <a className="start-over-link" href="/">
-            <FontAwesomeIcon icon={['fad', 'redo']} fixedWidth />
+            <FontAwesomeIcon icon={['fas', 'rotate-right']} fixedWidth />
             {` Start over`}
           </a>
         </small>
