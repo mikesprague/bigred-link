@@ -2,10 +2,10 @@ import Bugsnag from '@bugsnag/js';
 
 import {
   checkIfShortIdExists,
-  initMongoDb,
+  initSupabase,
 } from '../src/modules/api-helpers.js';
 
-const { NODE_ENV, MONGO_DB_URL, BUGSNAG_KEY } = process.env;
+const { NODE_ENV, BUGSNAG_KEY } = process.env;
 
 if (NODE_ENV === 'production') {
   Bugsnag.start({ apiKey: BUGSNAG_KEY });
@@ -21,8 +21,8 @@ export default async (req, res) => {
   }
 
   if (shortId && shortId.length === 7) {
-    const dbClient = await initMongoDb(MONGO_DB_URL);
-    const shortIdExists = await checkIfShortIdExists(dbClient, shortId);
+    const supabase = await initSupabase();
+    const shortIdExists = await checkIfShortIdExists(supabase, shortId);
 
     try {
       // eslint-disable-next-line camelcase

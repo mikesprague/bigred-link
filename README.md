@@ -6,8 +6,7 @@ A big red link shortener
 
 ## Requirements
 
-You will need to have MongoDB running (install locally or use remotely via [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-or another provider of your choice).
+You will need a free [Subabase](https://supabase.com/) account to use for the database.
 
 This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will need to create a free account and set up a project to get a Bugsnag key.
 
@@ -19,15 +18,15 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
 - Font Awesome
 - Bugsnag
 - Vercel
-- MongoDB Atlas
+- Supabase
 
 ## Running locally
 
 1. Clone this repo and go into the directory
 1. Rename `sample.dev.vars` to `.dev.vars` and edit the file to set the required values for:
-    - `MONGO_DB_COLLECTION`
-    - `MONGO_DB_NAME`
-    - `MONGO_DB_URL`
+    - `SUPABASE_DB_TABLE`
+    - `SUPABASE_ANON_PUB_KEY`
+    - `SUPABASE_URL`
     - `BUGSNAG_KEY`
     - `VITE_BUGSNAG_KEY` (same as `BUGSNAG_KEY`)
 1. Install dependencies by running: `npm install`

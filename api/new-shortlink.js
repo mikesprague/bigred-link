@@ -9,10 +9,6 @@ if (NODE_ENV === 'production') {
 }
 
 export default async (req, res) => {
-  if (req.method === 'OPTIONS') {
-    res.status(200).send('');
-  }
-
   let originalUrl;
 
   try {
@@ -22,16 +18,14 @@ export default async (req, res) => {
     res.status(400).json({ error: 'Invalid URL' });
   }
 
-  shortenURL(originalUrl.href)
-    .then((result) => {
-      const doc = result.value;
+  try {
+    const result = await shortenURL(originalUrl.href);
 
-      res.status(200).json({
-        original_url: doc.original_url,
-        short_id: doc.short_id,
-      });
-    })
-    .catch((error) => {
-      handleError(error);
+    res.status(200).json({
+      original_url: result.original_url,
+      short_id: result.short_id,
     });
+  } catch (error) {
+    handleError(error);
+  }
 };
