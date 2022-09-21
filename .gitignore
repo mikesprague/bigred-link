@@ -122,5 +122,7 @@ dist
 
 # Misc
 
-public
+build
 .vercel
+.dev.vars
+

@@ -3,8 +3,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faClipboard, faRedo } from '@fortawesome/pro-duotone-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as clipboard from 'clipboard-polyfill';
-import { register } from 'register-service-worker';
-
 
 export const initIcons = () => {
   library.add(faClipboard, faRedo);
@@ -13,21 +11,6 @@ export const initIcons = () => {
 export const isProduction = () =>
   window.location.hostname !== 'localhost' &&
   window.location.hostname !== '127.0.0.1';
-
-export const initServiceWorker = () => {
-  register('/service-worker.js', {
-    updated() {
-      console.log("Updated to the latest version");
-      window.location.reload(true);
-    },
-    offline() {
-      console.info('No internet connection found. App is currently offline.');
-    },
-    error(error) {
-      console.error('Error during service worker registration:', error);
-    },
-  });
-};
 
 export const initCopyToClipboard = () => {
   const cbLink = document.querySelector('.clipboard-link');
@@ -68,7 +51,12 @@ export const handleError = (error) => {
 
 export const getResultMarkup = (urlPrefix, shortId) => (
   <div className="result">
-    <a target="_blank" className="result-link" rel="noopener noreferrer" href={`${urlPrefix}/${shortId}`}>
+    <a
+      target="_blank"
+      className="result-link"
+      rel="noopener noreferrer"
+      href={`${urlPrefix}/${shortId}`}
+    >
       {`${urlPrefix}/${shortId}`}
     </a>
     <small className="clipboard-text">
@@ -79,7 +67,8 @@ export const getResultMarkup = (urlPrefix, shortId) => (
         {` Click here to copy to clipboard`}
       </div>
       <div>
-        <br /><br />
+        <br />
+        <br />
         <small>
           <a className="start-over-link" href="/">
             <FontAwesomeIcon icon={['fad', 'redo']} fixedWidth />

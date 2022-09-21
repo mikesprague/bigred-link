@@ -19,7 +19,7 @@ RUN npm install -g npm n
 
 # use n to make sure we're on latest v18 of nodejs
 # and install some global dependencies
-RUN n 18 && npm i -g eslint gitmoji-cli npm-check-updates wrangler
+RUN n 18 && npm i -g eslint gitmoji-cli npm-check-updates
 
 # install and customize oh-my-zsh
 RUN rm -rf /root/.oh-my-zsh \
@@ -53,4 +53,3 @@ RUN echo '\nalias la="ls -lah"\nalias cl="clear"\nalias npmgls="npm -g ls --dept
   && git config --global --add commit.gpgsign true \
   && git config --global --add tag.gpgsign true \
   && git config --global --add tag.tag.forcesignannotated true
-  

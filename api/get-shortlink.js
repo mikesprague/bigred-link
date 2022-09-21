@@ -1,6 +1,9 @@
 import Bugsnag from '@bugsnag/js';
 
-import { initMongoDb, checkIfShortIdExists } from '../src/modules/api-helpers';
+import {
+  checkIfShortIdExists,
+  initMongoDb,
+} from '../src/modules/api-helpers.js';
 
 const { NODE_ENV, MONGO_DB_URL, BUGSNAG_KEY } = process.env;
 

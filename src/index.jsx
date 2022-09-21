@@ -1,27 +1,20 @@
+import React, { StrictMode } from 'react';
 import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
 import LogRocket from 'logrocket';
-import setupLogRocketReact from 'logrocket-react';
-import './index.scss';
+import { createRoot } from 'react-dom/client';
+import { registerSW } from 'virtual:pwa-register';
+
 import App from './components/App';
-import { initIcons, initServiceWorker, isProduction } from './modules/helpers';
+
+import { initIcons } from './modules/helpers.jsx';
+
+import './index.scss';
 
 window.bugsnagClient = Bugsnag.start({
-  apiKey: `${process.env.BUGSNAG_KEY}`,
+  apiKey: `${import.meta.env.VITE_BUGSNAG_KEY}`,
   plugins: [new BugsnagPluginReact()],
 });
-
-if (isProduction()) {
-  LogRocket.init('skxlwh/bigredlink');
-  setupLogRocketReact(LogRocket);
-  Bugsnag.beforeNotify = (data) => {
-    // eslint-disable-next-line no-param-reassign
-    data.metaData.sessionURL = LogRocket.sessionURL;
-    return data;
-  };
-}
 
 const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React);
 
@@ -32,7 +25,7 @@ const ErrorView = () => {
 
   return (
     <div className="w-full text-center bg-black">
-      <h3 className="text-2xl text-red-500">Sorry, an error has occured.</h3>
+      <h3 className="text-2xl text-red-500">Sorry, an error has occurred.</h3>
       <br />
       <br />
       <button
@@ -59,4 +52,10 @@ root.render(
   </ErrorBoundary>,
 );
 
-initServiceWorker();
+registerSW({
+  onNeedRefresh() {
+    window.location.reload(true);
+  },
+  onOfflineReady() {},
+  // immediate: true,
+});

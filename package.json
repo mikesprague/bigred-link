@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "description": "URL Shortener",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">= 16.x",
     "npm": ">= 8.x"
   },
   "scripts": {
-    "build": "rm -rf ./public && webpack --color",
-    "start": "cross-env NODE_ENV=development vercel dev",
+    "build": "vite build",
+    "clean": "rm -rf ./build",
+    "dev": "vite serve --port $PORT",
+    "prebuild": "npm run clean",
+    "preview": "vite preview",
+    "start": "vercel dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
@@ -48,34 +53,19 @@
     "register-service-worker": "1.7.2"
   },
   "devDependencies": {
-    "@babel/core": "7.19.0",
-    "@babel/eslint-parser": "7.18.9",
-    "@babel/eslint-plugin": "7.18.10",
-    "@babel/plugin-proposal-class-properties": "7.18.6",
-    "@babel/plugin-proposal-export-default-from": "7.18.10",
-    "@babel/plugin-proposal-object-rest-spread": "7.18.9",
-    "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/plugin-syntax-flow": "7.18.6",
-    "@babel/plugin-transform-object-assign": "7.18.6",
-    "@babel/plugin-transform-react-jsx": "7.19.0",
-    "@babel/plugin-transform-runtime": "7.18.10",
-    "@babel/preset-env": "7.19.0",
-    "@babel/preset-react": "7.18.6",
-    "@babel/runtime": "7.19.0",
+    "@babel/eslint-parser": "7.19.1",
+    "@babel/eslint-plugin": "7.19.1",
+    "@babel/preset-env": "7.19.1",
     "@fullhuman/postcss-purgecss": "5.0.0",
-    "@tailwindcss/forms": "0.5.3",
     "@tailwindcss/typography": "0.5.7",
-    "autoprefixer": "10.4.10",
-    "babel-loader": "8.2.5",
+    "@tailwindcss/forms": "0.5.3",
+    "@vitejs/plugin-react": "2.1.0",
+    "autoprefixer": "10.4.11",
     "babel-plugin-add-react-displayname": "0.0.5",
-    "compression-webpack-plugin": "10.0.0",
     "concurrently": "7.4.0",
     "copy-webpack-plugin": "11.0.0",
     "cross-env": "7.0.3",
-    "css-loader": "6.7.1",
-    "css-minimizer-webpack-plugin": "4.1.0",
     "cssnano": "5.1.13",
-    "dotenv": "16.0.2",
     "eslint": "8.23.1",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",
@@ -89,18 +79,12 @@
     "eslint-plugin-react": "7.31.8",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-security": "1.5.0",
-    "file-loader": "6.2.0",
-    "html-webpack-plugin": "5.5.0",
-    "mini-css-extract-plugin": "2.6.1",
     "postcss": "8.4.16",
     "postcss-cli": "10.0.0",
-    "postcss-loader": "7.0.1",
     "prettier": "2.7.1",
     "prettier-eslint": "15.0.1",
     "prettier-stylelint": "0.4.2",
     "sass": "1.54.9",
-    "sass-loader": "13.0.2",
-    "style-loader": "3.3.1",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-prettier-scss": "0.0.1",
     "stylelint-config-standard": "28.0.0",
@@ -109,41 +93,37 @@
     "tailwindcss": "3.1.8",
     "terser-webpack-plugin": "5.3.6",
     "vercel": "28.2.5",
-    "webpack": "5.74.0",
-    "webpack-cli": "4.10.0",
-    "workbox-webpack-plugin": "6.5.4"
+    "vite": "3.1.3",
+    "vite-plugin-html": "3.2.0",
+    "vite-plugin-pwa": "0.13.0"
   },
   "babel": {
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-export-default-from",
-      "@babel/plugin-proposal-object-rest-spread",
-      "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-transform-object-assign",
-      "@babel/plugin-transform-runtime",
-      "add-react-displayname"
-    ],
     "presets": [
-      "@babel/preset-env",
-      "@babel/react"
+      "@babel/preset-env"
     ]
   },
   "browserslist": {
-    "development": [
-      "last 1 version"
-    ],
     "production": [
-      "> 2%",
-      "last 2 versions",
-      "not ie <= 10"
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   },
   "eslintConfig": {
     "env": {
       "browser": true,
-      "commonjs": true,
       "es6": true,
       "node": true
+    },
+    "settings": {
+      "jest": {
+        "version": 28
+      }
     },
     "extends": [
       "airbnb",
@@ -165,15 +145,15 @@
       "react-hooks"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser",
-      "ecmaVersion": 11,
+      "ecmaVersion": "latest",
       "allowImportExportEverywhere": true,
-      "sourceType": "module",
+      "parser": "@eslint/babel-parser",
       "ecmaFeatures": {
+        "jsx": true,
         "impliedStrict": true,
-        "modules": true,
-        "jsx": true
-      }
+        "modules": true
+      },
+      "sourceType": "module"
     },
     "rules": {
       "react/jsx-filename-extension": [
@@ -185,15 +165,31 @@
           ]
         }
       ],
+      "react/function-component-definition": [
+        2,
+        {
+          "namedComponents": "arrow-function",
+          "unnamedComponents": "arrow-function"
+        }
+      ],
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "consistent-return": "warn"
+      "react-hooks/exhaustive-deps": "error",
+      "react/jsx-boolean-value": "off",
+      "jest/no-deprecated-functions": "off",
+      "jsx-a11y/no-noninteractive-element-interactions": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-onchange": "off",
+      "import/prefer-default-export": "off",
+      "no-console": "warn",
+      "node/no-unpublished-import": "warn",
+      "node/no-missing-import": "warn"
     }
   },
   "prettier": {
     "semi": true,
     "singleQuote": true,
-    "tabwidth": true,
+    "tabWidth": 2,
     "trailingComma": "all"
   }
 }
