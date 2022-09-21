@@ -1,7 +1,7 @@
 {
   "name": "bigred-link",
-  "version": "1.1.0",
-  "description": "URL Shortener",
+  "version": "1.2.0",
+  "description": "A big red URL shortener",
   "private": true,
   "type": "module",
   "engines": {
