@@ -1,57 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BigRed.link | URL Shortener</title>
+    <meta name="subject" content="" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="theme-color" content="#222" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="BigRed.link | URL Shortener"
+    />
+    <meta name="application-name" content="BigRed.link | URL Shortener" />
+    <link rel="canonical" href="https://bigred.link" />
+    <link rel="preconnect" href="https://sessions.bugsnag.com" />
+    <link rel="preconnect" href="https://cloudflareinsights.com" />
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://sessions.bugsnag.com" />
+    <link rel="dns-prefetch" href="https://cloudflareinsights.com" />
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link
+      rel="preload"
+      as="script"
+      type="text/javascript"
+      href="https://www.googletagmanager.com/gtag/js?id=G-QP7ML8P47G"
+    />
+    <link
+      rel="preload"
+      as="script"
+      type="text/javascript"
+      href="https://static.cloudflareinsights.com/beacon.min.js"
+    />
+    <link
+      rel="preload"
+      as="style"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Graduate&display=swap"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/graduate/v7/C8cg4cs3o2n15t_2YygW43yvZxn3.woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./index.scss" />
+    <link rel="icon" type="image/png" href="./images/icon-64.png" />
+    <link rel="apple-touch-icon" class="favicon" href="./images/icon-64.png" />
+    <link rel="mask-icon" class="favicon" href="./images/icon-64.png" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>BigRed.link | URL Shortener</title>
-  <meta name="subject" content="">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="theme-color" content="#222">
-  <meta name="apple-mobile-web-app-title" content="BigRed.link | URL Shortener">
-  <meta name="application-name" content="BigRed.link | URL Shortener">
-  <link rel="canonical" href="https://bigred.link" />
-  <link rel="preconnect" href="https://sessions.bugsnag.com">
-  <link rel="preconnect" href="https://cloudflareinsights.com">
-  <link rel="preconnect" href="https://static.cloudflareinsights.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://sessions.bugsnag.com">
-  <link rel="dns-prefetch" href="https://cloudflareinsights.com">
-  <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  <link rel="preload" as="script" type="text/javascript"
-    href="https://www.googletagmanager.com/gtag/js?id=G-QP7ML8P47G">
-  <link rel="preload" as="script" type="text/javascript" href="https://static.cloudflareinsights.com/beacon.min.js">
-  <link rel="preload" as="style" type="text/css" href="https://fonts.googleapis.com/css?family=Graduate&display=swap">
-  <link rel="preload" as="font" type="font/woff2"
-    href="https://fonts.gstatic.com/s/graduate/v7/C8cg4cs3o2n15t_2YygW43yvZxn3.woff2" crossorigin>
-  <link rel="stylesheet" href="./index.scss">
-  <link rel="icon" type="image/png" href="./images/icon-64.png">
-  <link rel="apple-touch-icon" class="favicon" href="./images/icon-64.png">
-  <link rel="mask-icon" class="favicon" href="./images/icon-64.png">
-</head>
+  <body class="h-screen">
+    <div id="root"></div>
+    <script src="./index.jsx" type="module"></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "e24558e6c6d24f1eaa4dd8a25f001ca3"}'
+    ></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QP7ML8P47G"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-<body class="h-screen">
-  <div id="root"></div>
-  <script src="./index.jsx" type="module"></script>
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "41d38366983543ec9ce35d11c25a2a5f"}'></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QP7ML8P47G"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        /* eslint-disable prefer-rest-params */
+        /* eslint-disable no-undef */
+        dataLayer.push(arguments);
+      }
 
-    function gtag() {
-      /* eslint-disable prefer-rest-params */
-      /* eslint-disable no-undef */
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-QP7ML8P47G');
-  </script>
-</body>
-
+      gtag('js', new Date());
+      gtag('config', 'G-QP7ML8P47G');
+    </script>
+  </body>
 </html>
