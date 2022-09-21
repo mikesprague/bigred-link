@@ -1,11 +1,10 @@
 import React, { StrictMode } from 'react';
 import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
-import LogRocket from 'logrocket';
 import { createRoot } from 'react-dom/client';
 import { registerSW } from 'virtual:pwa-register';
 
-import App from './components/App';
+import { App } from './components/App';
 
 import { initIcons } from './modules/helpers.jsx';
 

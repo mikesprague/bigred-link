@@ -1,6 +1,6 @@
 import Bugsnag from '@bugsnag/js';
 
-import { handleError, shortenURL } from '../src/modules/api-helpers';
+import { handleError, shortenURL } from '../src/modules/api-helpers.js';
 
 const { NODE_ENV, BUGSNAG_KEY } = process.env;
 
