@@ -1,7 +1,6 @@
-import { nanoid } from 'nanoid';
-
-import { MongoClient } from 'mongodb';
 import Bugsnag from '@bugsnag/js';
+import { MongoClient } from 'mongodb';
+import { nanoid } from 'nanoid';
 
 const { MONGO_DB_NAME, MONGO_DB_COLLECTION, MONGO_DB_URL } = process.env;
 
@@ -19,12 +18,14 @@ export const initMongoDb = async (mongoDbUrl) => {
     .catch((error) => {
       handleError(error);
     });
+
   return dbClient;
 };
 
 export const shortenURL = async (url) => {
   const dbClient = await initMongoDb(MONGO_DB_URL);
   const shortenedLinks = dbClient.collection(MONGO_DB_COLLECTION);
+
   return shortenedLinks.findOneAndUpdate(
     { original_url: url },
     {
@@ -44,5 +45,6 @@ export const checkIfShortIdExists = async (dbClient, shortId) => {
   const result = await dbClient
     .collection(MONGO_DB_COLLECTION)
     .findOne({ short_id: shortId });
+
   return result;
 };
