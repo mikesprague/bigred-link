@@ -30,14 +30,13 @@ export default async (req, res) => {
 
       return res.redirect(original_url);
     } catch (error) {
-      res.status(400).json({
-        errorCode: 400,
-        errorMessage: `Invalid Request: No matching short link found for /${shortId}`,
-      });
+      console.error(
+        `Invalid Request: No matching short link found for /${shortId}`,
+      );
     }
   }
 
-  res.status(404).json({
+  return res.status(404).json({
     errorCode: 404,
     errorMessage: '404 Not Found',
   });
