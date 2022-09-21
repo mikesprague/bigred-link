@@ -13,20 +13,18 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
 
 ### Uses (incoplete list)
 
-- React 17.x
-- Tailwind CSS 2.x
-- Webpack 5.x
-- Font Awesome 5.x
+- React
+- Tailwind CSS
+- Vite
+- Font Awesome
 - Bugsnag
-- Logrocket
-- Snyk
-- MongoDB
 - Vercel
+- MongoDB Atlas
 
 ## Running locally
 
 1. Clone this repo and go into the directory
-1. Rename `sample.env` to .`.env` and edit the file to set the required values for:
+1. Rename `sample.dev.vars` to .`.dev.vars` and edit the file to set the required values for:
     - `MONGO_DB_COLLECTION`
     - `MONGO_DB_NAME`
     - `MONGO_DB_URL`
