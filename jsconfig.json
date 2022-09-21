@@ -2,17 +2,20 @@
   "compilerOptions": {
     "checkJs": true,
     "experimentalDecorators": true,
-    "target": "es2020"
+    "target": "esnext",
+    "module": "esnext"
   },
   "exclude": [
     "node_modules",
     ".vscode",
     ".history",
     ".git",
+    "build",
     "public",
   ],
   "include": [
-    "api/**/*.js",
-    "src/js/**/*.js",
+    "src/components/**/*",
+    "src/modules/**/*",
+    "api/**/*"
   ]
 }

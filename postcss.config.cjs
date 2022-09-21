@@ -9,14 +9,6 @@ const cssSafelistClassArray = [
   /start-over-link/,
 ];
 
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  // Specify the paths to all of the template files in your project
-  content: ['./static/index.html', './src/components/**/*.js'],
-  fontFace: false,
-  safelist: cssSafelistClassArray,
-});
-
-// Export all plugins our postcss should use
 module.exports = {
   plugins: [
     require('autoprefixer'),
@@ -24,7 +16,16 @@ module.exports = {
     require('cssnano')({
       preset: 'default',
     }),
-    [purgecss],
-    // ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+    require('@fullhuman/postcss-purgecss')({
+      content: [
+        './src/index.html',
+        './src/index.jsx',
+        './src/components/*.jsx',
+        './src/modules/*.jsx',
+        './src/modules/*.js',
+      ],
+      fontFace: false,
+      safelist: cssSafelistClassArray,
+    }),
   ],
 };
