@@ -11,7 +11,7 @@ or another provider of your choice).
 
 This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will need to create a free account and set up a project to get a Bugsnag key.
 
-### Uses (incoplete list)
+### Uses (incomplete list)
 
 - React
 - Tailwind CSS
@@ -29,6 +29,7 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
     - `MONGO_DB_NAME`
     - `MONGO_DB_URL`
     - `BUGSNAG_KEY`
+    - `VITE_BUGSNAG_KEY` (same as `BUGSNAG_KEY`)
     - `FONT_AWESOME_TOKEN`
 1. Install dependencies by running: `npm install`
 1. Start the project: `npm start`
