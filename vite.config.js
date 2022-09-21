@@ -41,7 +41,6 @@ export default defineConfig({
         name: 'BigRed.link | URL Shortener',
         short_name: 'BigRed.link',
         description: 'A big red URL shortener',
-        author: 'Michael Sprague',
         icons: [
           {
             src: '/images/icon-16.png',
