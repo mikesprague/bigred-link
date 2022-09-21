@@ -2,8 +2,10 @@ README.md
 jsconfig.json
 LICENSE
 .editorConfig
-react-tailwindcss-vercel-starter.code-workspace
+*.code-workspace
 .env
 sample.env
+.dev.vars
+sample.dev.vars
 .devcontainer/
-
+dev-dist/
