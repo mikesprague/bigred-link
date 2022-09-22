@@ -23,7 +23,7 @@ export default defineConfig({
       filename: 'service-worker.js',
       manifestFilename: 'bigred-link.webmanifest',
       workbox: {
-        navigateFallbackDenylist: [/^\/api/, /\/[a-zA-Z0-9-_]{7}^/],
+        navigateFallbackDenylist: [/^\/api/, /\/[a-zA-Z0-9-_]{7}/],
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
