@@ -21,25 +21,21 @@ main {
 }
 
 .input-group {
-  @apply whitespace-nowrap;
-  @apply flex-nowrap;
+  @apply whitespace-normal sm:whitespace-nowrap;
+  @apply flex-wrap sm:flex-nowrap;
   @apply w-full;
-  @apply sm:max-w-screen-sm;
-  @apply md:max-w-screen-md;
-  @apply lg:max-w-screen-lg;
-  @apply xl:max-w-screen-xl;
   @apply mx-auto;
 
   .url-input {
     @apply border-opacity-0;
-    @apply mb-3;
-    @apply mr-0;
-    @apply text-lg;
+    @apply mb-0 sm:mb-3;
+    @apply sm:mr-0;
+    @apply text-base sm:text-lg;
     @apply rounded;
-    @apply rounded-r-none;
+    @apply rounded-b-none sm:rounded-r-none;
     @apply px-4;
     @apply py-3;
-    @apply w-4/5;
+    @apply w-full sm:w-4/5;
 
     @apply text-center;
     @apply focus:outline-none;
@@ -62,13 +58,12 @@ main {
     @apply border-solid;
     @apply border-dark-grey;
     @apply text-white;
-    @apply text-lg;
-    @apply ml-0;
-    @apply mr-4;
+    @apply text-base sm:text-lg;
+    @apply w-full sm:w-auto;
+    @apply sm:ml-0;
     @apply px-4;
     @apply py-3;
-    @apply rounded;
-    @apply rounded-l-none;
+    @apply rounded rounded-t-none sm:rounded-t sm:rounded-l-none;
 
     &:hover {
       @apply text-red-graphics;
