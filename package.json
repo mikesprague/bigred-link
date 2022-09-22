@@ -30,9 +30,9 @@
     "url": "https://github.com/mikesprague/bigred-link/issues"
   },
   "dependencies": {
-    "@bugsnag/core": "7.17.4",
-    "@bugsnag/js": "7.17.4",
-    "@bugsnag/plugin-react": "7.17.4",
+    "@bugsnag/core": "7.18.0",
+    "@bugsnag/js": "7.18.0",
+    "@bugsnag/plugin-react": "7.18.0",
     "@fortawesome/fontawesome-svg-core": "6.2.0",
     "@fortawesome/free-brands-svg-icons": "6.2.0",
     "@fortawesome/free-regular-svg-icons": "6.2.0",
