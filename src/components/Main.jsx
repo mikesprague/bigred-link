@@ -26,7 +26,6 @@ export const Main = () => {
       url: '/api/new-shortlink',
       method: 'POST',
       data: { link },
-      proxy: false,
     })
       .then((response) => {
         const resultTemplate = getResultMarkup(
@@ -54,10 +53,6 @@ export const Main = () => {
       initCopyToClipboard();
     }
   }, [results, setResults]);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
 
   return (
     <main>
