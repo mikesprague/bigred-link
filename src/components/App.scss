@@ -12,16 +12,6 @@ footer {
   @apply w-screen;
 }
 
-.page-title {
-  @apply text-5xl;
-  @apply mb-12;
-  font-family: 'Graduate', cursive;
-  @apply my-6;
-  @apply text-4xl;
-  @apply font-bold;
-  @apply text-center;
-}
-
 main {
   @apply items-center;
   @apply content-center;
@@ -50,7 +40,7 @@ main {
     @apply px-4;
     @apply py-3;
     @apply w-4/5;
-    
+
     @apply text-center;
     @apply focus:outline-none;
     @apply focus:shadow-none;
@@ -132,19 +122,4 @@ main {
   @apply cursor-pointer;
   @apply text-base;
   @apply no-underline;
-}
-
-footer {
-  .copyright-text {
-    @apply mb-1;
-    @apply text-xs;
-    @apply text-center;
-  }
-
-  .no-affiliation-text {
-    @apply mb-1;
-    @apply text-xs;
-    @apply italic;
-    @apply text-center;
-  }
 }
