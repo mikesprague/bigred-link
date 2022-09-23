@@ -23,7 +23,11 @@ export default defineConfig({
       filename: 'service-worker.js',
       manifestFilename: 'bigred-link.webmanifest',
       workbox: {
-        navigateFallbackDenylist: [/^\/api/, /\/[a-zA-Z0-9-_]{7}/],
+        navigateFallbackDenylist: [
+          /^\/api/,
+          /\/[\w-]{7}/,
+          /^chrome-extension:\/\/.*/,
+        ],
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
@@ -38,7 +42,7 @@ export default defineConfig({
       ],
       manifest: {
         version,
-        name: 'BigRed.link | URL Shortener',
+        name: 'BigRed.link | A big red URL shortener',
         short_name: 'BigRed.link',
         description: 'A big red URL shortener',
         icons: [
