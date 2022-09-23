@@ -32,7 +32,7 @@ main {
     @apply sm:mr-0;
     @apply text-base sm:text-lg;
     @apply rounded;
-    @apply rounded-b-none sm:rounded-r-none;
+    @apply rounded-b-none sm:rounded-l sm:rounded-r-none;
     @apply px-4;
     @apply py-3;
     @apply w-full sm:w-4/5;
