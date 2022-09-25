@@ -101,6 +101,7 @@ export default defineConfig({
         ],
         homepage_url: 'https://bigred.link/',
         scope: '/',
+	id: '/',
         start_url: '/',
         display: 'standalone',
         background_color: '#b31b1b',
