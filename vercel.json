@@ -33,7 +33,7 @@
         },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://bigred.link"
+          "value": "*"
         }
       ]
     }
