@@ -9,6 +9,10 @@ if (NODE_ENV === 'production') {
 }
 
 export default async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    return res.status(200).send('');
+  }
+  
   let originalUrl;
 
   try {
@@ -21,6 +25,7 @@ export default async (req, res) => {
   try {
     const result = await shortenURL(originalUrl.href);
 
+    res.setHeader('Cache-Control', 'max-age=300, s-maxage=300');
     res.status(200).json({
       original_url: result.original_url,
       short_id: result.short_id,
