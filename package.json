@@ -177,7 +177,7 @@
       "no-console": "warn",
       "node/no-unpublished-import": "warn",
       "node/no-missing-import": "warn",
-      "import/extensions": "warn"
+      "import/extensions": "off"
     }
   },
   "prettier": {
