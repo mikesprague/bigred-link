@@ -19,19 +19,21 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
 - Bugsnag
 - Vercel
 - Supabase
+- Google Safe Browsing API
 
 ## Running locally
 
 1. Clone this repo and go into the directory
-1. Rename `sample.dev.vars` to `.dev.vars` and edit the file to set the required values for:
+1. Rename `sample.env` to `.env` and edit the file to set the required values for:
     - `SUPABASE_DB_TABLE`
     - `SUPABASE_ANON_PUB_KEY`
     - `SUPABASE_URL`
     - `BUGSNAG_KEY`
     - `VITE_BUGSNAG_KEY` (same as `BUGSNAG_KEY`)
+    - `GOOGLE_SAFE_BROWSING_API_KEY`
 1. Install dependencies by running: `npm install`
 1. Start the project: `npm start`
-1. Visit [http://localhost:3000](http://localhost:3000) in your browser
+1. get localhost URL provided in terminal and visit in your browser
 
 ---
 
