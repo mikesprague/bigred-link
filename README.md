@@ -10,6 +10,8 @@ You will need a free [Subabase](https://supabase.com/) account to use for the da
 
 This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will need to create a free account and set up a project to get a Bugsnag key.
 
+You will also need a Google Developer account with a free [Safe Browsing](https://developers.google.com/safe-browsing) API key.
+
 ### Uses (incomplete list)
 
 - React
@@ -33,7 +35,7 @@ This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will n
     - `GOOGLE_SAFE_BROWSING_API_KEY`
 1. Install dependencies by running: `npm install`
 1. Start the project: `npm start`
-1. get localhost URL provided in terminal and visit in your browser
+1. Get localhost URL provided in terminal and visit in your browser
 
 ---
 
