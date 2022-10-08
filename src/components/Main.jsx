@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify';
 import axios from 'axios';
 
 import {
+  getErrorMarkup,
   getResultMarkup,
   handleError,
   initCopyToClipboard,
@@ -12,6 +13,7 @@ import {
 export const Main = () => {
   const [link, setLink] = useState('');
   const [results, setResults] = useState('');
+  const [hasError, setHasError] = useState(false);
 
   const inputRef = useRef();
   const buttonRef = useRef();
@@ -28,12 +30,19 @@ export const Main = () => {
       data: { link },
     })
       .then((response) => {
-        const resultTemplate = getResultMarkup(
-          window.location.origin,
-          response.data.short_id,
-        );
+        let resultTemplate;
+
+        if (response.data.errorCode) {
+          resultTemplate = getErrorMarkup(response.data.errorMessage);
+        } else {
+          resultTemplate = getResultMarkup(
+            window.location.origin,
+            response.data.short_id,
+          );
+        }
 
         setResults(resultTemplate);
+        setHasError(true);
 
         return response.data;
       })
@@ -49,10 +58,10 @@ export const Main = () => {
   };
 
   useEffect(() => {
-    if (results) {
+    if (results && !hasError) {
       initCopyToClipboard();
     }
-  }, [results, setResults]);
+  }, [results, hasError]);
 
   return (
     <main>

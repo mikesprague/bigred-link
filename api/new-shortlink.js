@@ -1,6 +1,10 @@
 import Bugsnag from '@bugsnag/js';
 
-import { handleError, shortenURL } from '../src/modules/api-helpers.js';
+import {
+  getSafeBrowsingResults,
+  handleError,
+  shortenURL,
+} from '../src/modules/api-helpers.js';
 
 const { NODE_ENV, BUGSNAG_KEY } = process.env;
 
@@ -8,18 +12,32 @@ if (NODE_ENV === 'production') {
   Bugsnag.start({ apiKey: BUGSNAG_KEY });
 }
 
+// eslint-disable-next-line consistent-return
 export default async (req, res) => {
   if (req.method === 'OPTIONS') {
     return res.status(200).send('');
   }
-  
+
   let originalUrl;
 
   try {
     originalUrl = new URL(req.body.link);
   } catch (error) {
-    Bugsnag.notify(error);
-    res.status(400).json({ error: 'Invalid URL' });
+    handleError(error);
+    res.status(200).json({ errorCode: 400, errorMessage: 'Invalid URL' });
+  }
+
+  try {
+    const safeBrowsingData = await getSafeBrowsingResults(originalUrl.href);
+
+    if (Object.keys(safeBrowsingData).length) {
+      await shortenURL(originalUrl.href, safeBrowsingData);
+      res
+        .status(200)
+        .json({ errorCode: 400, errorMessage: 'URL is reported as unsafe' });
+    }
+  } catch (error) {
+    handleError(error);
   }
 
   try {

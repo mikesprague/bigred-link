@@ -25,13 +25,20 @@ export default async (req, res) => {
     const shortIdExists = await checkIfShortIdExists(supabase, shortId);
 
     try {
-      // eslint-disable-next-line camelcase
-      const { original_url } = shortIdExists;
+      const { original_url: url, suspicious } = shortIdExists;
 
-      return res.redirect(original_url);
+      if (suspicious) {
+        return res.status(400).json({
+          errorCode: 400,
+          errorMessage: 'Original URL has been reported as unsafe',
+        });
+      }
+
+      return res.redirect(url);
     } catch (error) {
       console.error(
         `Invalid Request: No matching short link found for /${shortId}`,
+        error,
       );
     }
   }

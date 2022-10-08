@@ -1,12 +1,15 @@
 import * as clipboard from 'clipboard-polyfill';
+import {
+  faRotateRight,
+  faTriangleExclamation,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
-import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 export const initIcons = () => {
-  library.add(faClipboard, faRotateRight);
+  library.add(faClipboard, faRotateRight, faTriangleExclamation);
 };
 
 export const isProduction = () =>
@@ -82,6 +85,18 @@ export const getResultMarkup = (urlPrefix, shortId) => (
           </a>
         </small>
       </div>
+    </small>
+  </div>
+);
+
+export const getErrorMarkup = (errorMessage) => (
+  <div className="result">
+    <FontAwesomeIcon icon={['fas', 'triangle-exclamation']} fixedWidth />
+    Error
+    <small className="clipboard-text">
+      <br />
+      <br />
+      <div className="clipboard-link">{errorMessage}</div>
     </small>
   </div>
 );
