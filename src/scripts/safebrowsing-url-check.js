@@ -1,0 +1,84 @@
+import axios from 'axios';
+import dotenv from 'dotenv';
+
+import { initSupabase } from '../modules/api-helpers.js';
+
+dotenv.config();
+
+const {
+  SUPABASE_DB_TABLE,
+  GOOGLE_SAFE_BROWSING_API_KEY,
+  npm_package_version: appVersion,
+} = process.env;
+
+const { hrtime } = process;
+
+(async () => {
+  const debugStart = hrtime();
+
+  const supabase = await initSupabase();
+
+  const getAllShortLinks = await supabase.from(SUPABASE_DB_TABLE).select();
+
+  if (getAllShortLinks.data) {
+    const allUrls = getAllShortLinks.data.map((shortLink) => ({
+      url: shortLink.original_url,
+    }));
+
+    const postData = {
+      client: {
+        clientId: 'bigred.link',
+        clientVersion: appVersion,
+      },
+      threatInfo: {
+        threatTypes: [
+          'MALWARE',
+          'SOCIAL_ENGINEERING',
+          'UNWANTED_SOFTWARE',
+          'POTENTIALLY_HARMFUL_APPLICATION',
+          'THREAT_TYPE_UNSPECIFIED',
+        ],
+        platformTypes: ['ANY_PLATFORM'],
+        threatEntryTypes: ['URL'],
+        threatEntries: allUrls,
+      },
+    };
+
+    // console.log(postData);
+
+    const safeBrowsingResults = await axios(
+      `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${GOOGLE_SAFE_BROWSING_API_KEY}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: postData,
+      },
+    ).then((response) => response.data);
+    // console.log(safeBrowsingResults.matches);
+
+    if (safeBrowsingResults.matches) {
+      safeBrowsingResults.matches.forEach(async (item) => {
+        const { url } = item.threat;
+        const updateResults = await supabase
+          .from(SUPABASE_DB_TABLE)
+          .update([
+            {
+              suspicious: true,
+              safe_browsing_data: item,
+            },
+          ])
+          .match({ original_url: url });
+
+        console.log(updateResults);
+      });
+    }
+  }
+
+  const debugEnd = hrtime(debugStart);
+
+  console.log(
+    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`,
+  );
+})();
