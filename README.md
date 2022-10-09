@@ -1,6 +1,6 @@
 # bigred.link
 
-[![Vercel Deployment Status](https://img.shields.io/github/deployments/mikesprague/bigred-link/production?label=Vercel%20%28build%20%26%20deploy%29&logo=Vercel&logoColor=white)](https://vercel.com/m5ls5e/bigred-link/deployments)
+[![Vercel Deployment Status](https://img.shields.io/github/deployments/mikesprague/bigred-link/production?label=Vercel%20%28build%20%26%20deploy%29&logo=Vercel&logoColor=white)](https://vercel.com/m5ls5e/bigred-link/deployments)  [![Automated Safe Browsing Checks](https://github.com/mikesprague/bigred-link/actions/workflows/safebrowsing-url-check.yml/badge.svg)](https://github.com/mikesprague/bigred-link/actions/workflows/safebrowsing-url-check.yml)  
 
 A big red link shortener
 
