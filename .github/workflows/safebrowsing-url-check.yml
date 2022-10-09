@@ -1,4 +1,4 @@
-name: Automated Safe Browsing Runs 
+name: Automated Safe Browsing Checks
 
 on:
   # run daily
