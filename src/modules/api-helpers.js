@@ -16,8 +16,6 @@ const {
   npm_package_version: appVersion,
 } = process.env;
 
-console.log('in helpers');
-
 export const handleError = (error) => {
   console.error(error);
 
@@ -25,8 +23,6 @@ export const handleError = (error) => {
     Bugsnag.notify(error);
   }
 };
-
-console.log(SUPABASE_URL, SUPABASE_ANON_PUB_KEY);
 
 export const initSupabase = async () => {
   const supabase = await createClient(SUPABASE_URL, SUPABASE_ANON_PUB_KEY);
