@@ -9,6 +9,11 @@ on:
 
 env:
   NODE_VERSION: "18.x"
+  SUPABASE_DB_TABLE: ${{ secrets.SUPABASE_DB_TABLE }}
+  SUPABASE_ANON_PUB_KEY: ${{ secrets.SUPABASE_ANON_PUB_KEY }}
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  GOOGLE_SAFE_BROWSING_API_KEY: ${{ secrets.GOOGLE_SAFE_BROWSING_API_KEY }}
+  BUGSNAG_KEY: ${{ secrets.BUGSNAG_KEY }}
 
 jobs:
   check-all-urls-in-db:
