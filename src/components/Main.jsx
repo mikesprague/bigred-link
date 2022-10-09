@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify';
 import axios from 'axios';
 
 import {
+  getClientGeoIpInfo,
   getErrorMarkup,
   getResultMarkup,
   handleError,
@@ -24,10 +25,12 @@ export const Main = () => {
     buttonRef.current.disabled = true;
     inputRef.current.disabled = true;
 
+    const clientData = await getClientGeoIpInfo();
+
     await axios({
       url: '/api/new-shortlink',
       method: 'POST',
-      data: { link },
+      data: { link, clientData },
     })
       .then((response) => {
         let resultTemplate;

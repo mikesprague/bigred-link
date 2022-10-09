@@ -27,11 +27,13 @@ export default async (req, res) => {
     res.status(200).json({ errorCode: 400, errorMessage: 'Invalid URL' });
   }
 
+  const { clientData } = req.body;
+
   try {
     const safeBrowsingData = await getSafeBrowsingResults(originalUrl.href);
 
     if (Object.keys(safeBrowsingData).length) {
-      await shortenURL(originalUrl.href, safeBrowsingData);
+      await shortenURL(originalUrl.href, clientData, safeBrowsingData);
       res
         .status(200)
         .json({ errorCode: 400, errorMessage: 'URL is reported as unsafe' });
@@ -41,7 +43,7 @@ export default async (req, res) => {
   }
 
   try {
-    const result = await shortenURL(originalUrl.href);
+    const result = await shortenURL(originalUrl.href, clientData);
 
     res.setHeader('Cache-Control', 'max-age=300, s-maxage=300');
     res.status(200).json({

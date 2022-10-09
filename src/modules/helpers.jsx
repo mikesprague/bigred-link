@@ -5,8 +5,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import axios from 'axios';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
+
+const apiKey = import.meta.env.VITE_ABSTRACT_GEO_IP_API_KEY;
 
 export const initIcons = () => {
   library.add(faClipboard, faRotateRight, faTriangleExclamation);
@@ -15,6 +18,17 @@ export const initIcons = () => {
 export const isProduction = () =>
   window.location.hostname !== 'localhost' &&
   window.location.hostname !== '127.0.0.1';
+
+export const getClientGeoIpInfo = async () => {
+  const geoIpData = await axios
+    .get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+
+  // console.log(geoIpData);
+
+  return geoIpData;
+};
 
 export const initCopyToClipboard = () => {
   const cbLink = document.querySelector('.clipboard-link');

@@ -27,7 +27,11 @@ export const initSupabase = async () => {
   return supabase;
 };
 
-export const shortenURL = async (url, safeBrowsingData = {}) => {
+export const shortenURL = async (
+  url,
+  clientInfo = {},
+  safeBrowsingData = {},
+) => {
   const supabase = await initSupabase();
   let toReturn;
 
@@ -46,6 +50,7 @@ export const shortenURL = async (url, safeBrowsingData = {}) => {
           submissions: submissionsCount,
           suspicious: Boolean(Object.keys(safeBrowsingData).length),
           safe_browsing_data: safeBrowsingData,
+          client_info: clientInfo,
         },
       ])
       .match({ short_id: data[0].short_id });
@@ -60,6 +65,7 @@ export const shortenURL = async (url, safeBrowsingData = {}) => {
           original_url: url,
           suspicious: Boolean(Object.keys(safeBrowsingData).length),
           safe_browsing_data: safeBrowsingData,
+          client_info: clientInfo,
         },
       ]);
 
