@@ -20,9 +20,9 @@ module.exports = {
       content: [
         './src/index.html',
         './src/index.jsx',
-        './src/components/*.jsx',
-        './src/modules/*.jsx',
-        './src/modules/*.js',
+        './src/components/**/*.jsx',
+        './src/modules/**/*.jsx',
+        './src/modules/**/**.js',
       ],
       fontFace: false,
       safelist: cssSafelistClassArray,
