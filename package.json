@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "check-all-urls": "node ./src/scripts/safe-browsing-url-check.js",
     "clean": "rm -rf ./build",
     "dev": "vite serve --port $PORT",
     "prebuild": "npm run clean",
