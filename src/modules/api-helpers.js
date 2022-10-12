@@ -36,7 +36,8 @@ export const shortenURL = async (
   safeBrowsingData = {},
 ) => {
   const supabase = await initSupabase();
-  let toReturn;
+
+  let shortId;
 
   const { data, error } = await supabase
     .from(SUPABASE_DB_TABLE)
@@ -46,7 +47,8 @@ export const shortenURL = async (
   if (data && data[0] && data[0].short_id) {
     const submissionsCount = data[0].submissions + 1;
 
-    const { data: returnData, error: returnError } = await supabase
+    shortId = data[0].short_id;
+    const updateResults = await supabase
       .from(SUPABASE_DB_TABLE)
       .update([
         {
@@ -56,24 +58,28 @@ export const shortenURL = async (
           client_info: clientInfo,
         },
       ])
-      .match({ short_id: data[0].short_id });
-
-    [toReturn] = returnData;
+      .match({ short_id: shortId });
   } else {
+    shortId = nanoid(7);
     const { data: returnData, error: returnError } = await supabase
       .from(SUPABASE_DB_TABLE)
       .insert([
         {
-          short_id: nanoid(7),
+          short_id: shortId,
           original_url: url,
           suspicious: Boolean(Object.keys(safeBrowsingData).length),
           safe_browsing_data: safeBrowsingData,
           client_info: clientInfo,
         },
       ]);
-
-    [toReturn] = returnData;
   }
+
+  const results = await supabase
+    .from(SUPABASE_DB_TABLE)
+    .select('short_id, original_url, submissions')
+    .eq('short_id', shortId);
+
+  const [toReturn] = results.data;
 
   return toReturn;
 };
