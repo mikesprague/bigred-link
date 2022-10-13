@@ -4,7 +4,7 @@ import BugsnagPluginReact from '@bugsnag/plugin-react';
 import { createRoot } from 'react-dom/client';
 import { registerSW } from 'virtual:pwa-register';
 
-import { App } from './components/App';
+import { App } from './components/App.jsx';
 
 import { initIcons } from './modules/helpers.jsx';
 

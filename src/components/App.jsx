@@ -5,7 +5,7 @@ import './App.scss';
 import { Footer } from './Footer.jsx';
 import { Header } from './Header.jsx';
 import { Main } from './Main.jsx';
-import { PageWrapper } from './PageWrapper';
+import { PageWrapper } from './PageWrapper.jsx';
 
 export const App = () => (
   <PageWrapper>
