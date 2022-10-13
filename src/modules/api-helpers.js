@@ -41,7 +41,7 @@ export const shortenURL = async (
 
   const { data, error } = await supabase
     .from(SUPABASE_DB_TABLE)
-    .select('short_id, original_url, submissions')
+    .select('short_id, original_url, submissions, visits')
     .eq('original_url', url);
 
   if (data && data[0] && data[0].short_id) {
@@ -76,7 +76,7 @@ export const shortenURL = async (
 
   const results = await supabase
     .from(SUPABASE_DB_TABLE)
-    .select('short_id, original_url, submissions')
+    .select('short_id, original_url, submissions, visits')
     .eq('short_id', shortId);
 
   const [toReturn] = results.data;
