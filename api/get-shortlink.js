@@ -34,19 +34,19 @@ export default async (req, res) => {
         });
       }
 
-      try {
-        const visitsCount = Number(visits) + 1;
+      const visitsCount = Number(visits) + 1;
 
-        await supabase
-          .from(SUPABASE_DB_TABLE)
-          .update([
-            {
-              visits: visitsCount,
-            },
-          ])
-          .match({ short_id: shortId });
-      } catch (error) {
-        console.error(error);
+      const updateResults = await supabase
+        .from(SUPABASE_DB_TABLE)
+        .update([
+          {
+            visits: visitsCount,
+          },
+        ])
+        .match({ short_id: shortId });
+
+      if (updateResults.error) {
+        console.error(updateResults.error);
       }
 
       return res.redirect(url);
