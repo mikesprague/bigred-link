@@ -5,7 +5,7 @@ import {
   initSupabase,
 } from '../src/modules/api-helpers.js';
 
-const { NODE_ENV, BUGSNAG_KEY } = process.env;
+const { NODE_ENV, BUGSNAG_KEY, SUPABASE_DB_TABLE } = process.env;
 
 if (NODE_ENV === 'production') {
   Bugsnag.start({ apiKey: BUGSNAG_KEY });
@@ -25,13 +25,28 @@ export default async (req, res) => {
     const shortIdExists = await checkIfShortIdExists(supabase, shortId);
 
     try {
-      const { original_url: url, suspicious } = shortIdExists;
+      const { original_url: url, suspicious, visits } = shortIdExists;
 
       if (suspicious) {
         return res.status(400).json({
           errorCode: 400,
           errorMessage: 'Original URL has been reported as unsafe',
         });
+      }
+
+      try {
+        const visitsCount = Number(visits) + 1;
+
+        await supabase
+          .from(SUPABASE_DB_TABLE)
+          .update([
+            {
+              visits: visitsCount,
+            },
+          ])
+          .match({ short_id: shortId });
+      } catch (error) {
+        console.error(error);
       }
 
       return res.redirect(url);
