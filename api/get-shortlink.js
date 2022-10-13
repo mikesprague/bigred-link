@@ -34,7 +34,11 @@ export default async (req, res) => {
         });
       }
 
-      const visitsCount = Number(visits) + 1;
+      let visitsCount = 1;
+
+      if (visits && Number.isInteger(visits)) {
+        visitsCount = Number(visits) + 1;
+      }
 
       const updateResults = await supabase
         .from(SUPABASE_DB_TABLE)
