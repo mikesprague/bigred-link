@@ -1,0 +1,42 @@
+name: Database Maintenance
+
+on:
+  # run daily
+  schedule:
+    - cron: "0 6/12 * * *"
+  # allow manual runs from GH
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: "18.x"
+  SUPABASE_DB_TABLE: ${{ secrets.SUPABASE_DB_TABLE }}
+  SUPABASE_ANON_PUB_KEY: ${{ secrets.SUPABASE_ANON_PUB_KEY }}
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  EXPORT_FILE_NAME: "bigred-links-db-backup.json"
+  EXPORT_FILE_DIR: "./"
+
+jobs:
+  back-up-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 👷  Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: 🏗️  Setup Node.js ${{ env.NODE_VERSION }} environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          check-latest: true
+
+      - name: ⬆️  Update npm and install dependencies
+        run: npm install --location=global npm && npm install --omit=dev
+
+      - name: 🏃‍♂️  Run script to check all URLs in db against Google Safe Browsing API
+        run: npm run back-up-db
+
+      - name: 📎  Attach DB export JSON to workflow run
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.EXPORT_FILE_NAME }}
+          path: ${{ env.EXPORT_FILE_DIR }}${{ env.EXPORT_FILE_NAME }}
+          retention-days: 90
