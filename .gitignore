@@ -126,3 +126,5 @@ build
 .vercel
 .dev.vars
 dev-dist/
+
+bigred-links-db-backup.json
