@@ -9,6 +9,7 @@
     "npm": ">= 8.x"
   },
   "scripts": {
+    "back-up-db": "node ./src/utils/back-up-db.js",
     "build": "vite build",
     "check-all-urls": "node ./src/utils/safe-browsing-url-check.js",
     "clean": "rm -rf ./build",
