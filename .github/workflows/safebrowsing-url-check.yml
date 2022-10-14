@@ -33,4 +33,3 @@ jobs:
 
       - name: 🏃‍♂️  Run script to check all URLs in db against Google Safe Browsing API
         run: npm run check-all-urls
-
