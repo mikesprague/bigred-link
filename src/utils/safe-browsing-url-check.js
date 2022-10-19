@@ -69,7 +69,8 @@ const { hrtime } = process;
               safe_browsing_data: item,
             },
           ])
-          .match({ original_url: url });
+          .match({ original_url: url })
+          .select();
 
         console.log(updateResults);
       });

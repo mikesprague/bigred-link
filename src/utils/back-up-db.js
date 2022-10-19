@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import fs from 'fs';
+import fs from 'node:fs';
 
 import { initSupabase } from '../modules/api-helpers.js';
 
