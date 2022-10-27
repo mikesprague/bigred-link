@@ -41,7 +41,7 @@ export const shortenURL = async (
 
   const { data, error } = await supabase
     .from(SUPABASE_DB_TABLE)
-    .select('short_id, original_url, submissions, visits')
+    .select('short_id, original_url, visits, submissions, visits')
     .eq('original_url', url);
 
   let queryResults = null;
@@ -62,7 +62,7 @@ export const shortenURL = async (
       ])
       .match({ short_id: shortId })
       .select();
-      //console.log(queryResults);
+    // console.log(queryResults);
   } else {
     shortId = nanoid(7);
     queryResults = await supabase
@@ -77,7 +77,7 @@ export const shortenURL = async (
         },
       ])
       .select();
-      //console.log(queryResults);
+    // console.log(queryResults);
   }
 
   const [toReturn] = queryResults.data;
@@ -89,7 +89,7 @@ export const checkIfShortIdExists = async (supabase, shortId) => {
   const { data } = await supabase
     .from(SUPABASE_DB_TABLE)
     .select(
-      'short_id, original_url, submissions, suspicious, safe_browsing_data',
+      'short_id, original_url, submissions, visits, suspicious, safe_browsing_data',
     )
     .eq('short_id', shortId);
 
