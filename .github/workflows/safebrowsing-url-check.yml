@@ -3,7 +3,7 @@ name: Automated Safe Browsing Checks
 on:
   # run daily
   schedule:
-    - cron: "0 1/6 * * *"
+    - cron: "0 1/4 * * *"
   # allow manual runs from GH
   workflow_dispatch:
 
