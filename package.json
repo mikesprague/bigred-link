@@ -87,7 +87,7 @@
     "stylelint-config-standard-scss": "6.1.0",
     "stylelint-prettier": "2.0.0",
     "tailwindcss": "3.2.4",
-    "vercel": "28.4.17",
+    "vercel": "28.5.1",
     "vite": "3.2.3",
     "vite-plugin-html": "3.2.0",
     "vite-plugin-pwa": "0.13.3"
