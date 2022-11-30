@@ -40,6 +40,7 @@
     "@fortawesome/free-regular-svg-icons": "6.2.1",
     "@fortawesome/free-solid-svg-icons": "6.2.1",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@supabase/supabase-js": "2.1.1",
     "axios": "1.2.0",
     "clipboard-polyfill": "3.0.3",
     "dayjs": "1.11.6",
@@ -48,20 +49,20 @@
     "nanoid": "4.0.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@supabase/supabase-js": "2.1.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
     "@babel/eslint-plugin": "7.19.1",
     "@babel/preset-env": "7.20.2",
     "@fullhuman/postcss-purgecss": "5.0.0",
-    "@tailwindcss/typography": "0.5.8",
     "@tailwindcss/forms": "0.5.3",
+    "@tailwindcss/typography": "0.5.8",
     "@vitejs/plugin-react": "2.2.0",
     "autoprefixer": "10.4.13",
     "babel-plugin-add-react-displayname": "0.0.5",
     "cssnano": "5.1.14",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.28.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",
@@ -187,5 +188,10 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "all"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
