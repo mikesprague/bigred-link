@@ -44,7 +44,7 @@
     "axios": "1.2.2",
     "clipboard-polyfill": "3.0.3",
     "dayjs": "1.11.7",
-    "dompurify": "2.4.1",
+    "dompurify": "2.4.3",
     "dotenv": "16.0.3",
     "nanoid": "4.0.0",
     "prop-types": "15.8.1",
