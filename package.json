@@ -41,7 +41,7 @@
     "@fortawesome/free-solid-svg-icons": "6.2.1",
     "@fortawesome/react-fontawesome": "0.2.0",
     "@supabase/supabase-js": "2.4.1",
-    "axios": "1.2.5",
+    "axios": "1.2.6",
     "clipboard-polyfill": "3.0.3",
     "dayjs": "1.11.7",
     "dompurify": "2.4.3",
