@@ -67,7 +67,7 @@
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.6.0",
     "eslint-config-stylelint": "17.1.0",
-    "eslint-plugin-compat": "4.1.0",
+    "eslint-plugin-compat": "4.1.1",
     "eslint-plugin-html": "7.1.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
@@ -84,14 +84,14 @@
     "sass": "1.58.0",
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-prettier-scss": "0.0.1",
-    "stylelint-config-standard": "29.0.0",
+    "stylelint-config-standard": "30.0.0",
     "stylelint-config-standard-scss": "6.1.0",
     "stylelint-prettier": "2.0.0",
-    "tailwindcss": "3.2.4",
+    "tailwindcss": "3.2.6",
     "vercel": "28.15.3",
     "vite": "4.1.1",
     "vite-plugin-html": "3.2.0",
-    "vite-plugin-pwa": "0.14.2"
+    "vite-plugin-pwa": "0.14.3"
   },
   "babel": {
     "presets": [
