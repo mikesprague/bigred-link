@@ -61,7 +61,7 @@
     "@vitejs/plugin-react-swc": "3.3.0",
     "autoprefixer": "10.4.14",
     "babel-plugin-add-react-displayname": "0.0.5",
-    "cssnano": "6.0.0",
+    "cssnano": "6.0.1",
     "cz-git": "^1.6.1",
     "eslint": "8.39.0",
     "eslint-config-airbnb": "19.0.4",
