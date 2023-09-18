@@ -57,7 +57,7 @@ export default async (req, res) => {
     } catch (error) {
       console.error(
         `Invalid Request: No matching short link found for /${shortId}`,
-        error,
+        error
       );
     }
   }

@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
 import fs from 'node:fs';
+import dotenv from 'dotenv';
 
 import { initSupabase } from '../modules/api-helpers.js';
 
@@ -24,13 +24,13 @@ const { hrtime } = process;
   if (getAllShortLinks.data) {
     await fs.writeFileSync(
       `${config.workingDir}${config.fileName}`,
-      JSON.stringify(getAllShortLinks.data, null, 2),
+      JSON.stringify(getAllShortLinks.data, null, 2)
     );
   }
 
   const debugEnd = hrtime(debugStart);
 
   console.log(
-    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`,
+    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`
   );
 })();

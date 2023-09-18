@@ -4,7 +4,13 @@ module.exports = {
     'scss/at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
+        ignoreAtRules: [
+          'tailwind',
+          'apply',
+          'variants',
+          'responsive',
+          'screen',
+        ],
       },
     ],
     'declaration-block-trailing-semicolon': null,
@@ -13,4 +19,3 @@ module.exports = {
     'at-rule-no-unknown': null,
   },
 };
-

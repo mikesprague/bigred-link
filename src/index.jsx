@@ -1,6 +1,6 @@
-import React, { StrictMode } from 'react';
 import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { registerSW } from 'virtual:pwa-register';
 
@@ -48,7 +48,7 @@ root.render(
     <StrictMode>
       <App />
     </StrictMode>
-  </ErrorBoundary>,
+  </ErrorBoundary>
 );
 
 registerSW({

@@ -1,8 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable node/no-unpublished-import */
-import { VitePWA } from 'vite-plugin-pwa';
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 import { version } from './package.json';
 
 export default defineConfig({
@@ -103,7 +101,7 @@ export default defineConfig({
         scope: '/',
         id: '/',
         start_url: '/',
-        display: 'standalone',    
+        display: 'standalone',
         background_color: '#b31b1b',
         theme_color: '#222',
       },

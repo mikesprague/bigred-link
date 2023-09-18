@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/no-autofocus */
-import React, { useEffect, useRef, useState } from 'react';
-import DOMPurify from 'dompurify';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
+import React, { useEffect, useRef, useState } from 'react';
 
 import {
   getClientGeoIpInfo,
@@ -40,7 +39,7 @@ export const Main = () => {
         } else {
           resultTemplate = getResultMarkup(
             window.location.origin,
-            response.data.short_id,
+            response.data.short_id
           );
         }
 
@@ -77,6 +76,7 @@ export const Main = () => {
             name="link"
             id="link"
             required
+            // biome-ignore lint/a11y/noAutofocus: <explanation>
             autoFocus
             value={link}
             ref={inputRef}

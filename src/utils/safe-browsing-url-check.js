@@ -54,7 +54,7 @@ const { hrtime } = process;
           'Content-Type': 'application/json',
         },
         data: postData,
-      },
+      }
     ).then((response) => response.data);
     // console.log(safeBrowsingResults.matches);
 
@@ -80,6 +80,6 @@ const { hrtime } = process;
   const debugEnd = hrtime(debugStart);
 
   console.log(
-    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`,
+    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`
   );
 })();

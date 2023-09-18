@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import Bugsnag from '@bugsnag/js';
-import axios from 'axios';
 import { createClient } from '@supabase/supabase-js';
+import axios from 'axios';
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 
@@ -33,7 +32,7 @@ export const initSupabase = async () => {
 export const shortenURL = async (
   url,
   clientInfo = {},
-  safeBrowsingData = {},
+  safeBrowsingData = {}
 ) => {
   const supabase = await initSupabase();
 
@@ -46,7 +45,7 @@ export const shortenURL = async (
 
   let queryResults = null;
 
-  if (data && data[0] && data[0].short_id) {
+  if (data[0]?.short_id) {
     const submissionsCount = data[0].submissions + 1;
 
     shortId = data[0].short_id;
@@ -89,12 +88,13 @@ export const checkIfShortIdExists = async (supabase, shortId) => {
   const { data } = await supabase
     .from(SUPABASE_DB_TABLE)
     .select(
-      'short_id, original_url, submissions, visits, suspicious, safe_browsing_data',
+      'short_id, original_url, submissions, visits, suspicious, safe_browsing_data'
     )
     .eq('short_id', shortId);
 
   let returnData = data;
 
+  // biome-ignore lint/complexity/useOptionalChain: <explanation>
   if (data && data[0]) {
     [returnData] = data;
   }
@@ -131,7 +131,7 @@ export const getSafeBrowsingResults = async (url) => {
         'Content-Type': 'application/json',
       },
       data: postData,
-    },
+    }
   ).then((response) => response.data);
 
   return safeBrowsingResults;
