@@ -52,7 +52,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.22.20",
+    "@babel/preset-env": "7.23.2",
     "@babel/preset-react": "7.22.15",
     "@biomejs/biome": "1.2.2",
     "@fullhuman/postcss-purgecss": "5.0.0",
