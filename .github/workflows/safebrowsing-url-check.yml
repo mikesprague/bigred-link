@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: "18.x"
+  NODE_VERSION: ${{ vars.NODE_VERSION }}
   SUPABASE_DB_TABLE: ${{ secrets.SUPABASE_DB_TABLE }}
   SUPABASE_ANON_PUB_KEY: ${{ secrets.SUPABASE_ANON_PUB_KEY }}
   SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
