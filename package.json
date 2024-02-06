@@ -63,7 +63,7 @@
     "babel-plugin-add-react-displayname": "0.0.5",
     "cssnano": "6.0.3",
     "cz-git": "^1.8.0",
-    "postcss": "8.4.33",
+    "postcss": "8.4.34",
     "postcss-cli": "11.0.0",
     "sass": "1.70.0",
     "stylelint": "16.2.1",
