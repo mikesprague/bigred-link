@@ -72,7 +72,7 @@
     "vercel": "33.6.1",
     "vite": "5.2.2",
     "vite-plugin-html": "3.2.2",
-    "vite-plugin-pwa": "0.19.5"
+    "vite-plugin-pwa": "0.19.6"
   },
   "babel": {
     "presets": ["@babel/preset-env", "@babel/preset-react"]
