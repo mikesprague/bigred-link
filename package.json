@@ -73,7 +73,11 @@
     "vite-plugin-pwa": "0.20.0"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -84,5 +88,9 @@
     "commitizen": {
       "path": "./node_modules/cz-git"
     }
+  },
+  "volta": {
+    "node": "22.2.0",
+    "npm": "10.8.0"
   }
 }
