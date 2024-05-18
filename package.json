@@ -1,12 +1,12 @@
 {
   "name": "bigred-link",
-  "version": "1.5.15",
+  "version": "1.6.0",
   "description": "A big red URL shortener",
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">= 18.x",
-    "npm": ">= 8.x"
+    "node": ">= 20.x",
+    "npm": ">= 10.x"
   },
   "scripts": {
     "back-up-db": "node ./src/utils/back-up-db.js",
@@ -73,11 +73,7 @@
     "vite-plugin-pwa": "0.20.0"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
