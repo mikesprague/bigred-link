@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { atom, useAtom } from 'jotai';
 import DOMPurify from 'dompurify';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import {
   getClientGeoIpInfo,
@@ -10,48 +11,55 @@ import {
   initCopyToClipboard,
 } from '../modules/helpers.jsx';
 
+export const linkAtom = atom('');
+export const resultsAtom = atom('');
+export const hasErrorAtom = atom(false);
+
 export const Main = () => {
-  const [link, setLink] = useState('');
-  const [results, setResults] = useState('');
-  const [hasError, setHasError] = useState(false);
+  const [link, setLink] = useAtom(linkAtom);
+  const [results, setResults] = useAtom(resultsAtom);
+  const [hasError, setHasError] = useAtom(hasErrorAtom);
 
   const inputRef = useRef();
   const buttonRef = useRef();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
 
-    buttonRef.current.disabled = true;
-    inputRef.current.disabled = true;
+      buttonRef.current.disabled = true;
+      inputRef.current.disabled = true;
 
-    const clientData = await getClientGeoIpInfo();
+      const clientData = await getClientGeoIpInfo();
 
-    await axios({
-      url: '/api/new-shortlink',
-      method: 'POST',
-      data: { link, clientData },
-    })
-      .then((response) => {
-        let resultTemplate;
-
-        if (response.data.errorCode) {
-          resultTemplate = getErrorMarkup(response.data.errorMessage);
-        } else {
-          resultTemplate = getResultMarkup(
-            window.location.origin,
-            response.data.short_id
-          );
-        }
-
-        setResults(resultTemplate);
-        setHasError(true);
-
-        return response.data;
+      await axios({
+        url: '/api/new-shortlink',
+        method: 'POST',
+        data: { link, clientData },
       })
-      .catch((error) => {
-        handleError(error);
-      });
-  };
+        .then((response) => {
+          let resultTemplate;
+
+          if (response.data.errorCode) {
+            resultTemplate = getErrorMarkup(response.data.errorMessage);
+          } else {
+            resultTemplate = getResultMarkup(
+              window.location.origin,
+              response.data.short_id
+            );
+          }
+
+          setResults(resultTemplate);
+          setHasError(true);
+
+          return response.data;
+        })
+        .catch((error) => {
+          handleError(error);
+        });
+    },
+    [link, setResults, setHasError]
+  );
 
   const handleChange = (event) => {
     const inputVal = DOMPurify.sanitize(event.target.value);
