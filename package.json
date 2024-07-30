@@ -64,7 +64,7 @@
     "postcss": "8.4.40",
     "postcss-cli": "11.0.0",
     "sass": "1.77.8",
-    "stylelint": "16.8.0",
+    "stylelint": "16.8.1",
     "stylelint-config-standard": "36.0.1",
     "tailwindcss": "3.4.7",
     "vercel": "35.2.1",
