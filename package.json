@@ -59,7 +59,7 @@
     "@tailwindcss/typography": "0.5.14",
     "@vitejs/plugin-react-swc": "3.7.0",
     "autoprefixer": "10.4.20",
-    "cssnano": "7.0.4",
+    "cssnano": "7.0.5",
     "cz-git": "^1.9.4",
     "postcss": "8.4.41",
     "postcss-cli": "11.0.0",
