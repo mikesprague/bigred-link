@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@bugsnag/core": "8.0.0",
-    "@bugsnag/js": "7.25.0",
+    "@bugsnag/js": "8.0.0",
     "@bugsnag/plugin-react": "8.0.0",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/free-brands-svg-icons": "6.6.0",
