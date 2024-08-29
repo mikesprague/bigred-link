@@ -32,7 +32,7 @@
     "url": "https://github.com/mikesprague/bigred-link/issues"
   },
   "dependencies": {
-    "@bugsnag/core": "7.25.0",
+    "@bugsnag/core": "8.0.0",
     "@bugsnag/js": "7.25.0",
     "@bugsnag/plugin-react": "7.25.0",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
