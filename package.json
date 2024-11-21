@@ -35,7 +35,7 @@
     "@bugsnag/core": "8.1.1",
     "@bugsnag/js": "8.1.2",
     "@bugsnag/plugin-react": "8.1.1",
-    "@fortawesome/fontawesome-svg-core": "6.7.0",
+    "@fortawesome/fontawesome-svg-core": "6.7.1",
     "@fortawesome/free-brands-svg-icons": "6.7.1",
     "@fortawesome/free-regular-svg-icons": "6.7.0",
     "@fortawesome/free-solid-svg-icons": "6.7.0",
