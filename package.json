@@ -42,7 +42,7 @@
     "@fortawesome/react-fontawesome": "0.2.2",
     "@supabase/supabase-js": "2.47.6",
     "axios": "1.7.9",
-    "clipboard-polyfill": "4.1.0",
+    "clipboard-polyfill": "4.1.1",
     "dayjs": "1.11.13",
     "dompurify": "3.2.3",
     "dotenv": "16.4.7",
