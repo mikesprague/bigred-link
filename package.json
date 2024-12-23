@@ -46,7 +46,7 @@
     "dayjs": "1.11.13",
     "dompurify": "3.2.3",
     "dotenv": "16.4.7",
-    "jotai": "2.10.4",
+    "jotai": "2.11.0",
     "nanoid": "5.0.9",
     "prop-types": "15.8.1",
     "react": "19.0.0",
