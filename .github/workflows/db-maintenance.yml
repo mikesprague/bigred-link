@@ -35,7 +35,7 @@ jobs:
         run: npm run back-up-db
 
       - name: 📎  Attach DB export JSON to workflow run
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.EXPORT_FILE_NAME }}
           path: ${{ env.EXPORT_FILE_DIR }}${{ env.EXPORT_FILE_NAME }}
