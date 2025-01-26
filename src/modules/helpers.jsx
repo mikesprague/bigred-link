@@ -5,7 +5,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import axios from 'axios';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -20,11 +19,11 @@ export const isProduction = () =>
   window.location.hostname !== '127.0.0.1';
 
 export const getClientGeoIpInfo = async () => {
-  const geoIpData = await axios
-    .get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`)
-    .then((response) => response.data)
+  const geoIpData = await fetch(
+    `https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`
+  )
+    .then((response) => response.json())
     .catch((error) => console.error(error));
-
   // console.log(geoIpData);
 
   return geoIpData;
@@ -32,11 +31,15 @@ export const getClientGeoIpInfo = async () => {
 
 export const initCopyToClipboard = () => {
   const cbLink = document.querySelector('.clipboard-link');
-  const linkHref = document.querySelector('.result-link').textContent.trim();
+  console.log('cbLink:', cbLink);
+  const linkHref = String(
+    document.querySelector('.result-link').textContent.trim()
+  );
+  console.log('linkHref:', linkHref);
 
-  cbLink.addEventListener('click', (event) => {
+  cbLink.addEventListener('click', async (event) => {
     event.preventDefault();
-    clipboard.writeText(linkHref);
+    // clipboard.writeText(linkHref);
     clipboard.writeText(linkHref).then(
       () => {
         cbLink.textContent = 'Copied!';
@@ -44,7 +47,7 @@ export const initCopyToClipboard = () => {
       },
       (err) => {
         cbLink.textContent = err;
-      },
+      }
     );
   });
 };
@@ -73,10 +76,10 @@ export const handleError = (error) => {
 };
 
 export const getResultMarkup = (urlPrefix, shortId) => (
-  <div className="result">
+  <div className="result bg-zinc-800/75 border-solid rounded-md my-0 mx-auto text-xl text-center p-5 font-normal max-w-3xl">
     <a
       target="_blank"
-      className="result-link"
+      className="result-link text-light-grey text-xl no-underline"
       rel="noopener noreferrer"
       href={`${urlPrefix}/${shortId}`}
     >
@@ -85,17 +88,20 @@ export const getResultMarkup = (urlPrefix, shortId) => (
     <small className="clipboard-text">
       <br />
       <br />
-      <div className="clipboard-link">
+      <div className="clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none">
         <FontAwesomeIcon icon={['far', 'clipboard']} fixedWidth />
-        {` Click here to copy to clipboard`}
+        {' Click here to copy to clipboard'}
       </div>
       <div>
         <br />
         <br />
         <small>
-          <a className="start-over-link" href="/">
+          <a
+            className="start-over-link text-blue-links cursor-pointer text-base no-underline"
+            href="/"
+          >
             <FontAwesomeIcon icon={['fas', 'rotate-right']} fixedWidth />
-            {` Start over`}
+            {' Start over'}
           </a>
         </small>
       </div>

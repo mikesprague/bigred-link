@@ -32,7 +32,7 @@ export default async (req, res) => {
   try {
     const safeBrowsingData = await getSafeBrowsingResults(originalUrl.href);
 
-    if (Object.keys(safeBrowsingData).length) {
+    if (safeBrowsingData && Object.keys(safeBrowsingData).length) {
       await shortenURL(originalUrl.href, clientData, safeBrowsingData);
       res
         .status(200)

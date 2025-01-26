@@ -1,6 +1,5 @@
 import Bugsnag from '@bugsnag/js';
 import { createClient } from '@supabase/supabase-js';
-import axios from 'axios';
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 
@@ -123,16 +122,21 @@ export const getSafeBrowsingResults = async (url) => {
       threatEntries: [{ url }],
     },
   };
-  const safeBrowsingResults = await axios(
+
+  const safeBrowsingResults = await fetch(
     `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${GOOGLE_SAFE_BROWSING_API_KEY}`,
     {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      data: postData,
+      body: JSON.stringify(postData),
     }
-  ).then((response) => response.data);
+  )
+    .then(async (response) => await response.json())
+    .then((data) => {
+      returnData = data;
+    });
 
   return safeBrowsingResults;
 };

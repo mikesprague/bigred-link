@@ -31,7 +31,7 @@
     "enabled": true,
     "formatWithErrors": true,
     "indentStyle": "space",
-    "indentSize": 2,
+    "indentWidth": 2,
     "lineWidth": 80
   },
   "javascript": {
@@ -41,7 +41,7 @@
       "jsxQuoteStyle": "double",
       "quoteStyle": "single",
       "semicolons": "always",
-      "trailingComma": "es5"
+      "trailingCommas": "es5"
     }
   }
 }

@@ -1,11 +1,14 @@
 import React from 'react';
 import { version } from '../../package.json';
 
-import './Header.scss';
+import './Header.css';
 
 export const Header = () => (
-  <header>
-    <h1 className="page-title" title={`BigRed.link v${version}`}>
+  <header className="w-screen">
+    <h1
+      className="page-title mb-12 my-6 text-5xl font-bold text-center"
+      title={`BigRed.link v${version}`}
+    >
       BigRed.link
     </h1>
   </header>

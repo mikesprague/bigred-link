@@ -8,7 +8,7 @@ import { App } from './components/App.jsx';
 
 import { initIcons } from './modules/helpers.jsx';
 
-import './index.scss';
+import './index.css';
 
 window.bugsnagClient = Bugsnag.start({
   apiKey: `${import.meta.env.VITE_BUGSNAG_KEY}`,
