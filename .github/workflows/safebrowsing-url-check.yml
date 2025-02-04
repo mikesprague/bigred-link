@@ -15,6 +15,9 @@ env:
   GOOGLE_SAFE_BROWSING_API_KEY: ${{ secrets.GOOGLE_SAFE_BROWSING_API_KEY }}
   BUGSNAG_KEY: ${{ secrets.BUGSNAG_KEY }}
 
+permissions:
+  contents: read
+
 jobs:
   check-all-urls-in-db:
     runs-on: ubuntu-latest
