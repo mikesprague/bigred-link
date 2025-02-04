@@ -15,6 +15,9 @@ env:
   EXPORT_FILE_NAME: "bigred-links-db-backup.json"
   EXPORT_FILE_DIR: "./"
 
+permissions:
+  contents: write
+
 jobs:
   back-up-db:
     runs-on: ubuntu-latest
