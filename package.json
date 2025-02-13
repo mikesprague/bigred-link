@@ -58,7 +58,7 @@
     "@tailwindcss/vite": "4.0.6",
     "@vitejs/plugin-react-swc": "3.8.0",
     "cz-git": "^1.11.0",
-    "prettier": "3.5.0",
+    "prettier": "3.5.1",
     "prettier-plugin-tailwindcss": "0.6.11",
     "stylelint": "16.14.1",
     "stylelint-config-standard": "37.0.0",
