@@ -57,7 +57,7 @@
     "@tailwindcss/typography": "0.5.16",
     "@tailwindcss/vite": "4.0.9",
     "@vitejs/plugin-react-swc": "3.8.0",
-    "cz-git": "^1.11.0",
+    "cz-git": "^1.11.1",
     "prettier": "3.5.2",
     "prettier-plugin-tailwindcss": "0.6.11",
     "stylelint": "16.15.0",
