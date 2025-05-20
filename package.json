@@ -63,7 +63,7 @@
     "stylelint": "16.19.1",
     "stylelint-config-standard": "38.0.0",
     "tailwindcss": "4.1.7",
-    "vercel": "41.7.8",
+    "vercel": "42.1.0",
     "vite": "6.3.5",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.0.0"
