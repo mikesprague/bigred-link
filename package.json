@@ -60,7 +60,7 @@
     "cz-git": "^1.11.1",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "stylelint": "16.19.1",
+    "stylelint": "16.20.0",
     "stylelint-config-standard": "38.0.0",
     "tailwindcss": "4.1.8",
     "vercel": "42.2.0",
