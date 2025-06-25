@@ -32,7 +32,7 @@ jobs:
           check-latest: true
 
       - name: ⬆️  Update npm and install dependencies
-        run: npm install --location=global npm && npm install --omit=dev
+        run: npm install --location=global npm && npm install --omit=dev --force
 
       - name: 🏃‍♂️  Run script to check all URLs in db against Google Safe Browsing API
         run: npm run back-up-db
