@@ -62,7 +62,7 @@
     "prettier-plugin-tailwindcss": "0.6.13",
     "stylelint": "16.21.0",
     "stylelint-config-standard": "38.0.0",
-    "tailwindcss": "4.1.10",
+    "tailwindcss": "4.1.11",
     "vercel": "^44.2.3",
     "vite": "7.0.0",
     "vite-plugin-html": "3.2.2",
