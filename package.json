@@ -43,7 +43,7 @@
     "@supabase/supabase-js": "2.57.4",
     "clipboard-polyfill": "4.1.1",
     "dayjs": "1.11.18",
-    "dompurify": "3.2.6",
+    "dompurify": "3.2.7",
     "dotenv": "17.2.2",
     "jotai": "2.14.0",
     "nanoid": "5.1.5",
