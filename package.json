@@ -46,7 +46,7 @@
     "dompurify": "3.2.7",
     "dotenv": "17.2.2",
     "jotai": "2.14.0",
-    "nanoid": "5.1.5",
+    "nanoid": "5.1.6",
     "prop-types": "15.8.1",
     "react": "19.1.1",
     "react-dom": "19.1.1"
