@@ -44,7 +44,7 @@
     "clipboard-polyfill": "4.1.1",
     "dayjs": "1.11.18",
     "dompurify": "3.2.7",
-    "dotenv": "17.2.2",
+    "dotenv": "17.2.3",
     "jotai": "2.15.0",
     "nanoid": "5.1.6",
     "prop-types": "15.8.1",
