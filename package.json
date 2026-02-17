@@ -40,7 +40,7 @@
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.2.0",
-    "@supabase/supabase-js": "^2.95.3",
+    "@supabase/supabase-js": "^2.96.0",
     "clipboard-polyfill": "^4.1.1",
     "dayjs": "^1.11.19",
     "dompurify": "^3.3.1",
