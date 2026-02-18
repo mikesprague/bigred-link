@@ -8,6 +8,7 @@
     "node": ">= 22.x",
     "npm": ">= 10.x"
   },
+  "packageManager": "npm@11.10.0",
   "scripts": {
     "back-up-db": "node ./src/utils/back-up-db.js",
     "build": "vite build",
@@ -32,46 +33,48 @@
     "url": "https://github.com/mikesprague/bigred-link/issues"
   },
   "dependencies": {
-    "@bugsnag/core": "^8.8.0",
-    "@bugsnag/js": "^8.8.1",
-    "@bugsnag/plugin-react": "^8.8.0",
-    "@fortawesome/fontawesome-svg-core": "^7.2.0",
-    "@fortawesome/free-brands-svg-icons": "^7.2.0",
-    "@fortawesome/free-regular-svg-icons": "^7.2.0",
-    "@fortawesome/free-solid-svg-icons": "^7.2.0",
-    "@fortawesome/react-fontawesome": "^3.2.0",
-    "@supabase/supabase-js": "^2.97.0",
-    "clipboard-polyfill": "^4.1.1",
-    "dayjs": "^1.11.19",
-    "dompurify": "^3.3.1",
-    "dotenv": "^17.3.1",
-    "jotai": "^2.17.1",
-    "nanoid": "^5.1.6",
-    "prop-types": "^15.8.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "@bugsnag/core": "8.8.0",
+    "@bugsnag/js": "8.8.1",
+    "@bugsnag/plugin-react": "8.8.0",
+    "@fortawesome/fontawesome-svg-core": "7.2.0",
+    "@fortawesome/free-brands-svg-icons": "7.2.0",
+    "@fortawesome/free-regular-svg-icons": "7.2.0",
+    "@fortawesome/free-solid-svg-icons": "7.2.0",
+    "@fortawesome/react-fontawesome": "3.2.0",
+    "@supabase/supabase-js": "2.97.0",
+    "clipboard-polyfill": "4.1.1",
+    "dayjs": "1.11.19",
+    "dompurify": "3.3.1",
+    "dotenv": "17.3.1",
+    "jotai": "2.17.1",
+    "nanoid": "5.1.6",
+    "prop-types": "15.8.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.2",
-    "@tailwindcss/forms": "^0.5.11",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.18",
-    "@vitejs/plugin-react-swc": "^4.2.3",
-    "cz-git": "^1.12.0",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "stylelint": "^17.3.0",
-    "stylelint-config-standard": "^40.0.0",
-    "tailwindcss": "^4.1.18",
-    "vercel": "^50.18.2",
-    "vite": "^7.3.1",
-    "vite-plugin-html": "^3.2.2",
-    "vite-plugin-pwa": "^1.2.0"
+    "@biomejs/biome": "2.4.2",
+    "@tailwindcss/forms": "0.5.11",
+    "@tailwindcss/typography": "0.5.19",
+    "@tailwindcss/vite": "4.2.0",
+    "@vitejs/plugin-react-swc": "4.2.3",
+    "cz-git": "1.12.0",
+    "prettier": "3.8.1",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "stylelint": "17.3.0",
+    "stylelint-config-standard": "40.0.0",
+    "tailwindcss": "4.2.0",
+    "vercel": "50.18.2",
+    "vite": "7.3.1",
+    "vite-plugin-html": "3.2.2",
+    "vite-plugin-pwa": "1.2.0"
   },
   "overrides": {
-    "esbuild": "^0.27.2",
-    "tar": "^7.5.7",
-    "undici": "^7.20.0"
+    "ajv": "8.18.0",
+    "esbuild": "0.27.3",
+    "path-to-regexp": "8.3.0",
+    "tar": "7.5.9",
+    "undici": "7.22.0"
   },
   "browserslist": {
     "production": [
@@ -91,7 +94,7 @@
     }
   },
   "volta": {
-    "node": "24.13.0",
-    "npm": "11.8.0"
+    "node": "24.13.1",
+    "npm": "11.10.0"
   }
 }
