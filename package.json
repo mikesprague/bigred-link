@@ -53,10 +53,10 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.6",
+    "@biomejs/biome": "2.4.7",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/typography": "0.5.19",
-    "@tailwindcss/vite": "4.2.1",
+    "@tailwindcss/vite": "insiders",
     "@vitejs/plugin-react-swc": "4.3.0",
     "cz-git": "1.12.0",
     "prettier": "3.8.1",
@@ -65,19 +65,20 @@
     "stylelint-config-standard": "40.0.0",
     "tailwindcss": "4.2.1",
     "vercel": "50.32.5",
-    "vite": "7.3.1",
+    "vite": "8.0.0",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.2.0"
   },
   "overrides": {
     "@tootallnate/once": "^3.0.1",
     "ajv": "^8.18.0",
-    "esbuild": "^0.27.3",
     "minimatch": "^10.2.4",
     "path-to-regexp": "^8.3.0",
     "serialize-javascript": "^7.0.4",
     "tar": "^7.5.11",
-    "undici": "^7.22.0"
+    "undici": "^7.24.3",
+    "vite": "8.0.0",
+    "yauzl": "^3.2.1"
   },
   "browserslist": {
     "production": [
