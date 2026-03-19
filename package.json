@@ -8,7 +8,7 @@
     "node": ">= 22.x",
     "npm": ">= 10.x"
   },
-  "packageManager": "npm@11.11.1",
+  "packageManager": "npm@11.12.0",
   "scripts": {
     "back-up-db": "node ./src/utils/back-up-db.js",
     "build": "vite build",
@@ -41,7 +41,7 @@
     "@fortawesome/free-regular-svg-icons": "7.2.0",
     "@fortawesome/free-solid-svg-icons": "7.2.0",
     "@fortawesome/react-fontawesome": "3.2.0",
-    "@supabase/supabase-js": "2.99.2",
+    "@supabase/supabase-js": "2.99.3",
     "clipboard-polyfill": "4.1.1",
     "dayjs": "1.11.20",
     "dompurify": "3.3.3",
@@ -56,7 +56,7 @@
     "@biomejs/biome": "2.4.8",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/typography": "0.5.19",
-    "@tailwindcss/vite": "insiders",
+    "@tailwindcss/vite": "4.2.2",
     "@vitejs/plugin-react-swc": "4.3.0",
     "cz-git": "1.12.0",
     "prettier": "3.8.1",
@@ -65,7 +65,7 @@
     "stylelint-config-standard": "40.0.0",
     "tailwindcss": "4.2.2",
     "vercel": "50.33.1",
-    "vite": "8.0.0",
+    "vite": "8.0.1",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.2.0"
   },
@@ -76,8 +76,8 @@
     "path-to-regexp": "^8.3.0",
     "serialize-javascript": "^7.0.4",
     "tar": "^7.5.11",
-    "undici": "^7.24.3",
-    "vite": "8.0.0",
+    "undici": "^7.24.4",
+    "vite": "8.0.1",
     "yauzl": "^3.2.1"
   },
   "browserslist": {
@@ -99,6 +99,6 @@
   },
   "volta": {
     "node": "24.14.0",
-    "npm": "11.11.1"
+    "npm": "11.12.0"
   }
 }
