@@ -1,12 +1,12 @@
-import * as clipboard from 'clipboard-polyfill';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import {
   faRotateRight,
   faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as clipboard from 'clipboard-polyfill';
 import React from 'react';
-import { faClipboard } from '@fortawesome/free-regular-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
 
 const apiKey = import.meta.env.VITE_ABSTRACT_GEO_IP_API_KEY;
 
@@ -76,19 +76,19 @@ export const handleError = (error) => {
 };
 
 export const getResultMarkup = (urlPrefix, shortId) => (
-  <div className="result bg-zinc-800/75 border-solid rounded-md my-0 mx-auto text-xl text-center p-5 font-normal max-w-3xl">
+  <div className='result bg-zinc-800/75 border-solid rounded-md my-0 mx-auto text-xl text-center p-5 font-normal max-w-3xl'>
     <a
-      target="_blank"
-      className="result-link text-light-grey text-xl no-underline"
-      rel="noopener noreferrer"
+      target='_blank'
+      className='result-link text-light-grey text-xl no-underline'
+      rel='noopener noreferrer'
       href={`${urlPrefix}/${shortId}`}
     >
       {`${urlPrefix}/${shortId}`}
     </a>
-    <small className="clipboard-text">
+    <small className='clipboard-text'>
       <br />
       <br />
-      <div className="clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none">
+      <div className='clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none'>
         <FontAwesomeIcon icon={['far', 'clipboard']} fixedWidth />
         {' Click here to copy to clipboard'}
       </div>
@@ -97,8 +97,8 @@ export const getResultMarkup = (urlPrefix, shortId) => (
         <br />
         <small>
           <a
-            className="start-over-link text-blue-links cursor-pointer text-base no-underline"
-            href="/"
+            className='start-over-link text-blue-links cursor-pointer text-base no-underline'
+            href='/'
           >
             <FontAwesomeIcon icon={['fas', 'rotate-right']} fixedWidth />
             {' Start over'}
@@ -110,13 +110,13 @@ export const getResultMarkup = (urlPrefix, shortId) => (
 );
 
 export const getErrorMarkup = (errorMessage) => (
-  <div className="result">
+  <div className='result'>
     <FontAwesomeIcon icon={['fas', 'triangle-exclamation']} fixedWidth />
     Error
-    <small className="clipboard-text">
+    <small className='clipboard-text'>
       <br />
       <br />
-      <div className="clipboard-link">{errorMessage}</div>
+      <div className='clipboard-link'>{errorMessage}</div>
     </small>
   </div>
 );

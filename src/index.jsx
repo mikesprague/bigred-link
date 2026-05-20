@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { registerSW } from 'virtual:pwa-register';
 
 import { App } from './components/App.jsx';
-
 import { initIcons } from './modules/helpers.jsx';
 
 import './index.css';
@@ -23,14 +22,14 @@ const ErrorView = () => {
   };
 
   return (
-    <div className="w-full text-center bg-black">
-      <h3 className="text-2xl text-red-500">Sorry, an error has occurred.</h3>
+    <div className='w-full text-center bg-black'>
+      <h3 className='text-2xl text-red-500'>Sorry, an error has occurred.</h3>
       <br />
       <br />
       <button
         onClick={clickHandler}
-        className="p-6 text-lg font-bold leading-loose text-gray-100 bg-red-500"
-        type="button"
+        className='p-6 text-lg font-bold leading-loose text-gray-100 bg-red-500'
+        type='button'
       >
         &nbsp;&nbsp;Click Here to Reload and Try Again&nbsp;&nbsp;
       </button>

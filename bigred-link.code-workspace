@@ -5,6 +5,11 @@
     }
   ],
   "settings": {
-    "scss.validate": false
+    "scss.validate": false,
+    "cSpell.words": [
+      "smol",
+      "srvx",
+      "tootallnate"
+    ]
   }
 }

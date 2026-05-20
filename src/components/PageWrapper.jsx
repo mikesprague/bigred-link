@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export const PageWrapper = ({ children }) => (
-  <div className="flex flex-col items-center justify-center h-screen">
+  <div className='flex flex-col items-center justify-center h-screen'>
     {children}
   </div>
 );
