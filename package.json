@@ -46,7 +46,7 @@
     "@fortawesome/react-fontawesome": "3.3.1",
     "@supabase/supabase-js": "2.106.2",
     "clipboard-polyfill": "4.1.1",
-    "dayjs": "1.11.20",
+    "dayjs": "1.11.21",
     "dompurify": "3.4.5",
     "dotenv": "17.4.2",
     "jotai": "2.20.0",
