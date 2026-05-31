@@ -1,18 +1,8 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faClipboard } from '@fortawesome/free-regular-svg-icons';
-import {
-  faRotateRight,
-  faTriangleExclamation,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Clipboard, RotateCw, TriangleAlert } from 'lucide-react';
 import * as clipboard from 'clipboard-polyfill';
 import React from 'react';
 
 const apiKey = import.meta.env.VITE_ABSTRACT_GEO_IP_API_KEY;
-
-export const initIcons = () => {
-  library.add(faClipboard, faRotateRight, faTriangleExclamation);
-};
 
 export const isProduction = () =>
   window.location.hostname !== 'localhost' &&
@@ -89,7 +79,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
       <br />
       <br />
       <div className='clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none'>
-        <FontAwesomeIcon icon={['far', 'clipboard']} fixedWidth />
+        <Clipboard />
         {' Click here to copy to clipboard'}
       </div>
       <div>
@@ -100,7 +90,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
             className='start-over-link text-blue-links cursor-pointer text-base no-underline'
             href='/'
           >
-            <FontAwesomeIcon icon={['fas', 'rotate-right']} fixedWidth />
+            <RotateCw />
             {' Start over'}
           </a>
         </small>
@@ -111,7 +101,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
 
 export const getErrorMarkup = (errorMessage) => (
   <div className='result'>
-    <FontAwesomeIcon icon={['fas', 'triangle-exclamation']} fixedWidth />
+    <TriangleAlert />
     Error
     <small className='clipboard-text'>
       <br />
