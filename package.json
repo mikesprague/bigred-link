@@ -5,10 +5,10 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">= 22.x",
-    "npm": ">= 10.x"
+    "node": ">= 24.x",
+    "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.15.0",
+  "packageManager": "npm@11.16.0",
   "scripts": {
     "back-up-db": "node ./src/utils/back-up-db.js",
     "build": "npx vite build",
@@ -68,7 +68,6 @@
   "overrides": {
     "@tootallnate/once": "^3.0.1",
     "ajv": "^8.20.0",
-    "brace-expansion": "^5.0.6",
     "minimatch": "^10.2.5",
     "path-to-regexp": "^8.4.2",
     "smol-toml": "^1.6.1",
@@ -95,6 +94,6 @@
   },
   "volta": {
     "node": "24.16.0",
-    "npm": "11.15.0"
+    "npm": "11.16.0"
   }
 }
