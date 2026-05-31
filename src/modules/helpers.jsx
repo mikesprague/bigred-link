@@ -78,8 +78,8 @@ export const getResultMarkup = (urlPrefix, shortId) => (
     <small className='clipboard-text'>
       <br />
       <br />
-      <div className='clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none'>
-        <Clipboard />
+      <div className='clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none inline-flex items-center justify-center gap-2'>
+        <Clipboard  />
         {' Click here to copy to clipboard'}
       </div>
       <div>
@@ -87,7 +87,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
         <br />
         <small>
           <a
-            className='start-over-link text-blue-links cursor-pointer text-base no-underline'
+            className='start-over-link text-blue-links cursor-pointer text-base no-underline inline-flex items-center justify-center gap-2'
             href='/'
           >
             <RotateCw />

@@ -1,5 +1,5 @@
 import Bugsnag from '@bugsnag/js';
-import { createClient } from '@supabase/supabase-js';
+import { connect } from "@tursodatabase/serverless";
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 
@@ -7,9 +7,9 @@ dotenv.config();
 
 const {
   NODE_ENV,
-  SUPABASE_URL,
-  SUPABASE_ANON_PUB_KEY,
-  SUPABASE_DB_TABLE,
+  TURSO_DB_TABLE,
+  TURSO_AUTH_TOKEN,
+  TURSO_DATABASE_URL,
   GOOGLE_SAFE_BROWSING_API_KEY,
   npm_package_version: appVersion,
 } = process.env;
@@ -22,84 +22,78 @@ export const handleError = (error) => {
   }
 };
 
-export const initSupabase = async () => {
-  const supabase = await createClient(SUPABASE_URL, SUPABASE_ANON_PUB_KEY);
+export const initDatabase = () => {
+  const conn = connect({
+    url: TURSO_DATABASE_URL,
+    authToken: TURSO_AUTH_TOKEN,
+  });
 
-  return supabase;
-};
+  return conn;
+}
 
 export const shortenURL = async (
   url,
   clientInfo = {},
   safeBrowsingData = {}
 ) => {
-  const supabase = await initSupabase();
+  const dbConn = initDatabase();
 
   let shortId;
 
-  const { data, error } = await supabase
-    .from(SUPABASE_DB_TABLE)
-    .select('short_id, original_url, visits, submissions, visits')
-    .eq('original_url', url);
+  const existingShortlinkStatement = await dbConn.prepare(
+    `SELECT short_id, original_url, submissions, visits FROM "${TURSO_DB_TABLE}" WHERE original_url = ?`
+  );
+  const existingShortlinkResults = await existingShortlinkStatement.get([url]);
 
   let queryResults = null;
 
-  if (data[0]?.short_id) {
-    const submissionsCount = data[0].submissions + 1;
+  if (existingShortlinkResults?.short_id) {
+    const submissionsCount = Number(existingShortlinkResults.submissions) + 1;
 
-    shortId = data[0].short_id;
-    queryResults = await supabase
-      .from(SUPABASE_DB_TABLE)
-      .update([
-        {
-          submissions: submissionsCount,
-          suspicious: Boolean(Object.keys(safeBrowsingData).length),
-          safe_browsing_data: safeBrowsingData,
-          client_info: clientInfo,
-        },
-      ])
-      .match({ short_id: shortId })
-      .select();
-    // console.log(queryResults);
+    shortId = existingShortlinkResults.short_id;
+
+    queryResults = await dbConn
+      .prepare(
+        `UPDATE "${TURSO_DB_TABLE}" SET submissions = ?, suspicious = ?, safe_browsing_data = ?, client_info = ? WHERE short_id = ? RETURNING short_id`
+    );
+    await queryResults.run([
+      submissionsCount,
+      Boolean(Object.keys(safeBrowsingData).length),
+      JSON.stringify(safeBrowsingData),
+      JSON.stringify(clientInfo),
+      shortId,
+    ]);
+    queryResults = await dbConn
+      .prepare(`SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`);
+    queryResults = await queryResults.get([shortId]);
   } else {
     shortId = nanoid(7);
-    queryResults = await supabase
-      .from(SUPABASE_DB_TABLE)
-      .insert([
-        {
-          short_id: shortId,
-          original_url: url,
-          suspicious: Boolean(Object.keys(safeBrowsingData).length),
-          safe_browsing_data: safeBrowsingData,
-          client_info: clientInfo,
-        },
-      ])
-      .select();
-    // console.log(queryResults);
+    queryResults = await dbConn.prepare(
+      `INSERT INTO "${TURSO_DB_TABLE}" (short_id, original_url, suspicious, safe_browsing_data, client_info) VALUES (?, ?, ?, ?, ?) RETURNING short_id`
+    );
+    await queryResults.run([
+      shortId,
+      url,
+      Boolean(Object.keys(safeBrowsingData).length),
+      JSON.stringify(safeBrowsingData),
+      JSON.stringify(clientInfo),
+    ]);
+    queryResults = await dbConn
+      .prepare(`SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`);
+    queryResults = await queryResults.get([shortId]);
   }
 
-  const [toReturn] = queryResults.data;
-
-  return toReturn;
+  return queryResults;
 };
 
-export const checkIfShortIdExists = async (supabase, shortId) => {
-  const { data } = await supabase
-    .from(SUPABASE_DB_TABLE)
-    .select(
-      'short_id, original_url, submissions, visits, suspicious, safe_browsing_data'
-    )
-    .eq('short_id', shortId);
+export const checkIfShortIdExists = async (dbConn, shortId) => {
+  const existingShortIdStatement = await dbConn.prepare(
+    `SELECT short_id, original_url, submissions, visits, suspicious FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
+  );
+  const existingShortIdResults = await existingShortIdStatement.get([shortId]);
 
-  let returnData = data;
-
-  // biome-ignore lint/complexity/useOptionalChain: <explanation>
-  if (data && data[0]) {
-    [returnData] = data;
-  }
-
-  return returnData;
-};
+  return existingShortIdResults;
+}
 
 export const getSafeBrowsingResults = async (url) => {
   let returnData;

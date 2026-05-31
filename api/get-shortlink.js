@@ -2,10 +2,10 @@ import Bugsnag from '@bugsnag/js';
 
 import {
   checkIfShortIdExists,
-  initSupabase,
+  initDatabase,
 } from '../src/modules/api-helpers.js';
 
-const { NODE_ENV, BUGSNAG_KEY, SUPABASE_DB_TABLE } = process.env;
+const { NODE_ENV, BUGSNAG_KEY, TURSO_DB_TABLE } = process.env;
 
 if (NODE_ENV === 'production') {
   Bugsnag.start({ apiKey: BUGSNAG_KEY });
@@ -21,8 +21,8 @@ export default async (req, res) => {
   }
 
   if (shortId && shortId.length === 7) {
-    const supabase = await initSupabase();
-    const shortIdExists = await checkIfShortIdExists(supabase, shortId);
+    const dbConn = initDatabase();
+    const shortIdExists = await checkIfShortIdExists(dbConn, shortId);
 
     try {
       const { original_url: url, suspicious, visits } = shortIdExists;
@@ -40,14 +40,10 @@ export default async (req, res) => {
         visitsCount = Number(visits) + 1;
       }
 
-      const updateResults = await supabase
-        .from(SUPABASE_DB_TABLE)
-        .update([
-          {
-            visits: visitsCount,
-          },
-        ])
-        .match({ short_id: shortId });
+      let updateResults = await dbConn
+        .prepare(`UPDATE "${TURSO_DB_TABLE}" SET visits = ? WHERE short_id = ? RETURNING short_id`);
+      updateResults = await updateResults
+        .get([visitsCount, shortId]);
 
       if (updateResults.error) {
         console.error(updateResults.error);
