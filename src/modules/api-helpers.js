@@ -1,5 +1,5 @@
 import Bugsnag from '@bugsnag/js';
-import { connect } from "@tursodatabase/serverless";
+import { connect } from '@tursodatabase/serverless';
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 
@@ -29,7 +29,7 @@ export const initDatabase = () => {
   });
 
   return conn;
-}
+};
 
 export const shortenURL = async (
   url,
@@ -52,9 +52,8 @@ export const shortenURL = async (
 
     shortId = existingShortlinkResults.short_id;
 
-    queryResults = await dbConn
-      .prepare(
-        `UPDATE "${TURSO_DB_TABLE}" SET submissions = ?, suspicious = ?, safe_browsing_data = ?, client_info = ? WHERE short_id = ? RETURNING short_id`
+    queryResults = await dbConn.prepare(
+      `UPDATE "${TURSO_DB_TABLE}" SET submissions = ?, suspicious = ?, safe_browsing_data = ?, client_info = ? WHERE short_id = ? RETURNING short_id`
     );
     await queryResults.run([
       submissionsCount,
@@ -63,8 +62,9 @@ export const shortenURL = async (
       JSON.stringify(clientInfo),
       shortId,
     ]);
-    queryResults = await dbConn
-      .prepare(`SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`);
+    queryResults = await dbConn.prepare(
+      `SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
+    );
     queryResults = await queryResults.get([shortId]);
   } else {
     shortId = nanoid(7);
@@ -78,8 +78,9 @@ export const shortenURL = async (
       JSON.stringify(safeBrowsingData),
       JSON.stringify(clientInfo),
     ]);
-    queryResults = await dbConn
-      .prepare(`SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`);
+    queryResults = await dbConn.prepare(
+      `SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
+    );
     queryResults = await queryResults.get([shortId]);
   }
 
@@ -93,44 +94,29 @@ export const checkIfShortIdExists = async (dbConn, shortId) => {
   const existingShortIdResults = await existingShortIdStatement.get([shortId]);
 
   return existingShortIdResults;
-}
+};
 
 export const getSafeBrowsingResults = async (url) => {
   let returnData;
 
-  const postData = {
-    client: {
-      clientId: 'bigred.link',
-      clientVersion: appVersion,
-    },
-    threatInfo: {
-      threatTypes: [
-        'MALWARE',
-        'SOCIAL_ENGINEERING',
-        'UNWANTED_SOFTWARE',
-        'POTENTIALLY_HARMFUL_APPLICATION',
-        'THREAT_TYPE_UNSPECIFIED',
-      ],
-      platformTypes: ['ANY_PLATFORM'],
-      threatEntryTypes: ['URL'],
-      threatEntries: [{ url }],
-    },
-  };
-
   const safeBrowsingResults = await fetch(
-    `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${GOOGLE_SAFE_BROWSING_API_KEY}`,
+    `https://safebrowsing.googleapis.com/v5alpha1/urls:search?key=${GOOGLE_SAFE_BROWSING_API_KEY}&urls=${encodeURIComponent(url)}`,
     {
-      method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'User-Agent': `bigred.link/${appVersion}`,
       },
-      body: JSON.stringify(postData),
     }
-  )
-    .then(async (response) => await response.json())
-    .then((data) => {
-      returnData = data;
-    });
+  ).then(async (response) => await response.text());
+  // check if JSON
+  try {
+    returnData = JSON.parse(safeBrowsingResults);
+    console.log(returnData);
+  } catch (error) {
+    console.error(
+      `Error parsing Safe Browsing API response as JSON: ${safeBrowsingResults}`
+    );
+    returnData = {};
+  }
 
-  return safeBrowsingResults;
+  return returnData;
 };
