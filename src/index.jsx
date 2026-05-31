@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { registerSW } from 'virtual:pwa-register';
 
 import { App } from './components/App.jsx';
-import { initIcons } from './modules/helpers.jsx';
 
 import './index.css';
 
@@ -36,8 +35,6 @@ const ErrorView = () => {
     </div>
   );
 };
-
-initIcons();
 
 const container = document.getElementById('root');
 const root = createRoot(container);
