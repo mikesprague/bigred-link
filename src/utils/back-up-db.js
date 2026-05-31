@@ -2,11 +2,9 @@ import fs from 'node:fs';
 
 import dotenv from 'dotenv';
 
-import { initSupabase } from '../modules/api-helpers.js';
+import { initDatabase, getAllShortLinks } from '../modules/api-helpers.js';
 
 dotenv.config();
-
-const { SUPABASE_DB_TABLE } = process.env;
 
 const { hrtime } = process;
 
@@ -18,14 +16,14 @@ const { hrtime } = process;
     workingDir: './',
   };
 
-  const supabase = await initSupabase();
+  const dbConn = initDatabase();
 
-  const getAllShortLinks = await supabase.from(SUPABASE_DB_TABLE).select();
+  const allShortLinks = await getAllShortLinks(dbConn);
 
-  if (getAllShortLinks.data) {
+  if (allShortLinks.length > 0) {
     await fs.writeFileSync(
       `${config.workingDir}${config.fileName}`,
-      JSON.stringify(getAllShortLinks.data, null, 2)
+      JSON.stringify(allShortLinks, null, 2)
     );
   }
 

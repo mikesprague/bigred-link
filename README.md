@@ -1,12 +1,12 @@
 # bigred.link
 
-[![Vercel Deployment Status](https://img.shields.io/github/deployments/mikesprague/bigred-link/production?label=Vercel%20%28build%20%26%20deploy%29&logo=Vercel&logoColor=white)](https://vercel.com/m5ls5e/bigred-link/deployments)  [![Automated Safe Browsing Checks](https://github.com/mikesprague/bigred-link/actions/workflows/safebrowsing-url-check.yml/badge.svg)](https://github.com/mikesprague/bigred-link/actions/workflows/safebrowsing-url-check.yml)  
+[![Vercel Deployment Status](https://img.shields.io/github/deployments/mikesprague/bigred-link/production?label=Vercel%20%28build%20%26%20deploy%29&logo=Vercel&logoColor=white)](https://vercel.com/m5ls5e/bigred-link/deployments)  [![Automated Safe Browsing Checks](https://github.com/mikesprague/bigred-link/actions/workflows/safebrowsing-url-check.yml/badge.svg)](https://github.com/mikesprague/bigred-link/actions/workflows/safebrowsing-url-check.yml)
 
 A big red link shortener
 
 ## Requirements
 
-You will need a free [Subabase](https://supabase.com/) account to use for the database.
+You will need a free [TursoDB](https://turso.tech/) account to use for the database and a free API key from [ipgeolocation](https://ipgeolocation.io) for their IP Geolocation API.
 
 This project uses [Bugsnag](https://bugsnag.com) for error reporting. You will need to create a free account and set up a project to get a Bugsnag key.
 
@@ -20,19 +20,21 @@ You will also need a Google Developer account with a free [Safe Browsing](https:
 - Font Awesome
 - Bugsnag
 - Vercel
-- Supabase
+- TursoDB
 - Google Safe Browsing API
+- ipgeolocation
 
 ## Running locally
 
 1. Clone this repo and go into the directory
 1. Rename `sample.env` to `.env` and edit the file to set the required values for:
-    - `SUPABASE_DB_TABLE`
-    - `SUPABASE_ANON_PUB_KEY`
-    - `SUPABASE_URL`
+    - `TURSO_DB_TABLE`
+    - `TURSO_AUTH_TOKEN`
+    - `TURSO_DATABASE_URL`
     - `BUGSNAG_KEY`
     - `VITE_BUGSNAG_KEY` (same as `BUGSNAG_KEY`)
     - `GOOGLE_SAFE_BROWSING_API_KEY`
+    - `VITE_IP_GEOLOCATION_API_KEY`
 1. Install dependencies by running: `npm install`
 1. Start the project: `npm start`
 1. Get localhost URL provided in terminal and visit in your browser
@@ -43,7 +45,7 @@ You will also need a Google Developer account with a free [Safe Browsing](https:
 
 MIT License
 
-Copyright (c) 2022 Michael Sprague
+Copyright (c) 2026 Michael Sprague
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

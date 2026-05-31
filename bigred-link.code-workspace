@@ -1,16 +1,18 @@
 {
   "folders": [
     {
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "settings": {
     "scss.validate": false,
     "cSpell.words": [
+      "geolocation",
+      "ipgeolocation",
       "smol",
       "srvx",
       "tootallnate",
-      "tursodatabase"
-    ]
-  }
+      "tursodatabase",
+    ],
+  },
 }

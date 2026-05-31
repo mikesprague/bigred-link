@@ -53,7 +53,7 @@ export const shortenURL = async (
     shortId = existingShortlinkResults.short_id;
 
     queryResults = await dbConn.prepare(
-      `UPDATE "${TURSO_DB_TABLE}" SET submissions = ?, suspicious = ?, safe_browsing_data = ?, client_info = ? WHERE short_id = ? RETURNING short_id`
+      `UPDATE "${TURSO_DB_TABLE}" SET submissions = ?, suspicious = ?, safe_browsing_data = ?, client_info = ?, updated_at = CURRENT_TIMESTAMP WHERE short_id = ? RETURNING short_id`
     );
     await queryResults.run([
       submissionsCount,
@@ -63,7 +63,7 @@ export const shortenURL = async (
       shortId,
     ]);
     queryResults = await dbConn.prepare(
-      `SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
+      `SELECT short_id, original_url, submissions, visits, created_at, updated_at, suspicious, safe_browsing_data, client_info FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
     );
     queryResults = await queryResults.get([shortId]);
   } else {
@@ -79,7 +79,7 @@ export const shortenURL = async (
       JSON.stringify(clientInfo),
     ]);
     queryResults = await dbConn.prepare(
-      `SELECT * FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
+      `SELECT short_id, original_url, submissions, visits, created_at, updated_at, suspicious, safe_browsing_data, client_info FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
     );
     queryResults = await queryResults.get([shortId]);
   }
@@ -89,11 +89,23 @@ export const shortenURL = async (
 
 export const checkIfShortIdExists = async (dbConn, shortId) => {
   const existingShortIdStatement = await dbConn.prepare(
-    `SELECT short_id, original_url, submissions, visits, suspicious FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
+    `SELECT short_id, original_url, submissions, visits, created_at, updated_at, suspicious, safe_browsing_data, client_info FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
   );
   const existingShortIdResults = await existingShortIdStatement.get([shortId]);
 
   return existingShortIdResults;
+};
+
+export const getAllShortLinks = async (dbConn) => {
+  const getAllShortLinksStatement = await dbConn.prepare(
+    `
+      SELECT short_id, original_url, submissions, visits, created_at, updated_at, suspicious, safe_browsing_data, client_info
+      FROM "${TURSO_DB_TABLE}"
+    `
+  );
+  const getAllShortLinksResults = await getAllShortLinksStatement.all();
+
+  return getAllShortLinksResults;
 };
 
 export const getSafeBrowsingResults = async (url) => {

@@ -1,8 +1,8 @@
-import { Clipboard, RotateCw, TriangleAlert } from 'lucide-react';
 import * as clipboard from 'clipboard-polyfill';
+import { Clipboard, RotateCw, TriangleAlert } from 'lucide-react';
 import React from 'react';
 
-const apiKey = import.meta.env.VITE_ABSTRACT_GEO_IP_API_KEY;
+const apiKey = import.meta.env.VITE_IP_GEOLOCATION_API_KEY;
 
 export const isProduction = () =>
   window.location.hostname !== 'localhost' &&
@@ -10,7 +10,7 @@ export const isProduction = () =>
 
 export const getClientGeoIpInfo = async () => {
   const geoIpData = await fetch(
-    `https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`
+    `https://api.ipgeolocation.io/v3/ipgeo?apiKey=${apiKey}`
   )
     .then((response) => response.json())
     .catch((error) => console.error(error));
@@ -79,7 +79,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
       <br />
       <br />
       <div className='clipboard-link text-red-500 hover:text-stone-500 cursor-pointer text-decoration-none inline-flex items-center justify-center gap-2'>
-        <Clipboard  />
+        <Clipboard />
         {' Click here to copy to clipboard'}
       </div>
       <div>

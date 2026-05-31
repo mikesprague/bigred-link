@@ -27,7 +27,7 @@ export default async (req, res) => {
     try {
       const { original_url: url, suspicious, visits } = shortIdExists;
 
-      if (suspicious) {
+      if (Boolean(suspicious)) {
         return res.status(400).json({
           errorCode: 400,
           errorMessage: 'Original URL has been reported as unsafe',
@@ -40,14 +40,14 @@ export default async (req, res) => {
         visitsCount = Number(visits) + 1;
       }
 
-      let updateResults = await dbConn
-        .prepare(`UPDATE "${TURSO_DB_TABLE}" SET visits = ? WHERE short_id = ? RETURNING short_id`);
-      updateResults = await updateResults
-        .get([visitsCount, shortId]);
+      let updateResults = await dbConn.prepare(
+        `UPDATE "${TURSO_DB_TABLE}" SET visits = ? WHERE short_id = ?`
+      );
+      updateResults = await updateResults.run([visitsCount, shortId]);
 
-      if (updateResults.error) {
-        console.error(updateResults.error);
-      }
+      // if (updateResults.error) {
+      //   console.error(updateResults.error);
+      // }
 
       return res.redirect(url);
     } catch (error) {

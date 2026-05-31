@@ -1,78 +1,56 @@
 import dotenv from 'dotenv';
 
-import { initSupabase } from '../modules/api-helpers.js';
+import { getAllShortLinks, initDatabase } from '../modules/api-helpers.js';
 
 dotenv.config();
 
-const {
-  SUPABASE_DB_TABLE,
-  GOOGLE_SAFE_BROWSING_API_KEY,
-  npm_package_version: appVersion,
-} = process.env;
+const { GOOGLE_SAFE_BROWSING_API_KEY, npm_package_version: appVersion } =
+  process.env;
 
 const { hrtime } = process;
 
 const debugStart = hrtime();
 
-const supabase = await initSupabase();
+const dbConn = initDatabase();
 
-const getAllShortLinks = await supabase.from(SUPABASE_DB_TABLE).select();
+const allShortLinks = await getAllShortLinks(dbConn);
+// console.log(allShortLinks);
+// console.log(allShortLinks.length);
 
-if (getAllShortLinks.data) {
-  const allUrls = getAllShortLinks.data.map((shortLink) => ({
-    url: shortLink.original_url,
-  }));
-
-  const postData = {
-    client: {
-      clientId: 'bigred.link',
-      clientVersion: appVersion,
-    },
-    threatInfo: {
-      threatTypes: [
-        'MALWARE',
-        'SOCIAL_ENGINEERING',
-        'UNWANTED_SOFTWARE',
-        'POTENTIALLY_HARMFUL_APPLICATION',
-        'THREAT_TYPE_UNSPECIFIED',
-      ],
-      platformTypes: ['ANY_PLATFORM'],
-      threatEntryTypes: ['URL'],
-      threatEntries: allUrls,
-    },
-  };
-
-  // console.log(postData);
+if (allShortLinks.length > 0) {
+  const allUrls = allShortLinks
+    .map((shortLink) => encodeURIComponent(shortLink.original_url))
+    .join(',');
 
   const safeBrowsingResults = await fetch(
-    `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${GOOGLE_SAFE_BROWSING_API_KEY}`,
+    `https://safebrowsing.googleapis.com/v5alpha1/urls:search?key=${GOOGLE_SAFE_BROWSING_API_KEY}&urls=${allUrls}`,
     {
-      method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'User-Agent': `bigred.link/${appVersion}`,
       },
-      body: JSON.stringify(postData),
     }
-  ).then((response) => response.json());
-  // console.log(safeBrowsingResults.matches);
+  ).then(async (response) => {
+    return await response.text();
+  });
+  console.log(safeBrowsingResults);
 
-  if (safeBrowsingResults.matches) {
-    for await (const item of safeBrowsingResults.matches) {
-      const { url } = item.threat;
-      const updateResults = await supabase
-        .from(SUPABASE_DB_TABLE)
-        .update([
-          {
-            suspicious: true,
-            safe_browsing_data: item,
-          },
-        ])
-        .match({ original_url: url })
-        .select();
+  // if (safeBrowsingResults.matches) {
+  //   for await (const item of safeBrowsingResults.matches) {
+  //     const { url } = item.threat;
+  //     const updateResults = await supabase
+  //       .from(SUPABASE_DB_TABLE)
+  //       .update([
+  //         {
+  //           suspicious: true,
+  //           safe_browsing_data: item,
+  //         },
+  //       ])
+  //       .match({ original_url: url })
+  //       .select();
 
-      console.log(updateResults);
-    }
-  }
+  //     console.log(updateResults);
+  //   }
+  // }
 
   const debugEnd = hrtime(debugStart);
 
