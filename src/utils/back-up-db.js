@@ -4,32 +4,39 @@ import dotenv from 'dotenv';
 
 import { initDatabase, getAllShortLinks } from '../modules/api-helpers.js';
 
-dotenv.config();
-
 const { hrtime } = process;
 
-(async () => {
-  const debugStart = hrtime();
+const debugStart = hrtime();
 
-  const config = {
-    fileName: 'bigred-links-db-backup.json',
-    workingDir: './',
-  };
+const logPrefix = '[bigred-link:db-backup]';
 
-  const dbConn = initDatabase();
+console.log(`${logPrefix} Starting database backup...`);
+dotenv.config();
+console.log(`${logPrefix} Environment variables loaded`);
 
-  const allShortLinks = await getAllShortLinks(dbConn);
+const config = {
+  fileName: 'bigred-links-db-backup.json',
+  workingDir: './',
+};
+console.log(`${logPrefix} Configuration set`);
 
-  if (allShortLinks.length > 0) {
-    await fs.writeFileSync(
-      `${config.workingDir}${config.fileName}`,
-      JSON.stringify(allShortLinks, null, 2)
-    );
-  }
+const dbConn = initDatabase();
+console.log(`${logPrefix} Database connection initialized`);
 
-  const debugEnd = hrtime(debugStart);
+const allShortLinks = await getAllShortLinks(dbConn);
+console.log(`${logPrefix} Retrieved ${allShortLinks.length} short links`);
 
-  console.log(
-    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`
+if (allShortLinks.length > 0) {
+  fs.writeFileSync(
+    `${config.workingDir}${config.fileName}`,
+    JSON.stringify(allShortLinks, null, 2)
   );
-})();
+  console.log(`${logPrefix} Database backup written to: ${config.fileName}`);
+}
+
+const debugEnd = hrtime(debugStart);
+console.log(`${logPrefix} Database backup completed`);
+
+console.log(
+  `${logPrefix} Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`
+);
