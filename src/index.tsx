@@ -2,17 +2,20 @@ import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+// @ts-ignore
 import { registerSW } from 'virtual:pwa-register';
 
 import { App } from './components/App.jsx';
 
 import './index.css';
 
+// @ts-ignore
 window.bugsnagClient = Bugsnag.start({
   apiKey: `${import.meta.env.VITE_BUGSNAG_KEY}`,
   plugins: [new BugsnagPluginReact()],
 });
 
+// @ts-ignore
 const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React);
 
 const ErrorView = () => {
@@ -37,7 +40,7 @@ const ErrorView = () => {
 };
 
 const container = document.getElementById('root');
-const root = createRoot(container);
+const root = createRoot(container as HTMLElement);
 
 root.render(
   <ErrorBoundary FallbackComponent={ErrorView}>
@@ -49,7 +52,7 @@ root.render(
 
 registerSW({
   onNeedRefresh() {
-    window.location.reload(true);
+    window.location.reload();
   },
   onOfflineReady() {},
   immediate: true,

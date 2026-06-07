@@ -14,27 +14,28 @@ const {
   npm_package_version: appVersion,
 } = process.env;
 
-export const handleError = (error) => {
+export const handleError = (error: Error) => {
   console.error(error);
 
   if (NODE_ENV === 'production') {
+    // @ts-ignore
     Bugsnag.notify(error);
   }
 };
 
 export const initDatabase = () => {
   const conn = connect({
-    url: TURSO_DATABASE_URL,
-    authToken: TURSO_AUTH_TOKEN,
+    url: TURSO_DATABASE_URL as string,
+    authToken: TURSO_AUTH_TOKEN as string,
   });
 
   return conn;
 };
 
 export const shortenURL = async (
-  url,
-  clientInfo = {},
-  safeBrowsingData = {}
+  url: string,
+  clientInfo: Record<string, unknown> = {},
+  safeBrowsingData: Record<string, unknown> = {}
 ) => {
   const dbConn = initDatabase();
 
@@ -87,7 +88,10 @@ export const shortenURL = async (
   return queryResults;
 };
 
-export const checkIfShortIdExists = async (dbConn, shortId) => {
+export const checkIfShortIdExists = async (
+  dbConn: ReturnType<typeof initDatabase>,
+  shortId: string
+) => {
   const existingShortIdStatement = await dbConn.prepare(
     `SELECT short_id, original_url, submissions, visits, created_at, updated_at, suspicious, safe_browsing_data, client_info FROM "${TURSO_DB_TABLE}" WHERE short_id = ?`
   );
@@ -96,7 +100,9 @@ export const checkIfShortIdExists = async (dbConn, shortId) => {
   return existingShortIdResults;
 };
 
-export const getAllShortLinks = async (dbConn) => {
+export const getAllShortLinks = async (
+  dbConn: ReturnType<typeof initDatabase>
+) => {
   const getAllShortLinksStatement = await dbConn.prepare(
     `
       SELECT short_id, original_url, submissions, visits, created_at, updated_at, suspicious, safe_browsing_data, client_info
@@ -108,7 +114,7 @@ export const getAllShortLinks = async (dbConn) => {
   return getAllShortLinksResults;
 };
 
-export const getSafeBrowsingResults = async (url) => {
+export const getSafeBrowsingResults = async (url: string) => {
   let returnData;
 
   const safeBrowsingResults = await fetch(
@@ -123,6 +129,7 @@ export const getSafeBrowsingResults = async (url) => {
   try {
     returnData = JSON.parse(safeBrowsingResults);
     console.log(returnData);
+    // oxlint-disable-next-line no-unused-vars
   } catch (error) {
     console.error(
       `Error parsing Safe Browsing API response as JSON: ${safeBrowsingResults}`

@@ -19,7 +19,9 @@ const allShortLinks = await getAllShortLinks(dbConn);
 
 if (allShortLinks.length > 0) {
   const allUrls = allShortLinks
-    .map((shortLink) => encodeURIComponent(shortLink.original_url))
+    .map((shortLink: { original_url: string }) =>
+      encodeURIComponent(shortLink.original_url)
+    )
     .join(',');
 
   const safeBrowsingResults = await fetch(

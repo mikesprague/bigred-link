@@ -1,6 +1,5 @@
 import * as clipboard from 'clipboard-polyfill';
 import { Clipboard, RotateCw, TriangleAlert } from 'lucide-react';
-import React from 'react';
 
 const apiKey = import.meta.env.VITE_IP_GEOLOCATION_API_KEY;
 
@@ -23,11 +22,11 @@ export const initCopyToClipboard = () => {
   const cbLink = document.querySelector('.clipboard-link');
   console.log('cbLink:', cbLink);
   const linkHref = String(
-    document.querySelector('.result-link').textContent.trim()
+    document.querySelector('.result-link')?.textContent?.trim()
   );
   console.log('linkHref:', linkHref);
 
-  cbLink.addEventListener('click', async (event) => {
+  cbLink?.addEventListener('click', async (event) => {
     event.preventDefault();
     // clipboard.writeText(linkHref);
     clipboard.writeText(linkHref).then(
@@ -42,9 +41,10 @@ export const initCopyToClipboard = () => {
   });
 };
 
-export const isValidUrl = (url) => {
+export const isValidUrl = (url: string) => {
   try {
-    // eslint-disable-next-line no-unused-vars
+    // @ts-ignore
+    // oxlint-disable-next-line no-unused-vars
     const validUrl = new URL(url);
   } catch (error) {
     console.error(error);
@@ -55,9 +55,9 @@ export const isValidUrl = (url) => {
   return true;
 };
 
-export const handleError = (error) => {
+export const handleError = (error: Error) => {
   if (isProduction()) {
-    // eslint-disable-next-line no-undef
+    // @ts-ignore
     bugsnagClient.notify(error);
   }
 
@@ -65,7 +65,7 @@ export const handleError = (error) => {
   // throw new Error(error);
 };
 
-export const getResultMarkup = (urlPrefix, shortId) => (
+export const getResultMarkup = (urlPrefix: string, shortId: string) => (
   <div className='result bg-zinc-800/75 border-solid rounded-md my-0 mx-auto text-xl text-center p-5 font-normal max-w-3xl'>
     <a
       target='_blank'
@@ -99,7 +99,7 @@ export const getResultMarkup = (urlPrefix, shortId) => (
   </div>
 );
 
-export const getErrorMarkup = (errorMessage) => (
+export const getErrorMarkup = (errorMessage: string) => (
   <div className='result'>
     <TriangleAlert />
     Error

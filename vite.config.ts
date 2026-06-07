@@ -2,8 +2,10 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+
 import { version } from './package.json';
 
+// https://vite.dev/config/
 export default defineConfig({
   root: 'src',
   build: {
@@ -12,7 +14,6 @@ export default defineConfig({
   },
   publicDir: '../public',
   base: './',
-  outDir: './',
   appType: 'spa',
   plugins: [
     tailwindcss(),
@@ -41,6 +42,7 @@ export default defineConfig({
         './images/icon-128.png',
       ],
       manifest: {
+        // @ts-ignore
         version,
         name: 'BigRed.link | A big red URL shortener',
         short_name: 'BigRed.link',
@@ -109,7 +111,7 @@ export default defineConfig({
       },
     }),
     react({
-      include: '**/*.jsx',
+      include: 'index.tsx, src/**/*.ts, src/**/*.tsx',
     }),
   ],
 });

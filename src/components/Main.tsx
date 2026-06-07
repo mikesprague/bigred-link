@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify';
 import { atom, useAtom } from 'jotai';
-import React, { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import {
   getClientGeoIpInfo,
@@ -8,7 +8,7 @@ import {
   getResultMarkup,
   handleError,
   initCopyToClipboard,
-} from '../modules/helpers.jsx';
+} from '../modules/helpers.js';
 
 export const linkAtom = atom('');
 export const resultsAtom = atom('');
@@ -19,15 +19,19 @@ export const Main = () => {
   const [results, setResults] = useAtom(resultsAtom);
   const [hasError, setHasError] = useAtom(hasErrorAtom);
 
-  const inputRef = useRef();
-  const buttonRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleSubmit = useCallback(
-    async (event) => {
+    async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      buttonRef.current.disabled = true;
-      inputRef.current.disabled = true;
+      if (buttonRef.current) {
+        buttonRef.current.disabled = true;
+      }
+      if (inputRef.current) {
+        inputRef.current.disabled = true;
+      }
 
       const clientData = await getClientGeoIpInfo();
 
@@ -50,7 +54,7 @@ export const Main = () => {
             );
           }
 
-          setResults(resultTemplate);
+          setResults(resultTemplate as unknown as string);
           setHasError(false);
 
           return responseJson;
@@ -63,7 +67,7 @@ export const Main = () => {
     [link, setResults, setHasError]
   );
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputVal = DOMPurify.sanitize(event.target.value);
 
     setLink(inputVal);
@@ -76,7 +80,7 @@ export const Main = () => {
   }, [results, hasError]);
 
   return (
-    <main className='w-screen items-center content-center flex-grow text-center p-4'>
+    <main className='w-screen items-center content-center grow text-center p-4'>
       <form className='url-form' onSubmit={handleSubmit}>
         <div className='whitespace-normal sm:whitespace-nowrap flex-wrap sm:flex-nowrap w-full mx-auto'>
           <input

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Footer = () => (
   <footer className='w-screen'>
     <p className='copyright-text mb-1 text-xs text-center'>
