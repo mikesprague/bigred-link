@@ -62,7 +62,7 @@
     "cz-git": "1.13.1",
     "globals": "17.6.0",
     "oxfmt": "0.53.0",
-    "oxlint": "1.68.0",
+    "oxlint": "1.69.0",
     "tailwindcss": "4.3.0",
     "tsx": "4.22.4",
     "typescript": "6.0.3",
