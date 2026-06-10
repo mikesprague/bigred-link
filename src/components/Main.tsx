@@ -3,6 +3,13 @@ import { atom, useAtom } from 'jotai';
 import { useCallback, useEffect, useRef } from 'react';
 
 import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from '@/components/ui/input-group';
+
+import {
   getClientGeoIpInfo,
   getErrorMarkup,
   getResultMarkup,
@@ -82,8 +89,8 @@ export const Main = () => {
   return (
     <main className='w-screen items-center content-center grow text-center p-4'>
       <form className='url-form' onSubmit={handleSubmit}>
-        <div className='whitespace-normal sm:whitespace-nowrap flex-wrap sm:flex-nowrap w-full mx-auto'>
-          <input
+        <div className='whitespace-normal sm:whitespace-nowrap flex-wrap sm:flex-nowrap w-full mx-auto px-12 sm:px-4 flex items-center justify-center'>
+          {/* <input
             type='url'
             className='text-zinc-800 bg-white border-white mb-0 sm:mb-3 sm:mr-0 text-base sm:text-lg rounded rounded-b-none sm:rounded-l sm:rounded-r-none px-4 py-3 w-full sm:w-4/5 text-center focus:outline-hidden focus:shadow-hidden focus:ring-hidden placeholder:text-lg disabled:cursor-not-allowed'
             placeholder='Type or paste in a URL and shorten it!'
@@ -102,7 +109,30 @@ export const Main = () => {
             ref={buttonRef}
           >
             Shorten
-          </button>
+          </button> */}
+          <InputGroup className='w-full sm:w-4/5 mx-auto bg-white'>
+            <InputGroupInput
+              placeholder='Type or paste in a URL and shorten it!'
+              value={link}
+              ref={inputRef}
+              onChange={handleChange}
+              name='link'
+              id='link'
+              className='disabled:cursor-not-allowed placeholder:text-zinc-500 text-zinc-800'
+              required
+              autoFocus
+            />
+            <InputGroupAddon align='inline-end'>
+              <InputGroupButton
+                variant='secondary'
+                ref={buttonRef}
+                type='submit'
+                className='btn-shorten hover:text-red-400 disabled:text-white disabled:cursor-not-allowed'
+              >
+                Shorten
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
         </div>
       </form>
       <div className='result-section mx-auto'>{results}</div>
