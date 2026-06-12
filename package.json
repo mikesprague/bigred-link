@@ -41,7 +41,7 @@
     "@bugsnag/js": "8.9.0",
     "@bugsnag/plugin-react": "8.9.0",
     "@fontsource-variable/inter": "5.2.8",
-    "@tursodatabase/serverless": "1.2.0",
+    "@tursodatabase/serverless": "1.2.3",
     "class-variance-authority": "0.7.1",
     "clipboard-polyfill": "4.1.1",
     "clsx": "2.1.1",
