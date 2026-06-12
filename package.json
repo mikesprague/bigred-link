@@ -46,7 +46,7 @@
     "clipboard-polyfill": "4.1.1",
     "clsx": "2.1.1",
     "dayjs": "1.11.21",
-    "dompurify": "3.4.9",
+    "dompurify": "3.4.10",
     "dotenv": "17.4.2",
     "jotai": "2.20.1",
     "lucide-react": "1.17.0",
