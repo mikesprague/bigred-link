@@ -43,10 +43,12 @@ export default async (req: Request, res: Response) => {
         clientData,
         safeBrowsingData
       );
-      res
-        // @ts-ignore (incorrect - https://vercel.com/docs/functions/runtimes/node-js#node.js-request-and-response-objects)
-        .status(200)
-        .json({ errorCode: 400, errorMessage: 'URL is reported as unsafe' });
+      return (
+        res
+          // @ts-ignore (incorrect - https://vercel.com/docs/functions/runtimes/node-js#node.js-request-and-response-objects)
+          .status(200)
+          .json({ errorCode: 400, errorMessage: 'URL is reported as unsafe' })
+      );
     }
   } catch (error) {
     handleError(error as Error);

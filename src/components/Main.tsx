@@ -90,26 +90,6 @@ export const Main = () => {
     <main className='w-screen items-center content-center grow text-center p-4'>
       <form className='url-form' onSubmit={handleSubmit}>
         <div className='whitespace-normal sm:whitespace-nowrap flex-wrap sm:flex-nowrap w-full mx-auto px-12 sm:px-4 flex items-center justify-center'>
-          {/* <input
-            type='url'
-            className='text-zinc-800 bg-white border-white mb-0 sm:mb-3 sm:mr-0 text-base sm:text-lg rounded rounded-b-none sm:rounded-l sm:rounded-r-none px-4 py-3 w-full sm:w-4/5 text-center focus:outline-hidden focus:shadow-hidden focus:ring-hidden placeholder:text-lg disabled:cursor-not-allowed'
-            placeholder='Type or paste in a URL and shorten it!'
-            name='link'
-            id='link'
-            required
-            // biome-ignore lint/a11y/noAutofocus: <explanation>
-            autoFocus
-            value={link}
-            ref={inputRef}
-            onChange={handleChange}
-          />
-          <button
-            className='btn-shorten bg-zinc-800 border-solid border-dk-grey text-white hover:text-red-500 text-base sm:text-lg w-full sm:w-auto sm:ml-0 px-4 py-3 rounded rounded-t-none sm:rounded-t sm:rounded-l-none disabled:text-white disabled:cursor-not-allowed'
-            type='submit'
-            ref={buttonRef}
-          >
-            Shorten
-          </button> */}
           <InputGroup className='w-full sm:w-4/5 mx-auto bg-white'>
             <InputGroupInput
               placeholder='Type or paste in a URL and shorten it!'

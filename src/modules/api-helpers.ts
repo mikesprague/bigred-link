@@ -3,6 +3,8 @@ import { connect } from '@tursodatabase/serverless';
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 
+import { checkUrlsAgainstSafeBrowsing } from './safe-browsing.js';
+
 dotenv.config();
 
 const {
@@ -115,27 +117,19 @@ export const getAllShortLinks = async (
 };
 
 export const getSafeBrowsingResults = async (url: string) => {
-  let returnData;
-
-  const safeBrowsingResults = await fetch(
-    `https://safebrowsing.googleapis.com/v5alpha1/urls:search?key=${GOOGLE_SAFE_BROWSING_API_KEY}&urls=${encodeURIComponent(url)}`,
-    {
-      headers: {
-        'User-Agent': `bigred.link/${appVersion}`,
-      },
-    }
-  ).then(async (response) => await response.text());
-  // check if JSON
-  try {
-    returnData = JSON.parse(safeBrowsingResults);
-    console.log(returnData);
-    // oxlint-disable-next-line no-unused-vars
-  } catch (error) {
-    console.error(
-      `Error parsing Safe Browsing API response as JSON: ${safeBrowsingResults}`
-    );
-    returnData = {};
+  if (!GOOGLE_SAFE_BROWSING_API_KEY) {
+    return {};
   }
 
-  return returnData;
+  try {
+    const matches = await checkUrlsAgainstSafeBrowsing([url], {
+      apiKey: GOOGLE_SAFE_BROWSING_API_KEY,
+      userAgent: `bigred.link/${appVersion}`,
+    });
+    const match = matches.get(url);
+    return match ?? {};
+  } catch (error) {
+    handleError(error as Error);
+    return {};
+  }
 };

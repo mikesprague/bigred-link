@@ -1,62 +1,59 @@
 import dotenv from 'dotenv';
 
 import { getAllShortLinks, initDatabase } from '../modules/api-helpers.js';
+import { checkUrlsAgainstSafeBrowsing } from '../modules/safe-browsing.js';
 
 dotenv.config();
 
-const { GOOGLE_SAFE_BROWSING_API_KEY, npm_package_version: appVersion } =
-  process.env;
+const {
+  GOOGLE_SAFE_BROWSING_API_KEY,
+  TURSO_DB_TABLE,
+  npm_package_version: appVersion,
+} = process.env;
 
+if (!GOOGLE_SAFE_BROWSING_API_KEY) {
+  throw new Error('GOOGLE_SAFE_BROWSING_API_KEY is not set');
+}
+if (!TURSO_DB_TABLE) {
+  throw new Error('TURSO_DB_TABLE is not set');
+}
+
+const logPrefix = '[bigred-link:safe-browsing]';
 const { hrtime } = process;
-
 const debugStart = hrtime();
 
 const dbConn = initDatabase();
+const allShortLinks = (await getAllShortLinks(dbConn)) as Array<{
+  original_url: string;
+}>;
 
-const allShortLinks = await getAllShortLinks(dbConn);
-// console.log(allShortLinks);
-// console.log(allShortLinks.length);
+console.log(`${logPrefix} Checking ${allShortLinks.length} URLs`);
 
-if (allShortLinks.length > 0) {
-  const allUrls = allShortLinks
-    .map((shortLink: { original_url: string }) =>
-      encodeURIComponent(shortLink.original_url)
-    )
-    .join(',');
-
-  const safeBrowsingResults = await fetch(
-    `https://safebrowsing.googleapis.com/v5alpha1/urls:search?key=${GOOGLE_SAFE_BROWSING_API_KEY}&urls=${allUrls}`,
-    {
-      headers: {
-        'User-Agent': `bigred.link/${appVersion}`,
-      },
-    }
-  ).then(async (response) => {
-    return await response.text();
-  });
-  console.log(safeBrowsingResults);
-
-  // if (safeBrowsingResults.matches) {
-  //   for await (const item of safeBrowsingResults.matches) {
-  //     const { url } = item.threat;
-  //     const updateResults = await supabase
-  //       .from(SUPABASE_DB_TABLE)
-  //       .update([
-  //         {
-  //           suspicious: true,
-  //           safe_browsing_data: item,
-  //         },
-  //       ])
-  //       .match({ original_url: url })
-  //       .select();
-
-  //     console.log(updateResults);
-  //   }
-  // }
-
-  const debugEnd = hrtime(debugStart);
-
-  console.log(
-    `Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1000000}ms`
-  );
+if (allShortLinks.length === 0) {
+  process.exit(0);
 }
+
+const urls = allShortLinks.map((row) => row.original_url);
+
+const matches = await checkUrlsAgainstSafeBrowsing(urls, {
+  apiKey: GOOGLE_SAFE_BROWSING_API_KEY,
+  userAgent: `bigred.link/${appVersion}`,
+});
+
+console.log(`${logPrefix} ${matches.size} URL(s) flagged as unsafe`);
+
+const updateStatement = await dbConn.prepare(
+  `UPDATE "${TURSO_DB_TABLE}" SET suspicious = ?, safe_browsing_data = ?, updated_at = CURRENT_TIMESTAMP WHERE original_url = ?`
+);
+
+for (const [originalUrl, match] of matches) {
+  console.log(
+    `${logPrefix} unsafe: ${originalUrl} -> ${match.detail.threatType} (matched expression: ${match.matchedExpression})`
+  );
+  await updateStatement.run([1, JSON.stringify(match), originalUrl]);
+}
+
+const debugEnd = hrtime(debugStart);
+console.log(
+  `${logPrefix} Execution time: ${debugEnd[0] * 1000 + debugEnd[1] / 1_000_000}ms`
+);
