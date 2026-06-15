@@ -4,7 +4,7 @@ import {
   getSafeBrowsingResults,
   handleError,
   shortenURL,
-} from '../src/lib/api-helpers.js';
+} from '../src/lib/api-helpers';
 
 const { NODE_ENV, BUGSNAG_KEY } = process.env;
 
