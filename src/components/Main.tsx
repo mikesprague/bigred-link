@@ -17,6 +17,8 @@ import {
   initCopyToClipboard,
 } from '../modules/helpers.js';
 
+import './Main.css';
+
 export const linkAtom = atom('');
 export const resultsAtom = atom('');
 export const hasErrorAtom = atom(false);
@@ -90,7 +92,7 @@ export const Main = () => {
     <main className='w-screen items-center content-center grow text-center p-4'>
       <form className='url-form' onSubmit={handleSubmit}>
         <div className='whitespace-normal sm:whitespace-nowrap flex-wrap sm:flex-nowrap w-full mx-auto px-12 sm:px-4 flex items-center justify-center'>
-          <InputGroup className='w-full sm:w-4/5 mx-auto bg-white'>
+          <InputGroup className='w-full sm:w-4/5 mx-auto bg-white h-16 text-2xl'>
             <InputGroupInput
               placeholder='Type or paste in a URL and shorten it!'
               value={link}
@@ -98,7 +100,7 @@ export const Main = () => {
               onChange={handleChange}
               name='link'
               id='link'
-              className='disabled:cursor-not-allowed placeholder:text-zinc-500 text-zinc-800'
+              className='disabled:cursor-not-allowed placeholder:text-zinc-500 text-zinc-800 text-lg placeholder:text-lg'
               required
               autoFocus
             />
@@ -107,7 +109,8 @@ export const Main = () => {
                 variant='secondary'
                 ref={buttonRef}
                 type='submit'
-                className='btn-shorten hover:text-red-400 disabled:text-white disabled:cursor-not-allowed'
+                size='sm'
+                className='btn-shorten hover:text-red-400 disabled:text-white disabled:cursor-not-allowed text-xl font-normal'
               >
                 Shorten
               </InputGroupButton>

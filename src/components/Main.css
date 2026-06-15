@@ -1,0 +1,4 @@
+input#link {
+  font-size: var(--text-lg) !important;
+  line-height: var(--tw-leading, var(--text-lg--line-height)) !important;
+}
