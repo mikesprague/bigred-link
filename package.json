@@ -43,7 +43,6 @@
     "@fontsource-variable/inter": "5.2.8",
     "@tursodatabase/serverless": "1.2.3",
     "class-variance-authority": "0.7.1",
-    "clipboard-polyfill": "4.1.1",
     "clsx": "2.1.1",
     "dayjs": "1.11.21",
     "dompurify": "3.4.10",

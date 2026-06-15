@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
-import { getAllShortLinks, initDatabase } from '../modules/api-helpers.js';
-import { checkUrlsAgainstSafeBrowsing } from '../modules/safe-browsing.js';
+import { getAllShortLinks, initDatabase } from '../lib/api-helpers.js';
+import { checkUrlsAgainstSafeBrowsing } from '../lib/safe-browsing.js';
 
 dotenv.config();
 

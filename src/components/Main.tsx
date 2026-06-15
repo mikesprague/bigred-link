@@ -1,7 +1,11 @@
 import DOMPurify from 'dompurify';
 import { atom, useAtom } from 'jotai';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
+import {
+  ShortLinkResult,
+  ShortLinkError,
+} from '@/components/ShortLinkResult.tsx';
 import {
   InputGroup,
   InputGroupAddon,
@@ -9,30 +13,47 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 
-import {
-  getClientGeoIpInfo,
-  getErrorMarkup,
-  getResultMarkup,
-  handleError,
-  initCopyToClipboard,
-} from '../modules/helpers.js';
-
 import './Main.css';
+import { getClientGeoIpInfo, handleError } from '@/lib/helpers.ts';
 
 export const linkAtom = atom('');
-export const resultsAtom = atom('');
+export const resultAtom = atom<
+  | {
+      original_url: string;
+      short_id: string;
+    }
+  | undefined
+>(undefined);
 export const hasErrorAtom = atom(false);
+export const errorMessageAtom = atom('');
 
 export const Main = () => {
   const [link, setLink] = useAtom(linkAtom);
-  const [results, setResults] = useAtom(resultsAtom);
+  const [result, setResult] = useAtom(resultAtom);
   const [hasError, setHasError] = useAtom(hasErrorAtom);
+  const [errorMessage, setErrorMessage] = useAtom(errorMessageAtom);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  const getShortLink = async (
+    link: string
+  ): Promise<{ original_url: string; short_id: string }> => {
+    const clientData = await getClientGeoIpInfo();
+
+    const shortLinkResponse = await fetch('/api/new-shortlink', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ link, clientData }),
+    });
+
+    return shortLinkResponse.json();
+  };
+
   const handleSubmit = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
+    async (event: React.SubmitEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       if (buttonRef.current) {
@@ -42,38 +63,16 @@ export const Main = () => {
         inputRef.current.disabled = true;
       }
 
-      const clientData = await getClientGeoIpInfo();
-
-      await fetch('/api/new-shortlink', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ link, clientData }),
-      })
-        .then(async (response) => {
-          const responseJson = await response.json();
-          let resultTemplate;
-          if (responseJson.errorCode) {
-            resultTemplate = getErrorMarkup(responseJson.errorMessage);
-          } else {
-            resultTemplate = getResultMarkup(
-              window.location.origin,
-              responseJson.short_id
-            );
-          }
-
-          setResults(resultTemplate as unknown as string);
-          setHasError(false);
-
-          return responseJson;
-        })
-        .catch((error) => {
-          handleError(error);
-          setHasError(true);
-        });
+      try {
+        const { original_url, short_id } = await getShortLink(link);
+        setResult({ original_url, short_id });
+      } catch (error) {
+        handleError(error as Error);
+        setHasError(true);
+        setErrorMessage((error as Error).message);
+      }
     },
-    [link, setResults, setHasError]
+    [link, setResult, setHasError, setErrorMessage]
   );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,12 +80,6 @@ export const Main = () => {
 
     setLink(inputVal);
   };
-
-  useEffect(() => {
-    if (results && !hasError) {
-      initCopyToClipboard();
-    }
-  }, [results, hasError]);
 
   return (
     <main className='w-screen items-center content-center grow text-center p-4'>
@@ -118,7 +111,13 @@ export const Main = () => {
           </InputGroup>
         </div>
       </form>
-      <div className='result-section mx-auto'>{results}</div>
+      <div className='result-section mx-auto'>
+        {result && !hasError ? (
+          <ShortLinkResult shortId={result.short_id} />
+        ) : hasError && errorMessage.trim().length > 0 ? (
+          <ShortLinkError errorMessage='An error occurred while shortening the URL.' />
+        ) : null}
+      </div>
     </main>
   );
 };

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 
 import dotenv from 'dotenv';
 
-import { initDatabase, getAllShortLinks } from '../modules/api-helpers.js';
+import { initDatabase, getAllShortLinks } from '../lib/api-helpers.js';
 
 const { hrtime } = process;
 

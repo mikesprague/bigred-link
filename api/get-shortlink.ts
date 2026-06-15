@@ -1,9 +1,6 @@
 import Bugsnag from '@bugsnag/js';
 
-import {
-  checkIfShortIdExists,
-  initDatabase,
-} from '../src/modules/api-helpers.js';
+import { checkIfShortIdExists, initDatabase } from '../src/lib/api-helpers.js';
 
 const { NODE_ENV, BUGSNAG_KEY, TURSO_DB_TABLE } = process.env;
 
