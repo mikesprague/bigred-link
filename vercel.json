@@ -43,5 +43,10 @@
       "source": "/:short_id([^.]*)",
       "destination": "/api/get-shortlink"
     }
-  ]
+  ],
+  "functions": {
+    "api/*.ts": {
+      "includeFiles": "src/lib/**"
+    }
+  }
 }
