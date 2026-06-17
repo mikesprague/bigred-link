@@ -10,9 +10,9 @@
   },
   "packageManager": "npm@11.17.0",
   "scripts": {
-    "back-up-db": "tsx ./src/utils/back-up-db.ts",
+    "back-up-db": "tsx ./src/scripts/back-up-db.ts",
     "build": "npx tsc -b && npx vite build",
-    "check-all-urls": "tsx ./src/utils/safe-browsing-url-check.ts",
+    "check-all-urls": "tsx ./src/scripts/safe-browsing-url-check.ts",
     "clean": "rm -rf ./build",
     "dev:vite": "npx vite serve --port $PORT",
     "format": "npx oxfmt src",
@@ -71,7 +71,7 @@
     "tailwindcss": "4.3.1",
     "tsx": "4.22.4",
     "typescript": "6.0.3",
-    "vercel": "54.14.1",
+    "vercel": "54.14.2",
     "vite": "8.0.16",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.3.0"

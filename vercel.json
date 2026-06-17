@@ -46,7 +46,7 @@
   ],
   "functions": {
     "api/*.ts": {
-      "includeFiles": "src/lib/**"
+      "includeFiles": "src/lib/*.ts"
     }
   }
 }
