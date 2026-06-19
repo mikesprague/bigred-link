@@ -82,7 +82,7 @@ export const Main = () => {
   };
 
   return (
-    <main className='w-screen items-center content-center grow text-center p-4'>
+    <main className='w-screen items-center grow text-center p-4'>
       <form className='url-form' onSubmit={handleSubmit}>
         <div className='whitespace-normal sm:whitespace-nowrap flex-wrap sm:flex-nowrap w-full mx-auto px-12 sm:px-4 flex items-center justify-center'>
           <InputGroup className='w-full sm:w-4/5 mx-auto bg-white h-16 text-2xl'>
