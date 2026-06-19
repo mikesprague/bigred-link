@@ -62,7 +62,7 @@ export const ShortLinkResult = ({
 };
 
 export const ShortLinkError = ({ errorMessage }: { errorMessage: string }) => (
-  <div className='result'>
+  <div className='result bg-red-800/75 border-solid rounded-md my-0 mx-auto text-xl text-center p-5 font-normal max-w-3xl text-red-500'>
     <TriangleAlert />
     Error
     <small className='clipboard-text'>
