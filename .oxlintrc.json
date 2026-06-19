@@ -6,19 +6,11 @@
     ".github/**",
     ".history/**",
     ".vscode/**",
-    "coverage/**",
-    "data/**",
-    "db/**",
+    "./**/dev-dist/**",
+    "build/**",
     "dist/**",
-    "docs/**",
-    "generated/**",
     "node_modules/**",
-    "prisma/**",
-    "repo-test/**",
-    "repos/**",
-    "types/**",
-    "src/index.ts",
-    "src/scratch*.ts"
+    "types/**"
   ],
   "plugins": ["eslint", "react", "typescript", "unicorn"],
   "rules": {
