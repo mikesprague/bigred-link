@@ -10,9 +10,9 @@
   },
   "packageManager": "npm@11.17.0",
   "scripts": {
-    "back-up-db": "tsx ./src/scripts/back-up-db.ts",
+    "back-up-db": "npx tsx ./src/scripts/back-up-db.ts",
     "build": "npx tsc -b && npx vite build",
-    "check-all-urls": "tsx ./src/scripts/safe-browsing-url-check.ts",
+    "check-all-urls": "npx tsx ./src/scripts/safe-browsing-url-check.ts",
     "clean": "rm -rf ./build",
     "dev:vite": "npx vite serve --port $PORT",
     "format": "npx oxfmt src",
@@ -20,7 +20,7 @@
     "lint": "npx oxlint .",
     "prebuild": "npm run clean",
     "preview": "npx vite preview",
-    "start": "vercel dev --listen 3001",
+    "start": "npx vercel dev --listen 3001",
     "test": "npm run format:check && npm run lint && npm run typecheck",
     "typecheck": "npx tsc --noEmit"
   },
@@ -85,7 +85,7 @@
     "minimatch": "^10.2.5",
     "path-to-regexp": "^8.4.2",
     "smol-toml": "^1.6.1",
-    "srvx": "^0.11.16",
+    "srvx": "^0.11.17",
     "tar": "^7.5.16",
     "undici": "^8.5.0"
   },
@@ -111,7 +111,7 @@
     }
   },
   "volta": {
-    "node": "24.16.0",
+    "node": "24.17.0",
     "npm": "11.17.0"
   }
 }
