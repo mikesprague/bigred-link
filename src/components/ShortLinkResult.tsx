@@ -1,6 +1,6 @@
 import { Clipboard, RotateCw, TriangleAlert } from 'lucide-react';
 
-import { useClipboard } from '@/hooks/useClipboard.ts';
+import { useClipboard } from '@/hooks/useClipboard.js';
 
 export interface ShortLinkResultProps {
   urlPrefix?: string;

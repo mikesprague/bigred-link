@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/input-group';
 
 import './Main.css';
-import { getClientGeoIpInfo, handleError } from '@/lib/helpers.ts';
+import { getClientGeoIpInfo, handleError } from '@/lib/helpers.js';
 
 export const linkAtom = atom('');
 export const resultAtom = atom<

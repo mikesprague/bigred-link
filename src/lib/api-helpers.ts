@@ -3,7 +3,7 @@ import { connect } from '@tursodatabase/serverless';
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 
-import { checkUrlsAgainstSafeBrowsing } from './safe-browsing.ts';
+import { checkUrlsAgainstSafeBrowsing } from './safe-browsing.js';
 
 dotenv.config();
 
