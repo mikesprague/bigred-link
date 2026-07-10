@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@bugsnag/core": "8.9.0",
-    "@bugsnag/js": "8.9.0",
+    "@bugsnag/js": "8.10.0",
     "@bugsnag/plugin-react": "8.9.0",
     "@fontsource-variable/inter": "5.2.8",
     "@tursodatabase/serverless": "1.2.3",
