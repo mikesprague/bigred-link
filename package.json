@@ -47,7 +47,7 @@
     "dayjs": "1.11.21",
     "dompurify": "3.4.12",
     "dotenv": "17.4.2",
-    "jotai": "2.20.1",
+    "jotai": "2.20.2",
     "lucide-react": "1.24.0",
     "nanoid": "6.0.0",
     "radix-ui": "1.6.2",
