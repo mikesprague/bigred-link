@@ -65,7 +65,7 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.4",
     "cz-git": "1.13.1",
-    "globals": "17.7.0",
+    "globals": "17.8.0",
     "oxfmt": "0.60.0",
     "oxlint": "1.75.0",
     "tailwindcss": "4.3.3",
