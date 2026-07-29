@@ -8,7 +8,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.17.0",
+  "packageManager": "npm@12.0.1",
   "scripts": {
     "back-up-db": "npx tsx ./src/scripts/back-up-db.ts",
     "build": "npx tsc -b && npx vite build",
@@ -71,23 +71,24 @@
     "tailwindcss": "4.3.3",
     "tsx": "4.23.1",
     "typescript": "6.0.3",
-    "vercel": "58.1.0",
+    "vercel": "58.4.0",
     "vite": "8.1.5",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.3.0"
   },
   "overrides": {
+    "@hono/node-server": "^2.0.12",
     "@tootallnate/once": "^3.0.1",
     "ajv": "^8.20.0",
+    "brace-expansion": "^5.0.8",
     "esbuild": "^0.28.1",
     "glob": "^13.0.6",
-    "js-yaml": "^4.2.0",
-    "minimatch": "^10.2.5",
+    "js-yaml": "^5.2.2",
+    "minimatch": "^10.2.6",
     "path-to-regexp": "^8.4.2",
-    "smol-toml": "^1.6.1",
-    "srvx": "^0.11.17",
-    "tar": "^7.5.16",
-    "undici": "^8.5.0"
+    "smol-toml": "^1.7.1",
+    "tar": "^7.5.22",
+    "undici": "^8.9.0"
   },
   "allowScripts": {
     "fsevents@2.3.3": true,
@@ -111,7 +112,7 @@
     }
   },
   "volta": {
-    "node": "24.18.0",
-    "npm": "11.17.0"
+    "node": "24.18.1",
+    "npm": "12.0.1"
   }
 }
