@@ -8,7 +8,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@12.0.1",
+  "packageManager": "npm@12.0.2",
   "scripts": {
     "back-up-db": "npx tsx ./src/scripts/back-up-db.ts",
     "build": "npx tsc -b && npx vite build",
@@ -45,50 +45,50 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "dayjs": "1.11.21",
-    "dompurify": "3.4.12",
+    "dompurify": "3.4.13",
     "dotenv": "17.4.2",
     "jotai": "2.20.2",
-    "lucide-react": "1.27.0",
-    "nanoid": "6.0.0",
+    "lucide-react": "1.30.0",
+    "nanoid": "6.0.1",
     "radix-ui": "1.6.7",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "shadcn": "4.16.0",
+    "shadcn": "4.16.2",
     "tailwind-merge": "3.6.0",
-    "tldts": "7.4.9",
+    "tldts": "7.4.10",
     "tw-animate-css": "1.4.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",
-    "@types/node": "26.1.2",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.4",
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
     "cz-git": "1.13.1",
-    "globals": "17.8.0",
-    "oxfmt": "0.61.0",
-    "oxlint": "1.76.0",
+    "globals": "17.9.0",
+    "oxfmt": "0.62.0",
+    "oxlint": "1.77.0",
     "tailwindcss": "4.3.3",
-    "tsx": "4.23.1",
+    "tsx": "4.23.11",
     "typescript": "6.0.3",
-    "vercel": "58.4.0",
-    "vite": "8.1.5",
+    "vercel": "58.9.0",
+    "vite": "8.2.1",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.3.0"
   },
   "overrides": {
-    "@hono/node-server": "^2.0.12",
+    "@hono/node-server": "^2.1.0",
     "@tootallnate/once": "^3.0.1",
     "ajv": "^8.20.0",
-    "brace-expansion": "^5.0.8",
+    "brace-expansion": "^5.0.9",
     "esbuild": "^0.28.1",
     "glob": "^13.0.6",
-    "js-yaml": "^5.2.2",
+    "js-yaml": "^5.2.3",
     "minimatch": "^10.2.6",
     "path-to-regexp": "^8.4.2",
     "smol-toml": "^1.7.1",
     "tar": "^7.5.22",
-    "undici": "^8.9.0"
+    "undici": "^8.10.0"
   },
   "allowScripts": {
     "fsevents@2.3.3": true,
@@ -110,9 +110,5 @@
     "commitizen": {
       "path": "./node_modules/cz-git"
     }
-  },
-  "volta": {
-    "node": "24.18.1",
-    "npm": "12.0.1"
   }
 }
