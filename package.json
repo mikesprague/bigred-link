@@ -44,7 +44,7 @@
     "@tursodatabase/serverless": "1.4.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "dayjs": "1.11.21",
+    "dayjs": "1.11.22",
     "dompurify": "3.4.13",
     "dotenv": "17.4.2",
     "jotai": "2.20.2",
