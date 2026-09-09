@@ -45,7 +45,7 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "dayjs": "1.11.23",
-    "dompurify": "3.4.14",
+    "dompurify": "3.4.15",
     "dotenv": "17.4.2",
     "jotai": "2.20.3",
     "lucide-react": "1.41.0",
