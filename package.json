@@ -37,7 +37,7 @@
     "url": "https://github.com/mikesprague/bigred-link/issues"
   },
   "dependencies": {
-    "@bugsnag/core": "8.9.0",
+    "@bugsnag/core": "9.0.0",
     "@bugsnag/js": "8.10.0",
     "@bugsnag/plugin-react": "8.9.0",
     "@fontsource-variable/inter": "5.3.0",
