@@ -46,7 +46,7 @@
     "clsx": "2.1.1",
     "dayjs": "1.11.23",
     "dompurify": "3.4.16",
-    "dotenv": "18.0.4",
+    "dotenv": "18.0.5",
     "jotai": "3.0.1",
     "lucide-react": "1.48.0",
     "nanoid": "6.0.1",
