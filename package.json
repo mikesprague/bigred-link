@@ -90,7 +90,7 @@
     "path-to-regexp": "^8.4.2",
     "smol-toml": "^1.9.0",
     "tar": "^7.5.22",
-    "undici": "^8.11.2"
+    "undici": "^8.12.3"
   },
   "allowScripts": {
     "fsevents@2.3.3": true,
