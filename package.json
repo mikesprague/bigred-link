@@ -66,7 +66,7 @@
     "@vitejs/plugin-react": "6.2.1",
     "cz-git": "1.14.0",
     "globals": "17.14.0",
-    "oxfmt": "0.76.0",
+    "oxfmt": "0.77.0",
     "oxlint": "1.91.0",
     "tailwindcss": "4.3.4",
     "tsx": "4.23.15",
