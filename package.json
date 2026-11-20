@@ -48,7 +48,7 @@
     "dompurify": "3.4.18",
     "dotenv": "18.0.10",
     "jotai": "3.0.2",
-    "lucide-react": "1.73.0",
+    "lucide-react": "1.74.0",
     "nanoid": "6.0.2",
     "radix-ui": "1.8.1",
     "react": "19.3.1",
